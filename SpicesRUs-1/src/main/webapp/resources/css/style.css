@@ -1,0 +1,127 @@
+#overviewPage {
+  font-family: 'Public Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7b538;
+}
+
+.container .textParagraphs {
+  margin: 40px;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.container {
+  max-width: 100%;
+  background: #f7b538;
+  font-size: 24px;
+  padding: 0px 0px;
+  text-align: left;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: black;
+}
+
+.nav {
+  background-color: #f7b538;
+  color: #000000;
+  list-style: none;
+  text-align: right;
+  padding: 20px 0 20px 0;
+}
+
+.nav > li {
+  display: inline-block;
+  padding: 0 25px 0 25px;
+  font-size: 14px;
+}
+
+.nav > li > a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.nav > li > a:hover {
+  color: #c1c1c1;
+}
+
+#logo {
+  color: #000000;
+  float: left;
+  padding-left: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  top: -25px;
+}
+
+#logo > a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.container_Header {
+  max-width: 100%;
+  font-size: 24px;
+  padding: 0px 0px;
+  text-align: center;
+  color: black;
+  background: #f7b538;
+}
+
+.parallax-window {
+  width: auto;
+  padding: 100px 35px;
+}
+
+.parallax-window2 {
+  width: auto;
+  padding: 100px 35px;
+  height: 400px;
+}
+
+.container .parallax-window .info {
+  z-index: 2;
+  position: relative;
+  color: white;
+
+  text-align: center;
+  font-size: 40px;
+  text-shadow: 2px 2px 8px black;
+}
+
+#infoHeader {
+  z-index: 2;
+  background: #c32f27;
+  color: white;
+  font-size: 3.25vw;
+  font-weight: bold;
+  margin: 0px 0px;
+  padding: 30px;
+  width: 40%;
+  text-align: center;
+  position: relative;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+}
+
+#infoHeader2 {
+  z-index: 2;
+  background: white;
+  color: black;
+  font-size: 3.25vw;
+  font-weight: bold;
+  margin: 0px 0px;
+  padding: 30px;
+  width: 40%;
+  text-align: center;
+  position: relative;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  mix-blend-mode: screen;
+  line-height: 3em;
+}
+ul.a {
+  list-style-type: circle;
+}
