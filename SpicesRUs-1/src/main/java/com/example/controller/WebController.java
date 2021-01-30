@@ -11,5 +11,10 @@ public class WebController {
 	public String home(Model model) {
 		return "/homepage/index";
 	}
+	
+	@RequestMapping("/about")
+	public String aboutUs(Model model) {
+		return "/aboutUs/index";
+	}
 
 }

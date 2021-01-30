@@ -44,7 +44,7 @@
         data-z-index="0"
         data-image-src= "${pageContext.request.contextPath}/images/spices_background.jpg"
       >
-        <h id="infoHeader" style="background-color: #780116">Spices R Us</h>
+        <h id="infoHeader" style="background-color: #780116">About Us</h>
       </div>
     </div>
 
