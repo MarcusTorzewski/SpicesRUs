@@ -44,18 +44,14 @@
         data-z-index="0"
         data-image-src= "${pageContext.request.contextPath}/images/spices_background.jpg"
       >
-        <h id="infoHeader" style="background-color: #780116">Spices R Us</h>
+        <h id="infoHeader" style="background-color: #780116">${spice}</h>
       </div>
     </div>
 
     <div class="container">
       <div class="textParagraphs">
         <p>
-          We believe in connecting the world with the power of taste. That is
-          why we offer the finest spices at accessible prices.<br />
-          <br /><br />
-          We also believe in providing high quality recipes, in order for you to
-          gain the most out of our highest quality ingredients.
+			Insert info for the given spice here
         </p>
       </div>
 
@@ -71,14 +67,8 @@
 
       <div class="textParagraphs" style="text-align: left">
         <p>
-          Our high quality spices are sourced responsibly. We follow 3 simple
-          rules:
+          Insert more info for the given spice here
         </p>
-        <ul class="a">
-          <li>Be mindful of the environment.</li>
-          <li>Ensure sustainability.</li>
-          <li>Look after the local community.</li>
-        </ul>
       </div>
     </div>
   </body>

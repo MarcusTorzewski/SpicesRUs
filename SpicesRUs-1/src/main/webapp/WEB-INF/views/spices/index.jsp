@@ -44,19 +44,14 @@
         data-z-index="0"
         data-image-src= "${pageContext.request.contextPath}/images/spices_background.jpg"
       >
-        <h id="infoHeader" style="background-color: #780116">Spices R Us</h>
+        <h id="infoHeader" style="background-color: #780116">Spices</h>
       </div>
     </div>
 
     <div class="container">
       <div class="textParagraphs">
-        <p>
-          We believe in connecting the world with the power of taste. That is
-          why we offer the finest spices at accessible prices.<br />
-          <br /><br />
-          We also believe in providing high quality recipes, in order for you to
-          gain the most out of our highest quality ingredients.
-        </p>
+	  <p>list spices here</p>
+	  <a href="/spices/Cinnamon">Cinnamon</a>
       </div>
 
       <div
