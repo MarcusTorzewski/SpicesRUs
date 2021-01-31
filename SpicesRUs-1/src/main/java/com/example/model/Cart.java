@@ -2,7 +2,10 @@ package com.example.model;
 
 import java.util.List;
 
+
 import org.springframework.data.util.Pair;
+
+
 
 
 
@@ -35,6 +38,38 @@ public class Cart {
 	}
 	
 	public float WorkOutTotal() {
+		
+		float tempCartTotal = 0;
+		
+		for(Pair<Spice, Integer> pair : itemQuantityList) {
+			
+			tempCartTotal += ( pair.getFirst().getPrice()  *  pair.getSecond()  );
+			
+		}
+		
+		return tempCartTotal;
+				
+	}
+	
+	public float WorkOutTotalWithDiscountPerecent(float discountPercent) {
+		
+		float tempTotalPercentDiscounted = cartTotalValue;
+		
+		tempTotalPercentDiscounted = tempTotalPercentDiscounted *((100-discountPercent)/100);
+		
+		return tempTotalPercentDiscounted;
+				
+	}
+	
+	public float WorkOutTotalWithValueDiscount(float valueDiscount) {
+		
+		float tempTotalValueDiscounted = cartTotalValue;
+		
+		tempTotalValueDiscounted = tempTotalValueDiscounted - valueDiscount;
+		
+		return tempTotalValueDiscounted;
+		
+		
 		
 	}
 

@@ -35,6 +35,16 @@ public class Spice {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	
+	
 	
 	
 	
