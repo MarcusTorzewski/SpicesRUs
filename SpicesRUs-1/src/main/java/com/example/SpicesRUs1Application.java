@@ -5,9 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.model.Customer;
 import com.example.model.User;
-import com.example.repository.CustomerRepository;
 import com.example.repository.UserRepository;
 
 @SpringBootApplication
