@@ -6,13 +6,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.model.Customer;
+import com.example.model.User;
 import com.example.repository.CustomerRepository;
+import com.example.repository.UserRepository;
 
 @SpringBootApplication
 public class SpicesRUs1Application implements CommandLineRunner {
 	
 	@Autowired
-	private  CustomerRepository crepo;
+	private UserRepository urepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpicesRUs1Application.class, args);
@@ -21,14 +23,10 @@ public class SpicesRUs1Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		/*
-		 Uploading this example to the database works
-		Customer testCustomer = new Customer();
-		testCustomer.setName("John Smith 2");
-		testCustomer.setAge(30);
-		testCustomer.setWeight(70);
-		crepo.save(testCustomer);
-		*/
+		User testUser = new User();
+		testUser.setFirstName("John");
+		testUser.setLastname("Smith");
+		urepo.save(testUser);
 		
 	}
 
