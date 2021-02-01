@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.model.User;
 import com.example.repository.UserRepository;
 
+
 @SpringBootApplication
 public class SpicesRUs1Application implements CommandLineRunner {
 	
