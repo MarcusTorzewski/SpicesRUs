@@ -2,77 +2,57 @@ package com.example.model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Document(collection="recipe")
 public class Recipe {
 	
-	//General recipe info/properties
+	@Id
+	private String id;
 	private String name;
-	private String type;
-	private int prepTime;
-	private int cookingTime;
-	private String difficulty;
-	private int servings;
-	
-	
-	private List<Spice> spices;
-	private String method;
-	
-	//Macros per serving 
+	private String image;
+	private int difficulty;
+	private String region;
+	private int duration;
 	private int calories;
-	private float fat;
-	private float carbs;
-	private float fibre;
-	private float protein;
-	private float salt;
-	
+	private int servings;
+	private List<String> spice_recommendations;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
+	public String getImage() {
+		return image;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setImage(String image) {
+		this.image = image;
 	}
-	public int getPrepTime() {
-		return prepTime;
-	}
-	public void setPrepTime(int prepTime) {
-		this.prepTime = prepTime;
-	}
-	public int getCookingTime() {
-		return cookingTime;
-	}
-	public void setCookingTime(int cookingTime) {
-		this.cookingTime = cookingTime;
-	}
-	public List<Spice> getSpices() {
-		return spices;
-	}
-	public void setSpices(List<Spice> spices) {
-		this.spices = spices;
-	}
-	public String getDifficulty() {
+	public int getDifficulty() {
 		return difficulty;
 	}
-	public void setDifficulty(String difficulty) {
+	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
-	public int getServings() {
-		return servings;
+	public String getRegion() {
+		return region;
 	}
-	public void setServings(int servings) {
-		this.servings = servings;
+	public void setRegion(String region) {
+		this.region = region;
 	}
-	public String getMethod() {
-		return method;
+	public int getDuration() {
+		return duration;
 	}
-	public void setMethod(String method) {
-		this.method = method;
+	public void setDuration(int duration) {
+		this.duration = duration;
 	}
 	public int getCalories() {
 		return calories;
@@ -80,38 +60,18 @@ public class Recipe {
 	public void setCalories(int calories) {
 		this.calories = calories;
 	}
-	public float getFat() {
-		return fat;
+	public int getServings() {
+		return servings;
 	}
-	public void setFat(float fat) {
-		this.fat = fat;
+	public void setServings(int servings) {
+		this.servings = servings;
 	}
-	public float getCarbs() {
-		return carbs;
+	public List<String> getSpice_recommendations() {
+		return spice_recommendations;
 	}
-	public void setCarbs(float carbs) {
-		this.carbs = carbs;
+	public void setSpice_recommendations(List<String> spice_recommendations) {
+		this.spice_recommendations = spice_recommendations;
 	}
-	public float getFibre() {
-		return fibre;
-	}
-	public void setFibre(float fibre) {
-		this.fibre = fibre;
-	}
-	public float getProtein() {
-		return protein;
-	}
-	public void setProtein(float protein) {
-		this.protein = protein;
-	}
-	public float getSalt() {
-		return salt;
-	}
-	public void setSalt(float salt) {
-		this.salt = salt;
-	}
-	
-	
 	
 	
 
