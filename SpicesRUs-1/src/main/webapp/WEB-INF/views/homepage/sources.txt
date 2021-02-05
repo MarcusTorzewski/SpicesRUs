@@ -1,4 +1,1 @@
-- parallax js - http://pixelcog.github.io/parallax.js/
-  open source, free to use, more info on the GitHub in the link provided
-
 - Tutorial inspiring navbar - https://www.youtube.com/watch?v=X_skOPBsYZE

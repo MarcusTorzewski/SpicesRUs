@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Spices R Us</title>
-    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/style.css"> 
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -14,13 +14,13 @@
   <body>
     <ul class="nav">
       <div id="logo">
-        <a href="#"> <img height="70px" src="${pageContext.request.contextPath}/images/SpicesRUs_logo.png" /> </a>
+        <a href="/"> <img height="70px" src="${pageContext.request.contextPath}/images/SpicesRUs_logo.png" /> </a>
       </div>
       <li><a href="/about">About Us</a></li>
-      <li><a href="/spices">Spices</a></li>
+      <li><a href="/spices" style="text-decoration: underline rgb(68, 68, 68);">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="#">Discussion Forum</a></li>
-      <li><a href="#">Sign-in</a></li>
+      <li><a href="#">Sign-out</a></li>
       <li><a href="#">Basket</a></li>
     </ul>
 
@@ -30,11 +30,7 @@
     <div class="text_main1">
       <h1>
         <p>
-          We believe in connecting the world with the power of taste. That is
-          why we offer the finest spices at accessible prices.<br />
-          <br /><br />
-          We also believe in providing high quality recipes, in order for you to
-          gain the most out of our highest quality ingredients.
+           *Insert database references for each tag spice, html/css table*
         </p>
       </h1>
     </div>
@@ -44,16 +40,9 @@
     <div class="text_main2">
       <h1>
         <p>
-          Our high quality spices are sourced responsibly. We follow 3 simple
-          rules:
-          <br />
-          <br /><br />
+          *Potentially remove this divider + above banner*
         </p>
-        <ul>
-          <li>Be mindful of the environment.</li>
-          <li>Ensure sustainability.</li>
-          <li>Look after the local community.</li>
-        </ul>
+        
       </h1>
     </div>
   </body>
