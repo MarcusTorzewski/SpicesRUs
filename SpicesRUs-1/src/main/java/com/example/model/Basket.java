@@ -11,7 +11,7 @@ import org.springframework.data.util.Pair;
 
 
 
-public class Cart {
+public class Basket {
 	
 	
 	//Spice, Quantity 
