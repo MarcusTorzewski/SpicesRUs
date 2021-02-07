@@ -1,6 +1,7 @@
 package com.example.model;
 
-import java.util.Set;
+import java.util.List;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -22,7 +23,7 @@ public class User {
 	private String Postcode;
 	
 	@DBRef
-	private Set<Role> roles;
+	private List<Role> roles;
 	
 	/* I've just got the basic attributes here there could be more, but its not difficult to add them as we go
 	 * The only immutable parts of this code right now are the document, id and the collection -marcus
@@ -50,6 +51,10 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	// for principal.getName()
+	public String getName() {
+		return email;
 	}
 	public String getPassword() {
 		return password;
@@ -87,10 +92,10 @@ public class User {
 	public void setPostcode(String postcode) {
 		Postcode = postcode;
 	}
-	public Set<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 	@Override
