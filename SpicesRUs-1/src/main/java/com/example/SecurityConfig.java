@@ -22,8 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception { 
 		http.requiresChannel().anyRequest().requiresSecure().and().formLogin()
     		.loginPage("/login-form")
-    		.loginProcessingUrl("/login")
+    		.loginProcessingUrl("/myLogin")
     		.defaultSuccessUrl("/success-login",true)
+    		.usernameParameter("email")
     		.failureUrl("/error-login")
     		.permitAll()
     	.and().logout()
