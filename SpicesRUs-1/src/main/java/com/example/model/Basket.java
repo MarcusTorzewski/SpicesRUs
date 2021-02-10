@@ -2,8 +2,10 @@ package com.example.model;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.util.Pair;
 
+@Document(collection="basket")
 public class Basket {
 
 	// Spice, Quantity
