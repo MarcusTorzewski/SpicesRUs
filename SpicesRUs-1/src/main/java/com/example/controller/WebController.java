@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.repository.RecipeRepository;
 import com.example.repository.SpiceRepository;
 
 @Controller
@@ -13,6 +14,9 @@ public class WebController {
 	
 	@Autowired
 	private SpiceRepository spice_repo;
+	
+	@Autowired
+	private RecipeRepository recipe_repo;
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -32,6 +36,7 @@ public class WebController {
 	
 	@RequestMapping("/recipes")
 	public String recipes(Model model) {
+		model.addAttribute("recipes", recipe_repo.findAll());
 		return "/recipes/index";
 	}
 	
@@ -40,5 +45,10 @@ public class WebController {
 		model.addAttribute("spice", spice_repo.findByName(spice));
 		return "/spices/spice";
 	}
-
+	
+	@RequestMapping("/recipes/{recipe}")
+	public String recipes(@PathVariable String recipe, Model model) {
+		model.addAttribute("recipe", recipe_repo.findByName(recipe));
+		return "/recipes/recipe";
+	}
 }
