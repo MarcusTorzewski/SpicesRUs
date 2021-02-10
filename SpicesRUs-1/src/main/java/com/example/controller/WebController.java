@@ -1,12 +1,18 @@
 package com.example.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.repository.SpiceRepository;
+
 @Controller
 public class WebController {
+	
+	@Autowired
+	private SpiceRepository spice_repo;
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -20,6 +26,7 @@ public class WebController {
 	
 	@RequestMapping("/spices")
 	public String spices(Model model) {
+		model.addAttribute("spices", spice_repo.findAll());
 		return "/spices/index";
 	}
 	
@@ -30,7 +37,7 @@ public class WebController {
 	
 	@RequestMapping("/spices/{spice}")
 	public String spice(@PathVariable String spice, Model model) {
-		model.addAttribute("spice", spice);
+		model.addAttribute("spice", spice_repo.findByName(spice));
 		return "/spices/spice";
 	}
 

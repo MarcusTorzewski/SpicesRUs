@@ -66,17 +66,20 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		testUser.getRoles().add(premium);
 		testUser = urepo.save(testUser);
 		 */
-		Spice s = new Spice();
-		s.setName("cayanne");
-		s.setImage("cayanne_pepper");
-		s.setRegion("French Guiana");
-		s = srepo.save(s);
 		
-		Product p = new Product();
-		p.setSpice(s);
-		p.setWeight(50);
-		p.setPrice(2.50);
-		p = prepo.save(p);
+		
+		// Test that a product of a spice can be added.
+//		Spice s = new Spice();
+//		s.setName("cayanne");
+//		s.setImage("cayanne_pepper");
+//		s.setRegion("French Guiana");
+//		s = srepo.save(s);
+//		
+//		Product p = new Product();
+//		p.setSpice(s);
+//		p.setWeight(50);
+//		p.setPrice(2.50);
+//		p = prepo.save(p);
 		
 	}
 
