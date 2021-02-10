@@ -7,9 +7,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.model.Product;
 import com.example.model.Role;
+import com.example.model.Spice;
 import com.example.model.User;
+import com.example.repository.ProductRepository;
 import com.example.repository.RoleRepository;
+import com.example.repository.SpiceRepository;
 import com.example.repository.UserRepository;
 
 
@@ -20,6 +24,10 @@ public class SpicesRUs1Application implements CommandLineRunner {
 	private UserRepository urepo;
 	@Autowired
 	private RoleRepository rrepo;
+	@Autowired
+	private ProductRepository prepo;
+	@Autowired
+	private SpiceRepository srepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpicesRUs1Application.class, args);
@@ -58,6 +66,18 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		testUser.getRoles().add(premium);
 		testUser = urepo.save(testUser);
 		 */
+		Spice s = new Spice();
+		s.setName("cayanne");
+		s.setImage("cayanne_pepper");
+		s.setRegion("French Guiana");
+		s = srepo.save(s);
+		
+		Product p = new Product();
+		p.setSpice(s);
+		p.setWeight(50);
+		p.setPrice(2.50);
+		p = prepo.save(p);
+		
 	}
 
 }
