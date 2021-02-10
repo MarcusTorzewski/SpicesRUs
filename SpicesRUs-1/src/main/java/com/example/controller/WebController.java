@@ -23,6 +23,11 @@ public class WebController {
 		return "/spices/index";
 	}
 	
+	@RequestMapping("/recipes")
+	public String recipes(Model model) {
+		return "/recipes/index";
+	}
+	
 	@RequestMapping("/spices/{spice}")
 	public String spice(@PathVariable String spice, Model model) {
 		model.addAttribute("spice", spice);

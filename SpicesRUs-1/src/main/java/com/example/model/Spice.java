@@ -13,9 +13,9 @@ public class Spice {
 	private String id;
 	private String name;
 	private String image;
-	private int price;
 	private String region;
 	private List<String> compliment_spices;
+	
 	public String getId() {
 		return id;
 	}
@@ -33,12 +33,6 @@ public class Spice {
 	}
 	public void setImage(String image) {
 		this.image = image;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
 	}
 	public String getRegion() {
 		return region;
