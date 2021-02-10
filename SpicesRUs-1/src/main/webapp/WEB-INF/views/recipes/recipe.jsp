@@ -32,7 +32,15 @@
 	</div>
 	<div class="text_main1">
 		<h1>
-			<p>${recipe.name} Calories: ${recipe.calories}</p>
+			<p>
+				${recipe.name}<br> <br> Calories: ${recipe.calories}<br>
+				<br> Ingredients:<br>
+				<c:forEach items="${recipe.ingredients}" var="ingredient">
+				${ingredient}
+				<br>
+				</c:forEach>
+			</p>
+
 		</h1>
 	</div>
 	<div class="banner">
