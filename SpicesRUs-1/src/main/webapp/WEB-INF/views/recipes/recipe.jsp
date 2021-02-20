@@ -30,28 +30,56 @@
 		<img class="banner-image"
 			src="${pageContext.request.contextPath}/images/spices_background.jpg" />
 	</div>
-	<div class="text_main1">
-		<h1>
-			<p>
-				${recipe.name}<br> <br> Calories: ${recipe.calories}<br>
-				<br> Ingredients:<br>
+	
+	<!-- Top info section -->
+	
+	<div style="width:100%; overflow: hidden; padding:1% 5% 3% 5%; background-color: #fdedce;">
+		<div style="width: 30%; float:left;">
+			<img src="${recipe.image}">
+		</div>
+		<div style="float: right; width:70%">
+			<h1>${recipe.name}</h1>
+			<p>Serving: ${recipe.servings}</p>
+			<p>Difficulty: ${recipe.difficulty}</p>
+			<p>Prep time: ${recipe.prep_time}</p>
+			<p>Cooking time: ${recipe.cooking_time}</p>
+		</div>
+	</div>
+	
+	
+	<hr style="color: #f6ac23; height:0.1px; background-color: #f6ac23; border-width:0;'">
+	
+	
+	<!-- Ingredients and Method section -->
+	
+	
+	 <div style="width: 100%; overflow: hidden; padding: 0 5% 0 5%; background-color: #fdedce;">
+     	<div style="width: 20%; float: left;">
+     	
+     		<h2>Ingredients</h2>
+	     	<ul>
 				<c:forEach items="${recipe.ingredients}" var="ingredient">
-				${ingredient}
-				<br>
+					<li style="border-bottom:2px solid; border-color:#f9c86c; padding:6px 0px 6px 0px;">${ingredient}</li>
 				</c:forEach>
-			</p>
+			</ul>
+     	
+     	</div>
+     	<div style="float: right; width: 70%;">
+     	
+     		<h2>Method</h2>
+			<ol>
+				<c:forEach items="${recipe.method}" var="step">
+					<li style=" padding:10px 0px 10px 0px;">${step}</li>
+				</c:forEach>
+			</ol>
+     	
+     	</div>
+	</div>
 
-		</h1>
-	</div>
-	<div class="banner">
-		<img class="banner-image2"
-			src="${pageContext.request.contextPath}/images/food_table.jpg" />
-	</div>
-	<div class="text_main2">
-		<h1>
-			<p>*Potentially remove this divider + above banner*</p>
 
-		</h1>
-	</div>
+	
+	
+	
+	
 </body>
 </html>
