@@ -45,6 +45,42 @@
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
 			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
 			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
+			<table style="padding-top:15px">
+				<tbody style="display:inline-flex; flex-wrap:wrap; align-items:flex-start; font-size:13px">
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">cal</td>
+						<td style="padding:5px;">${recipe.calories}</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">fat</td>
+						<td style="padding:5px;">${recipe.fat}g</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">saturates</td>
+						<td style="padding:5px;">${recipe.saturates}g</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">sugars</td>
+						<td style="padding:5px;">${recipe.sugars}g</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">salt</td>
+						<td style="padding:5px;">${recipe.salt}g</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">protein</td>
+						<td style="padding:5px;">${recipe.protein}g</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">carbs</td>
+						<td style="padding:5px;">${recipe.carbs}g</td>
+					</tr>
+					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
+						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">fibre</td>
+						<td style="padding:5px;">${recipe.fibre}g</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	
