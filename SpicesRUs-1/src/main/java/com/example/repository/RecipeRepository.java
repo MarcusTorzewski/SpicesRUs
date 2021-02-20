@@ -6,4 +6,5 @@ import com.example.model.Recipe;
 
 public interface RecipeRepository extends MongoRepository<Recipe, String> {
 
+	public Recipe findByName(String name);
 }

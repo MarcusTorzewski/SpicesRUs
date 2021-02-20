@@ -6,5 +6,7 @@ import com.example.model.Spice;
 
 
 public interface SpiceRepository extends MongoRepository<Spice, String>{
-
+	
+	public Spice findByName(String name);
+	
 }

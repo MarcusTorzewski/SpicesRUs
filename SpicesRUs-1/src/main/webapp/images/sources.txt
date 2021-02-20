@@ -1,3 +1,15 @@
-images are free to use in any form (more detailing on website)
+Static Resources:
+
+images from pexels are free to use (more detailing on website)
 spices_background - https://www.pexels.com/photo/assorted-cooking-spices-2802527/
 food_table - https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/
+
+Online DB Resources:
+
+black pepper image - https://www.pexels.com/photo/clear-glass-pepper-shaker-452741/
+cinnamon image - https://www.pexels.com/photo/cinnamon-sticks-71128/
+cumin image - https://www.pexels.com/photo/four-assorted-spices-on-wooden-spoons-1340116/
+ginger image - https://www.pexels.com/photo/ginger-on-gray-surface-1337585/
+nutmeg image - https://www.pexels.com/photo/food-wood-people-art-5740374/
+paprika image - https://www.pexels.com/photo/spoon-of-paprika-in-metal-bowl-4199062/
+turmeric image - https://www.pexels.com/photo/curcuma-powder-on-tablespoon-and-spilled-on-black-surface-4198714/
