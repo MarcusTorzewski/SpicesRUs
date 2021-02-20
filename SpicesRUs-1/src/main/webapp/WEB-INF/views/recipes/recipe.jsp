@@ -11,6 +11,7 @@
 	rel="stylesheet" />
 </head>
 <body>
+<div>
 	<ul class="nav">
 		<div id="logo">
 			<a href="/"> <img height="70px"
@@ -33,21 +34,22 @@
 	
 	<!-- Top info section -->
 	
-	<div style="width:100%; overflow: hidden; padding:1% 5% 3% 5%; background-color: #fdedce;">
+	<div style="width:100%; overflow: hidden; padding:2% 5% 3% 5%; background-color: #fdedce;">
 		<div style="width: 30%; float:left;">
-			<img src="${recipe.image}">
+			<img style="border-right:10%;" src="${recipe.image}">
 		</div>
-		<div style="float: right; width:70%">
-			<h1>${recipe.name}</h1>
-			<p>Serving: ${recipe.servings}</p>
-			<p>Difficulty: ${recipe.difficulty}</p>
-			<p>Prep time: ${recipe.prep_time}</p>
-			<p>Cooking time: ${recipe.cooking_time}</p>
+		<div style="margin-left:30%; width:45%">
+			<h1 style="display: inline; border-bottom:2px solid; border-color:#f9c86c; padding:10px 0px 10px 0px;">${recipe.name}</h1>
+			<p style="padding: 10px 0 10px 0;'">${recipe.description}</p>
+			<p><b>Serving:</b> ${recipe.servings}</p>
+			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
+			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
+			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
 		</div>
 	</div>
 	
 	
-	<hr style="color: #f6ac23; height:0.1px; background-color: #f6ac23; border-width:0;'">
+	<hr style="color: #f6ac23; height:5px; background-color: #f6ac23; border-width:0;'">
 	
 	
 	<!-- Ingredients and Method section -->
@@ -59,12 +61,12 @@
      		<h2>Ingredients</h2>
 	     	<ul>
 				<c:forEach items="${recipe.ingredients}" var="ingredient">
-					<li style="border-bottom:2px solid; border-color:#f9c86c; padding:6px 0px 6px 0px;">${ingredient}</li>
+					<li style="border-bottom:2px solid; border-color:#f9c86c; padding:10px 0px 10px 0px;">${ingredient}</li>
 				</c:forEach>
 			</ul>
      	
      	</div>
-     	<div style="float: right; width: 70%;">
+     	<div style="margin-left:30%; width:45%">
      	
      		<h2>Method</h2>
 			<ol>
@@ -75,6 +77,7 @@
      	
      	</div>
 	</div>
+</div>
 
 
 	

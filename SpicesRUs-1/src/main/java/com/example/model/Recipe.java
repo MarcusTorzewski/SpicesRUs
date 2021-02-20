@@ -11,16 +11,26 @@ public class Recipe {
 	@Id
 	private String id;
 	private String name;
+	private String description;
 	private String image;
 	private int difficulty;
 	private String region;
 	private int prep_time;
 	private int cooking_time;
-	private int calories;
 	private int servings;
 	private List<String> spice_recommendations;
 	private List<String> ingredients;
 	private List<String> method;
+	
+	//Macros
+	private int calories;
+	private int fat;
+	private int saturates;
+	private int sugars;
+	private int salt;
+	private int protein;
+	private int carbs;
+	private int fibre;
 	
 	public String getId() {
 		return id;
@@ -116,6 +126,14 @@ public class Recipe {
 
 	public void setMethod(List<String> method) {
 		this.method = method;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

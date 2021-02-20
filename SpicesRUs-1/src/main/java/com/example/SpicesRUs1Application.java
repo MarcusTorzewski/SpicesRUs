@@ -96,9 +96,13 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		recipe.setMethod(Arrays.asList("Bring a pan of water to the boil and cook the fusilli according to the pack instructions.", "Meanwhile, heat a knob of butter in a saucepan, then add the shallot and cook for 5 mins or until softened.", "Add the peas, salmon, crème fraîche and 50ml water. Crumble in the stock cube.", "Cook for 3-4 mins until cooked through, stir in the chives and some black pepper. Then stir through to coat the pasta. Serve in bowls."));
 		recipe.setPrep_time(5);
 		recipe.setName("Pasta with salmon and peas");
-		recipe.setServings(4);
+		recipe.setServings(4); */
+		Recipe recipe = recipeRepo.findByName("Pasta with salmon and peas");
+		recipe.setDescription("Make this salmon pasta in under 20 minutes for a dinner the whole family can enjoy. Kids will love the fun-shaped pasta while packing in fibre and omega-3");
 		
-		recipeRepo.save(recipe); */		
+		recipeRepo.save(recipe); 
+		
+		
 	}
 
 }
