@@ -6,6 +6,7 @@
 <meta charset="utf-8" />
 <title>Spices R Us</title>
 <link rel="stylesheet" href="/resources/css/style.css">
+<link rel="stylesheet" href="/resources/css/recipe.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
@@ -34,91 +35,89 @@
 	
 	<!-- Top info section -->
 	
-	<div style="width:100%; overflow: hidden; padding:2% 5% 3% 5%; background-color: #fdedce;">
-		<div style="width: 30%; float:left;">
+	<div class="top_section">
+	
+		<div class="left_section">
 			<img style="border-right:10%;" src="${recipe.image}">
 		</div>
-		<div style="margin-left:30%; width:45%">
-			<h1 style="display: inline; border-bottom:2px solid; border-color:#f9c86c; padding:10px 0px 10px 0px;">${recipe.name}</h1>
+		
+		<div class="right_section">
+			<h1 class="recipe_heading">${recipe.name}</h1>
 			<p style="padding: 10px 0 10px 0;'">${recipe.description}</p>
 			<p><b>Serving:</b> ${recipe.servings}</p>
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
 			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
 			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
+			
+			<!-- Macros table -->
+			
 			<table style="padding-top:15px">
-				<tbody style="display:inline-flex; flex-wrap:wrap; align-items:flex-start; font-size:13px">
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">cal</td>
+				<tbody class="macros_table_tbody">
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">cal</td>
 						<td style="padding:5px;">${recipe.calories}</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">fat</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">fat</td>
 						<td style="padding:5px;">${recipe.fat}g</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">saturates</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">saturates</td>
 						<td style="padding:5px;">${recipe.saturates}g</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">sugars</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">sugars</td>
 						<td style="padding:5px;">${recipe.sugars}g</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">salt</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">salt</td>
 						<td style="padding:5px;">${recipe.salt}g</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">protein</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">protein</td>
 						<td style="padding:5px;">${recipe.protein}g</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">carbs</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">carbs</td>
 						<td style="padding:5px;">${recipe.carbs}g</td>
 					</tr>
-					<tr style="display:flex; text-align:center; flex-direction:column; word-break:break-all; border-style:solid; border-color:black; border-width:1px; background-color:white; min-width:70px;">
-						<td style="padding:5px; border-bottom-style:solid; border-bottom-width:1px;">fibre</td>
+					<tr class="macros_table_row">
+						<td class="macros_table_nutrient">fibre</td>
 						<td style="padding:5px;">${recipe.fibre}g</td>
 					</tr>
 				</tbody>
 			</table>
+			
 		</div>
 	</div>
 	
-	
-	<hr style="color: #f6ac23; height:5px; background-color: #f6ac23; border-width:0;'">
-	
+	<hr class="line_break">
 	
 	<!-- Ingredients and Method section -->
 	
-	
-	 <div style="width: 100%; overflow: hidden; padding: 0 5% 0 5%; background-color: #fdedce;">
-     	<div style="width: 20%; float: left;">
-     	
+	 <div class="bottom_section">
+	 
+     	<div class="left_section">
      		<h2>Ingredients</h2>
 	     	<ul>
 				<c:forEach items="${recipe.ingredients}" var="ingredient">
-					<li style="border-bottom:2px solid; border-color:#f9c86c; padding:10px 0px 10px 0px;">${ingredient}</li>
+					<li class="ingredients_list_item">${ingredient}</li>
 				</c:forEach>
 			</ul>
      	
      	</div>
-     	<div style="margin-left:30%; width:45%">
+     	
+     	<div class="right_section">
      	
      		<h2>Method</h2>
 			<ol>
 				<c:forEach items="${recipe.method}" var="step">
-					<li style=" padding:10px 0px 10px 0px;">${step}</li>
+					<li style="padding:10px 0px 10px 0px;">${step}</li>
 				</c:forEach>
 			</ol>
-     	
      	</div>
+     	
 	</div>
-</div>
-
-
-	
-	
-	
-	
+</div>	
 </body>
 </html>
