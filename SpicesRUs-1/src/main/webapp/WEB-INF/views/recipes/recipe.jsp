@@ -6,7 +6,7 @@
 <meta charset="utf-8" />
 <title>Spices R Us</title>
 <link rel="stylesheet" href="/resources/css/style.css">
-<link rel="stylesheet" href="/resources/css/recipe.css">
+<link rel="stylesheet" href="/resources/css/recipe_page.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
@@ -36,11 +36,9 @@
 	<!-- Top info section -->
 	
 	<div class="top_section">
-	
 		<div class="left_section">
 			<img style="border-right:10%;" src="${recipe.image}">
 		</div>
-		
 		<div class="right_section">
 			<h1 class="recipe_heading">${recipe.name}</h1>
 			<p style="padding: 10px 0 10px 0;'">${recipe.description}</p>
@@ -48,11 +46,8 @@
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
 			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
 			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
-			
-			<!-- Macros table -->
-			
 			<table style="padding-top:15px">
-				<tbody class="macros_table_tbody">
+				<tbody class="macros_table_body">
 					<tr class="macros_table_row">
 						<td class="macros_table_nutrient">cal</td>
 						<td style="padding:5px;">${recipe.calories}</td>
@@ -87,26 +82,27 @@
 					</tr>
 				</tbody>
 			</table>
-			
 		</div>
 	</div>
 	
+	
 	<hr class="line_break">
+	
 	
 	<!-- Ingredients and Method section -->
 	
+	
 	 <div class="bottom_section">
-	 
      	<div class="left_section">
+     	
      		<h2>Ingredients</h2>
 	     	<ul>
 				<c:forEach items="${recipe.ingredients}" var="ingredient">
-					<li class="ingredients_list_item">${ingredient}</li>
+					<li class="ingredient_list_item">${ingredient}</li>
 				</c:forEach>
 			</ul>
      	
      	</div>
-     	
      	<div class="right_section">
      	
      		<h2>Method</h2>
@@ -115,9 +111,16 @@
 					<li style="padding:10px 0px 10px 0px;">${step}</li>
 				</c:forEach>
 			</ol>
-     	</div>
      	
+     	</div>
 	</div>
-</div>	
+</div>
+
+
+	
+	
+	
+	
 </body>
 </html>
+
