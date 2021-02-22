@@ -107,6 +107,7 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		recipe.setSugars(5);
 		
 		
+		
 		recipeRepo.save(recipe); */
 		
 		
