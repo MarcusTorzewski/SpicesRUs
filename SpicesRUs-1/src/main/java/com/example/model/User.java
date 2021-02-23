@@ -24,6 +24,11 @@ public class User {
 	@DBRef
 	private Collection<Role> roles;
 	
+	@DBRef
+	private Collection<Spice> favouriteSpices;
+	
+	@DBRef
+	private Collection<Recipe> favouriteRecipes;
 	/* I've just got the basic attributes here there could be more, but its not difficult to add them as we go
 	 * The only immutable parts of this code right now are the document, id and the collection -marcus
 	*/
