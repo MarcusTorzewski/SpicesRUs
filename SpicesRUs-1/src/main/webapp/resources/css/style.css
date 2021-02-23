@@ -9,17 +9,18 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #f7b538;
+  background-color: #f6ac23;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Public Sans', sans-serif;
+  font-size:18px;
 }
 
 .nav {
-  background-color: #f7b538;
+  background-color: #f6ac23;
   color: #000000;
   list-style: none;
   text-align: right;
@@ -79,7 +80,9 @@ body {
   color: #000000;
 }
 
+
 table{
 	  max-width: 1000px;
   margin: auto;
 }
+

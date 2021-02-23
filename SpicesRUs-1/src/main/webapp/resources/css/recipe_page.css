@@ -1,0 +1,68 @@
+.top_section {
+	width:100%; 
+	overflow: hidden; 
+	padding:2% 5% 3% 5%; 
+	background-color: #fdedce;
+}
+
+.bottom_section {
+	width: 100%; 
+	overflow: hidden; 
+	padding: 0 5% 0 5%; 
+	background-color: #fdedce;
+}
+
+.left_section {
+	width: 20%; 
+	float:left;
+}
+
+.right_section {
+	margin-left:30%; 
+	width:45%
+}
+
+.recipe_heading {
+	display: inline; 
+	border-bottom:2px solid; 
+	border-color:#f9c86c; 
+	padding:10px 0px 10px 0px;
+}
+
+.macros_table_body {
+	display:inline-flex; 
+	flex-wrap:wrap; 
+	align-items:flex-start; 
+	font-size:13px
+}
+
+.macros_table_row {
+	display:flex; 
+	text-align:center; 
+	flex-direction:column; 
+	word-break:break-all; 
+	border-style:solid; 
+	border-color:black; 
+	border-width:1px; 
+	background-color:white; 
+	min-width:70px;
+}
+
+.macros_table_nutrient {
+	padding:5px; 
+	border-bottom-style:solid; 
+	border-bottom-width:1px;
+}
+
+.line_break {
+	color: #f6ac23; 
+	height:5px; 
+	background-color: #f6ac23; 
+	border-width:0;
+}
+
+.ingredient_list_item {
+	border-bottom:2px solid; 
+	border-color:#f9c86c; 
+	padding:10px 0px 10px 0px;
+}

@@ -11,17 +11,83 @@ public class Recipe {
 	@Id
 	private String id;
 	private String name;
+	private String description;
 	private String image;
 	private int difficulty;
 	private String region;
 	private int prep_time;
 	private int cooking_time;
-	private int calories;
 	private int servings;
 	private List<String> spice_recommendations;
 	private List<String> ingredients;
 	private List<String> method;
 	
+	//Macros
+	private int calories;
+	private int fat;
+	private int saturates;
+	private int sugars;
+	private double salt;
+	private int protein;
+	private int carbs;
+	private int fibre;
+	
+	public int getFat() {
+		return fat;
+	}
+
+	public void setFat(int fat) {
+		this.fat = fat;
+	}
+
+	public int getSaturates() {
+		return saturates;
+	}
+
+	public void setSaturates(int saturates) {
+		this.saturates = saturates;
+	}
+
+	public int getSugars() {
+		return sugars;
+	}
+
+	public void setSugars(int sugars) {
+		this.sugars = sugars;
+	}
+
+	public double getSalt() {
+		return salt;
+	}
+
+	public void setSalt(double salt) {
+		this.salt = salt;
+	}
+
+	public int getProtein() {
+		return protein;
+	}
+
+	public void setProtein(int protein) {
+		this.protein = protein;
+	}
+
+	public int getCarbs() {
+		return carbs;
+	}
+
+	public void setCarbs(int carbs) {
+		this.carbs = carbs;
+	}
+
+	public int getFibre() {
+		return fibre;
+	}
+
+	public void setFibre(int fibre) {
+		this.fibre = fibre;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -116,6 +182,14 @@ public class Recipe {
 
 	public void setMethod(List<String> method) {
 		this.method = method;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }
