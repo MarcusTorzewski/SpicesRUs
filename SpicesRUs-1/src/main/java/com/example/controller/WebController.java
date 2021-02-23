@@ -51,4 +51,6 @@ public class WebController {
 		model.addAttribute("recipe", recipe_repo.findByName(recipe));
 		return "/recipes/recipe";
 	}
+	
+	
 }
