@@ -12,7 +12,7 @@ public class User {
 	@Id
 	private String id;
 	private String firstName;
-	private String lastname;
+	private String lastName;
 	private String email;
 	private String password;
 	
@@ -41,10 +41,10 @@ public class User {
 		this.firstName = firstName;
 	}
 	public String getLastname() {
-		return lastname;
+		return lastName;
 	}
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.lastName = lastname;
 	}
 	public String getEmail() {
 		return email;
@@ -100,7 +100,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastname + ", email=" + email
+		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastName + ", email=" + email
 				+ ", password=" + password + "]";
 	}
 	

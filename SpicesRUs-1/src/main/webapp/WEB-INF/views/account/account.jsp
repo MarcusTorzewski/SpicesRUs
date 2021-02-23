@@ -15,14 +15,13 @@
   <body>
     <ul class="nav">
       <div id="logo">
-        <a href="#"> <img height="70px" src="${pageContext.request.contextPath}/images/SpicesRUs_logo.png" /> </a>
+        <a href="/"> <img height="70px" src="${pageContext.request.contextPath}/images/SpicesRUs_logo.png" /> </a>
       </div>
       <li><a href="/about">About Us</a></li>
       <li><a href="/spices">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="#">Discussion Forum</a></li>
       <sec:authorize access="isAuthenticated()">
-      	<li><a href="/account">My Account</a>
     	<li><a href="/logout">Sign Out</a>
     	</sec:authorize>
 	  <sec:authorize access="!isAuthenticated()">
@@ -31,28 +30,30 @@
       <li><a href="#">Basket</a></li>
     </ul>
 
-    <div class="banner">
-      <img class="banner-image" src="${pageContext.request.contextPath}/images/spices_background.jpg" />
-    </div>
+
     <div class="text_main1">
-      <h1>
-        <p>
-          We believe in connecting the world with the power of taste. That is
-          why we offer the finest spices at accessible prices.<br />
-          <br /><br />
-          We also believe in providing high quality recipes, in order for you to
-          gain the most out of our highest quality ingredients.
-        </p>
-      </h1>
+
+        <table>
+        	<tr>
+		       	<td>Name</td>
+		       	<td>${user.firstName} ${user.lastname }</td>
+        	</tr>
+        	<tr>
+        		<td>Email</td>
+        		<td>${user.email }</td>
+        	</tr>
+        	<tr>
+        		<td>Account</td>
+        		<td>${user.roles }</td>
+       		</tr>
+        </table>
+
     </div>
-    <div class="banner">
-      <img class="banner-image2" src="${pageContext.request.contextPath}/images/food_table.jpg" />
-    </div>
+
     <div class="text_main2">
       <h1>
         <p>
-          Our high quality spices are sourced responsibly. We follow 3 simple
-          rules:
+          
           <br />
           <br /><br />
         </p>

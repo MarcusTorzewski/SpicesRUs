@@ -33,10 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     		.logoutSuccessUrl("/login-form")
     		.permitAll()
     	.and().authorizeRequests()
-    		.antMatchers("/").hasRole("GUEST")
+    		.antMatchers("/**").hasRole("GUEST")
     		.antMatchers("/**").hasRole("PREMIUM")
     		.anyRequest().authenticated()
     	.and().exceptionHandling().accessDeniedPage("/access-denied");
+		
 	} 
 	
 	@Bean
