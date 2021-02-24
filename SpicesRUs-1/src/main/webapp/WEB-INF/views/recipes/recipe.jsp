@@ -44,8 +44,7 @@
 			<p style="padding: 10px 0 10px 0;'">${recipe.description}</p>
 			<p><b>Serving:</b> ${recipe.servings}</p>
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
-			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
-			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
+			<p><b>Prep time:</b> ${recipe.prep_time} <b>Cooking time:</b> ${recipe.cooking_time}</p>
 			<table style="padding-top:15px">
 				<tbody class="macros_table_body">
 					<tr class="macros_table_row">
