@@ -31,12 +31,10 @@
     </ul>
 
     <div class="text_main1">
-		<form action="/myLogin" method="post"> 
-		   Email: <input type="email" name="email" /><br/> 
-		   Password: <input type="password" name="password" /><br/> 
-		   <input type="submit" value="Sign In" /><br/> 
-		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		   <!-- <a href="/createAccount">Create an account</a> -->
+		<form action="/editData" method="post"> 
+		   New Email: <input type="email" name="email" /><br/> 
+		   New Name: <input type="text" name="Name" /><br/> 
+		   <input type="submit" value="Change Details" /><br/> 
 		</form>
     </div>
   </body>

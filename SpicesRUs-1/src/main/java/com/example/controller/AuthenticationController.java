@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,7 +31,7 @@ public class AuthenticationController {
 		return "/account/login";
 	}
 	
-	@RequestMapping(value = "/success-login", method = RequestMethod.GET) 
+	@GetMapping("/success-login") 
 	public String successLogin(Principal principal) { 
 	   user = repo.findByEmail(principal.getName()); 
 	   if (user.getRoles().isEmpty()) { 
@@ -54,6 +57,18 @@ public class AuthenticationController {
 		return "/account/account";
 	}
 	
+	@RequestMapping("/editAccount")
+	public String editAccountPage(Model model) {
+		model.addAttribute("user", user);
+		return "/account/edit";
+	}
+	
+	@RequestMapping("/editData")
+	public String editAccount(@ModelAttribute List<String> data, Model model) {
+		System.out.println(data);
+		return "/account/account";
+		
+	}
 	/*
 	@RequestMapping("/logout")
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
@@ -64,4 +79,9 @@ public class AuthenticationController {
 	    return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
 	}
 	*/
+	
+	@RequestMapping("/createAccount")
+	public String accountCreation(Model model) {
+		return "/homepage/index";
+	}
 }

@@ -44,10 +44,14 @@
         	</tr>
         	<tr>
         		<td>Account</td>
-        		<td>${user.roles }</td>
+        		<td>
+        		<c:forEach items="${user.roles}" var="role">
+        		${role.id }  
+        		</c:forEach>
+        		</td>
        		</tr>
         </table>
-
+	<a href="/editAccount" >Edit account details</a>
     </div>
 
     <div class="text_main2">
