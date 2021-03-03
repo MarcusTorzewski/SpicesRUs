@@ -69,6 +69,7 @@ public class AuthenticationController {
 		return "/account/account";
 		
 	}
+	
 	/*
 	@RequestMapping("/logout")
 	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
