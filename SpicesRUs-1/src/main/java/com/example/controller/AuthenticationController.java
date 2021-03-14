@@ -100,6 +100,11 @@ public class AuthenticationController {
 	
 	@RequestMapping("/createAccount")
 	public String accountCreation(Model model) {
+		return "/account/registerForm";
+	}
+	
+	@RequestMapping("/accountBuild")
+	public String accountBuilder(@ModelAttribute("userRegister") User form) {
 		return "/homepage/index";
 	}
 }

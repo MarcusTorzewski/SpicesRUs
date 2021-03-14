@@ -32,24 +32,34 @@
     </ul>
 
     <div class="text_main1">
-		<form:form action="/myLogin" method="post" commandName="userLogin"> 
+		<form:form action="/accountBuild" method="post" commandName="userRegister"> 
 		<table border="0">
-            <tr>
-                <td colspan="2" align="center"><h2>Sign-In</h2></td>
-            </tr>
-            <tr>
-				 <td>Email: </td><td><input type="email" name="email" /></td>
-			<tr> 
-				 <td>Password: </td><td><input type="password" name="password" /></td>
-			</tr>
-		</table> 
-		   <input type="submit" value="Sign In" /><br/> 
+                <tr>
+                    <td colspan="2" align="center"><h2>Registration</h2></td>
+                </tr>
+                <tr>
+				   <td>Email: </td> <td> <input type="email" name="email" /></td>
+				   </tr>
+				<tr>
+				   <td>Password: </td><td><input type="password" name="password"/></td>
+				</tr>
+				<tr>
+				   <td>Re-enter Password: </td><td><input type="password" name="passwordCheck"/></td>
+				</tr>
+				<tr>
+				   <td>First Name: </td><td><input type="text" name="firstName" /></td>
+				</tr>
+				<tr>
+				   <td>Last Name: </td><td><input type="text" name="lastName" /></td>
+				</tr>
+				<tr>
+				   
+				</tr>
+			</table>
+			Premium (£3.99/month): <input type="checkbox" name="premium"/><label for="premium"></label>
+		   <input type="submit" value="Create Account!" /><br/>
 		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>
-	</div>
-	</br>
-	<div align="center">
-		<a href="/createAccount">Create an account</a>
     </div>
   </body>
 </html>
