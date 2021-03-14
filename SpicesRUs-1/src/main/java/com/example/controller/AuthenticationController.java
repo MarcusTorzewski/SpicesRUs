@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +25,27 @@ public class AuthenticationController {
 	@Autowired
 	public UserRepository repo;
 	
+	@Autowired 
+	private PasswordEncoder pe; 
+	
 	private User user;
 	
 	@RequestMapping("/login-form")
 	public String loginForm() {
 		return "/account/login";
+	}
+	@RequestMapping("/myLogin")
+	public String myLogin(@ModelAttribute("login") User login) {
+		System.out.println(login.getName());
+		System.out.println(login.getPassword());
+		user = repo.findByEmail(login.getName());
+		if (user == null) {
+			return "/account/login";
+		}
+		if (user.getPassword() == pe.encode(login.getPassword())){
+			return "/homepage/index";
+		}
+		return "/homepage/index";
 	}
 	
 	@GetMapping("/success-login") 

@@ -20,23 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override 
 	protected void configure(HttpSecurity http) throws Exception { 
-		http.requiresChannel().anyRequest().requiresSecure().and().formLogin()
-    		.loginPage("/login-form")
-    		.loginProcessingUrl("/myLogin")
-    		.defaultSuccessUrl("/success-login",true)
-    		.usernameParameter("email")
-    		.failureUrl("/error-login")
-    		.permitAll()
-    	.and().logout()
-    		.invalidateHttpSession(true)
-    		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-    		.logoutSuccessUrl("/login-form")
-    		.permitAll()
-    	.and().authorizeRequests()
-    		.antMatchers("/**").hasRole("GUEST")
-    		.antMatchers("/**").hasRole("PREMIUM")
-    		.anyRequest().authenticated()
-    	.and().exceptionHandling().accessDeniedPage("/access-denied");
+		http.requiresChannel().anyRequest().requiresSecure();
 		
 	} 
 	
