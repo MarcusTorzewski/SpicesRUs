@@ -61,7 +61,7 @@
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
 			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
 			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
-			<table style="padding-top:15px">
+			<table style="padding-top:15px; margin: 0px">
 				<tbody class="macros_table_body">
 					<tr class="macros_table_row">
 						<td class="macros_table_nutrient">cal</td>
