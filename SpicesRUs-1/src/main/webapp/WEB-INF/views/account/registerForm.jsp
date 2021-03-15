@@ -61,5 +61,9 @@
 		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>
     </div>
+    <br/>
+	<div align="center">
+		<a href="/login-form">Back to Login</a>
+    </div>
   </body>
 </html>

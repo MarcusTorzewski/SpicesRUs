@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -105,6 +106,7 @@ public class AuthenticationController {
 	
 	@RequestMapping("/accountBuild")
 	public String accountBuilder(@ModelAttribute("userRegister") User form) {
+		System.out.println(form);
 		return "/homepage/index";
 	}
 }
