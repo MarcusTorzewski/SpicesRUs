@@ -23,6 +23,9 @@ public class User {
 	private String Postcode;
 	
 	@DBRef
+	private Basket customerBasket;
+	
+	@DBRef
 	private List<Role> roles;
 	
 	/* I've just got the basic attributes here there could be more, but its not difficult to add them as we go
@@ -98,6 +101,15 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+	public Basket getCustomerBasket() {
+		return customerBasket;
+	}
+	public void setCustomerBasket(Basket customerBasket) {
+		this.customerBasket = customerBasket;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastName + ", email=" + email
