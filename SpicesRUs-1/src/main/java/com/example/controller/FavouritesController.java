@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.security.Principal;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,19 +27,36 @@ public class FavouritesController {
 	private RecipeRepository rrepo;
 	
 	@RequestMapping("/addFavouriteRecipe/{recipe}")
-	public String addFavouriteRecipe(@PathVariable Recipe recipe, Principal principal) {
+	public String addFavouriteRecipe(@PathVariable("recipe") String recipeName, Principal principal) {
 		User user = urepo.findByEmail(principal.getName());
+		Recipe recipe = rrepo.findByName(recipeName);
 		user.getFavouriteRecipes().add(recipe);
+		System.out.println(user.getFavouriteRecipes());
 		urepo.save(user);
-		return "redirect:/recipe/{recipe}";
+		return "redirect:/recipes/{recipe}";
 	}
 	
 	@RequestMapping("/removeFavouriteRecipe/{recipe}")
-	public String removeFavouriteRecipe(@PathVariable Recipe recipe, Principal principal) {
+	public String removeFavouriteRecipe(@PathVariable("recipe") String recipeName, Principal principal) {
 		User user = urepo.findByEmail(principal.getName());
-		user.getFavouriteRecipes().remove(recipe);
+		for (Recipe recipes : user.getFavouriteRecipes()) {
+			if (recipes.getName().equals(recipeName)) {
+				user.getFavouriteRecipes().remove(recipes);
+				break;
+			}
+		}
+		System.out.println(user.getFavouriteRecipes());
 		urepo.save(user);
-		return "redirect:/recipe/{recipe}";
+		return "redirect:/recipes/{recipe}";
 	}
-
+	
+	public static boolean favouriteRecipesContainsRecipe(Collection<Recipe> favouriteRecipes, String recipeName) {
+		for (Recipe recipes : favouriteRecipes) {
+			if (recipes.getName().equals(recipeName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

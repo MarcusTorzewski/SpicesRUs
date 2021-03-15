@@ -118,6 +118,10 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		
 		recipeRepo.save(recipe); */
 		
+		User user = urepo.findByEmail("js@gmail.com");
+		user.setFavouriteRecipes(new ArrayList<>());
+		urepo.save(user);
+		
 		
 	}
 

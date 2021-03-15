@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,13 +40,27 @@
 	<div class="top_section">
 		<div class="left_section">
 			<img style="border-right:10%;" src="${recipe.image}">
+			<c:if test="${! favouriteRecipes.equals(null)}">
+				<c:if test="${! isFavourited}">
+					<form:form action="/addFavouriteRecipe/${recipe.name}">
+						<button type="submit">Favourite</button>
+					</form:form>
+				</c:if>
+				<c:if test="${isFavourited}">
+					<form:form action="/removeFavouriteRecipe/${recipe.name}">
+						<button type="submit" value="submit">Unfavourite</button>
+					</form:form>
+				</c:if>
+			</c:if>
 		</div>
+		
 		<div class="right_section">
 			<h1 class="recipe_heading">${recipe.name}</h1>
 			<p style="padding: 10px 0 10px 0;'">${recipe.description}</p>
 			<p><b>Serving:</b> ${recipe.servings}</p>
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>
-			<p><b>Prep time:</b> ${recipe.prep_time} <b>Cooking time:</b> ${recipe.cooking_time}</p>
+			<p style="display:inline;"><b>Prep time:</b> ${recipe.prep_time}</p>
+			<p style="display:inline"><b>Cooking time:</b> ${recipe.cooking_time}</p>
 			<table style="padding-top:15px">
 				<tbody class="macros_table_body">
 					<tr class="macros_table_row">
