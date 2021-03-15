@@ -32,6 +32,7 @@
     </ul>
 
     <div class="text_main1">
+    	<p style="color:red">${errorInfo }</p>
 		<form:form action="/accountBuild" method="post" commandName="userRegister"> 
 		<table border="0">
                 <tr>

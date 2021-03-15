@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.model.NewUser;
 import com.example.model.User;
+import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
 
 @Controller
@@ -25,7 +28,8 @@ public class AuthenticationController {
 	
 	@Autowired
 	public UserRepository repo;
-	
+	@Autowired
+	public RoleRepository rrepo;
 	@Autowired 
 	private PasswordEncoder pe; 
 	
@@ -105,8 +109,31 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping("/accountBuild")
-	public String accountBuilder(@ModelAttribute("userRegister") User form) {
+	public String accountBuilder(@ModelAttribute("userRegister") NewUser form, Model model) {
 		System.out.println(form);
+		if (form.getEmail() == "" || form.getPassword() == "" || form.getPasswordCheck() == "" || form.getFirstName() == "" || form.getLastName() == "") {
+			model.addAttribute("errorInfo", "Some data was not entered!");
+			return "/account/registerForm";
+		}
+		if (repo.findByEmail(form.getEmail()) != null){
+			model.addAttribute("errorInfo", "Email already in use!");
+			return "/account/registerForm";
+		}
+		if (!form.getPassword().equals(form.getPasswordCheck())) {
+			model.addAttribute("errorInfo", "Passwords don't match!");
+			return "/account/registerForm";
+		}
+		user = new User();
+		user.setEmail(form.getEmail());
+		user.setPassword(pe.encode(form.getPassword()));
+		user.setFirstName(form.getFirstName());
+		user.setLastname(form.getLastName());
+		user.setRoles(new ArrayList<>());
+		if (form.isPremium()) {
+			user.getRoles().add(rrepo.findByid("PREMIUM"));
+		}
+		user.getRoles().add(rrepo.findByid("MEMBER"));
+		user = repo.save(user);
 		return "/homepage/index";
 	}
 }
