@@ -43,12 +43,12 @@
 			<c:if test="${! favouriteRecipes.equals(null)}">
 				<c:if test="${! isFavourited}">
 					<form:form action="/addFavouriteRecipe/${recipe.name}">
-						<button type="submit">Favourite</button>
+						<button type="submit" class="button">Favourite</button>
 					</form:form>
 				</c:if>
 				<c:if test="${isFavourited}">
 					<form:form action="/removeFavouriteRecipe/${recipe.name}">
-						<button type="submit" value="submit">Unfavourite</button>
+						<button type="submit" class="button">Unfavourite</button>
 					</form:form>
 				</c:if>
 			</c:if>
