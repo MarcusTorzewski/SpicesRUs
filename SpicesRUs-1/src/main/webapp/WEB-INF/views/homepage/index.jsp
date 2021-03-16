@@ -20,6 +20,7 @@
       <li><a href="/about">About Us</a></li>
       <li><a href="/spices">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
+      <li><a href="/favourites">Favourites</a></li>
       <li><a href="#">Discussion Forum</a></li>
       <sec:authorize access="isAuthenticated()">
       	<li><a href="/account">My Account</a>
