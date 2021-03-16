@@ -24,7 +24,6 @@ public class Basket {
 	
 	private List<BasketItem> items = new ArrayList<BasketItem>();
 	
-	
 
 
 	public String getBasketId() {

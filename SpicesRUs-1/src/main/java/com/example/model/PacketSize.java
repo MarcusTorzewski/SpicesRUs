@@ -17,6 +17,23 @@ public enum PacketSize {
 		this.priceRatio = priceRatio;
 		
 	}
+
+	public float getSizeRatio() {
+		return sizeRatio;
+	}
+
+	public void setSizeRatio(float sizeRatio) {
+		this.sizeRatio = sizeRatio;
+	}
+
+	public float getPriceRatio() {
+		return priceRatio;
+	}
+
+	public void setPriceRatio(float priceRatio) {
+		this.priceRatio = priceRatio;
+	}
+	
 	
 	
 }

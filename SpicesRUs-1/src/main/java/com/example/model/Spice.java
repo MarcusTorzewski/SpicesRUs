@@ -15,10 +15,7 @@ public class Spice {
 	private String region;
 	
 	private float basePricePerKG;
-	
-	private float defaultSize = 100;
 
-	
 	private List<String> compliment_spices;
 
 
@@ -71,15 +68,6 @@ public class Spice {
 		this.basePricePerKG = basePricePerKG;
 	}
 
-
-	public float getDefaultSize() {
-		return defaultSize;
-	}
-
-
-	public void setDefaultSize(float defaultSize) {
-		this.defaultSize = defaultSize;
-	}
 
 
 	public List<String> getCompliment_spices() {

@@ -1,12 +1,13 @@
 package com.example.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
-import org.apache.logging.log4j.message.StringFormattedMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +20,8 @@ import com.example.model.User;
 import com.example.repository.BasketRepository;
 import com.example.repository.SpiceRepository;
 import com.example.repository.UserRepository;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.None;
-import com.sun.java.swing.plaf.motif.MotifOptionPaneUI;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+
+
 
 @Controller
 public class BasketController {
@@ -38,70 +38,58 @@ public class BasketController {
 	
 	
 	
+
+	@RequestMapping(path= "/basket/add/{id}/{size}/{quantity}",method = RequestMethod.POST)
+	public String addItemToBasket(@PathVariable("id") String id,@PathVariable("size") String size,@PathVariable("quantity") String quantity,Principal principal) {
+		
+		
+		return "redirect:/basket";
+	}
 	
-	@RequestMapping(path="addItem/{spiceId}/{size}/{quant}",method = RequestMethod.POST)
-	public String AddItemToBasket(@PathVariable String spiceId,@PathVariable String size,@PathVariable String quant, Model model,Principal principal) {
-		
-		
-		Spice returnedSpice = spiceRepo.findById(spiceId).orElse(null);
-		
-		
-		PacketSize packetSizeOfSpice;
-		
-		if(size == "S") {
-			packetSizeOfSpice = PacketSize.SMALL;
-		}
-		else if(size == "M") {
-			packetSizeOfSpice = PacketSize.MEDIUM;
-		}
-		else {
-			packetSizeOfSpice = PacketSize.LARGE;			
-		}
-		
-		BasketItem newItem = new BasketItem(returnedSpice, packetSizeOfSpice, Integer.parseInt(quant));
+	
+	@RequestMapping(path = "/emptybasket",method = RequestMethod.GET)
+	public String emptyBasket(Principal principal) {
 		
 		User currentUser = userRepo.findByEmail(principal.getName());
 		
-		Basket userBasket = currentUser.getCustomerBasket();
 		
-		userBasket.getItems().add(newItem);
+		Basket newUserBasket = new Basket();
+		newUserBasket.setBasketItemCount(0);
+		newUserBasket.setBasketTotalValue(0f);
+		newUserBasket.setBasketId("123");
+		newUserBasket.setItems(new ArrayList<BasketItem>());
+		newUserBasket = basketRepo.save(newUserBasket);
+				
+		currentUser.setCustomerBasket(newUserBasket);		
+		userRepo.save(currentUser);	
+		return "redirect:/basket";	
 		
-		userBasket = basketRepo.save(userBasket);
-		
+	}
 	
+	@RequestMapping(path = "/basket/removeItem/{pos}",method = RequestMethod.GET)
+	public String removeItemFromBasket(@PathVariable("pos") String pos,Principal principal)
+	{
+		User currentUser = userRepo.findByEmail(principal.getName());
+		
+		currentUser.getCustomerBasket().getItems().remove(Integer.parseInt(pos));
+		
+		basketRepo.save(currentUser.getCustomerBasket());
+		userRepo.save(currentUser);
+		
+		
 		return "redirect:/basket";
 		
-	}
-	@RequestMapping(path = "/removeItem/{id}",method =  RequestMethod.POST)
-	public String RemoveItemFromBasket(@PathVariable String id, Model model,Principal principal) {
-		
-		
-		
-		
-		
-		
-		User currentUser = UserRepo.findByFirstName(principal.getName());
-		
-		
-		
-		return "redirect:/basket/basket";
-	}
-	
-	@RequestMapping(path = "/emptyBasket",method = RequestMethod.POST)
-	public String EmptyBasket(Principal principal) {
-		User currentUser = UserRepo.findByFirstName(principal.getName());
-		
-		currentUser.getUserBasket().getItems().clear();
-		
-		return "redirect:/basket/basket";
 		
 	}
 	
-	@RequestMapping("/basket")
-	public String basket(Model model) {
+	
 
+	@RequestMapping("/basket")
+	public String basket(Model model,Principal principal) {
+
+		User loggedInUser = userRepo.findByEmail(principal.getName());
 		
-		Basket basket = basketRepo.findById("1").orElse(null);
+		Basket basket = basketRepo.findById(loggedInUser.getCustomerBasket().getBasketId()).orElse(null);
 		
 		if(basket == null) {
 			System.out.println("basket cannot be found");
