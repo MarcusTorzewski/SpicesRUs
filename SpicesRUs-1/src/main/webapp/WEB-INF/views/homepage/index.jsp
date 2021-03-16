@@ -25,7 +25,7 @@
       	<li><a href="/account">My Account</a>
     	<li><a href="/logout">Sign Out</a>
     	</sec:authorize>
-	  <sec:authorize access="hasRole('GUEST')">
+	  <sec:authorize access="!hasRole('MEMBER')">
       	<li><a href="/login-form">Sign-in</a></li>
     	</sec:authorize>
       <li><a href="#">Basket</a></li>

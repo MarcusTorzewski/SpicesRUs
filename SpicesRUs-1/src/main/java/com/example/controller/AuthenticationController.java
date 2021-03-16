@@ -34,14 +34,19 @@ public class AuthenticationController {
 	public RoleRepository rrepo;
 	@Autowired 
 	private PasswordEncoder pe; 
-	@Autowired
-	private CustomUserDetailsService service;
 	
 	private User user;
-	private UserDetails userAuth;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	@RequestMapping("/login-form")
 	public String loginForm() {
+		
 		return "/account/login";
 	}
 	/**

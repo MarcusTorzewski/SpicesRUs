@@ -17,6 +17,7 @@ public class WebController {
 	
 	@Autowired
 	private RecipeRepository recipe_repo;
+
 	
 	@RequestMapping("/")
 	public String home(Model model) {
