@@ -12,16 +12,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.example.service.CustomUserDetailsService;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter { 
 	@Autowired
-	private UserDetailsService userDetailsService; 
+	private CustomUserDetailsService userDetailsService; 
 	
 	@Override 
 	protected void configure(HttpSecurity http) throws Exception { 
-		http.requiresChannel().anyRequest().requiresSecure();
-		
+		http.requiresChannel().anyRequest().requiresSecure().and().formLogin()
+		.loginPage("/login-form")
+		.loginProcessingUrl("/perform_login")
+		.defaultSuccessUrl("/success-login",true)
+		.usernameParameter("email")
+		.failureUrl("/error-login")
+		.permitAll()
+	.and().logout()
+		.invalidateHttpSession(true)
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.logoutSuccessUrl("/login-form")
+		.permitAll()
+	.and().authorizeRequests()
+		.antMatchers("/**").permitAll()
+		.antMatchers("/css/**").permitAll()
+	.and().exceptionHandling().accessDeniedPage("/access-denied");
+
 	} 
 	
 	@Bean

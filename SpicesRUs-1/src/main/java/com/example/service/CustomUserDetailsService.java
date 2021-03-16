@@ -28,9 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User domainUser = urepo.findByEmail(email);
-		System.out.println("1"); // this print line doesn't get run so it doesn't get here
-		
-		// runs through the list of roles in the db and adds that role to the authorities
+		System.out.println("1"); 
 	    if(domainUser != null) {
 	    	   List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(); 
 	    	      for (Role r : domainUser.getRoles()) { 

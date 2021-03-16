@@ -21,12 +21,8 @@
       <li><a href="/spices">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="#">Discussion Forum</a></li>
-      <sec:authorize access="isAuthenticated()">
     	<li><a href="/logout">Sign Out</a>
-    	</sec:authorize>
-	  <sec:authorize access="!isAuthenticated()">
-      <li><a href="#">Sign-in</a></li>
-      </sec:authorize>
+
       <li><a href="#">Basket</a></li>
     </ul>
 

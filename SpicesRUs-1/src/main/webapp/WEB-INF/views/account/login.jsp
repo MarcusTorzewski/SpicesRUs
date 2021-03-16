@@ -32,7 +32,8 @@
     </ul>
 
     <div class="text_main1">
-		<form:form action="/myLogin" method="post" commandName="userLogin"> 
+    	<p style="color:red">${errorInfo }</p>
+		<form:form action="/perform_login" method="post" commandName="userLogin"> 
 		<table border="0">
             <tr>
                 <td colspan="2" align="center"><h2>Sign-In</h2></td>
@@ -46,8 +47,20 @@
 		   <input type="submit" value="Sign In" /><br/> 
 		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>
+		<form:form action="/perform_login" method="post" commandName="userLogin"> 
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="Sign In as Guest" /><br/> 
+			<table border="0">
+	            <tr>
+					 <td><input type="hidden" name="email" value="guest@guest.com"/></td>
+				<tr> 
+					 <td><input type="hidden" name="password" value="password"/></td>
+				</tr>
+			</table> 
+
+		</form:form>
 	</div>
-	</br>
+	<br/>
 	<div align="center">
 		<a href="/createAccount">Create an account</a>
     </div>

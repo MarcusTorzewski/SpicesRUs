@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import com.example.model.NewUser;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
+import com.example.service.CustomUserDetailsService;
 
 @Controller
 public class AuthenticationController {
@@ -32,27 +34,30 @@ public class AuthenticationController {
 	public RoleRepository rrepo;
 	@Autowired 
 	private PasswordEncoder pe; 
+	@Autowired
+	private CustomUserDetailsService service;
 	
 	private User user;
+	private UserDetails userAuth;
 	
 	@RequestMapping("/login-form")
 	public String loginForm() {
 		return "/account/login";
 	}
+	/**
 	@RequestMapping("/myLogin")
-	public String myLogin(@ModelAttribute("login") User login) {
-		System.out.println(login.getName());
-		System.out.println(login.getPassword());
+	public String myLogin(@ModelAttribute("login") User login, Model model) {
 		user = repo.findByEmail(login.getName());
 		if (user == null) {
+			model.addAttribute("errorInfo", "Could not find a user with that email!");
 			return "/account/login";
 		}
-		if (user.getPassword() == pe.encode(login.getPassword())){
-			return "/homepage/index";
-		}
+		model.addAttribute("login", true);
+		userAuth = service.loadUserByUsername(login.getEmail());
 		return "/homepage/index";
+		
 	}
-	
+	*/
 	@GetMapping("/success-login") 
 	public String successLogin(Principal principal) { 
 	   user = repo.findByEmail(principal.getName()); 
@@ -75,6 +80,9 @@ public class AuthenticationController {
 	
 	@RequestMapping("/account")
 	public String account(Model model) {
+		if (user.getEmail() == "guest@guest.com") {
+			return "/account/denied";
+		}
 		model.addAttribute("user", user);
 		return "/account/account";
 	}
