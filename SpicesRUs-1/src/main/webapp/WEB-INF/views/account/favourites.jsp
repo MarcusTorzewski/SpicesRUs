@@ -59,7 +59,7 @@
 		<h1 class="h1">Your Favourite Recipes</h1>
 		<div class="grid-container">
 			<c:forEach items="${favouriteRecipes}" var="recipe">
-				<a href="recipe/${recipe.name}" style="text-decoration: none; color:black;">
+				<a href="recipes/${recipe.name}" style="text-decoration: none; color:black;">
 					<div class="grid-item" style="height:270px">
 					<img style="width:206px;height:200px;object-fit:cover;" src="${recipe.image}"/>
 					${recipe.name}
