@@ -69,13 +69,15 @@
 
 .button {
   background-color: #00b36b;
-  border:0;
+  border:none;
   color: white;
   height: 50px;
   width: 120px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  font-weight: bold;
+  float: left;
+  margin-right: 5px;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;

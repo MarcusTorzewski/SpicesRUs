@@ -17,7 +17,8 @@
 <div>
 	<ul class="nav">
 		<div id="logo">
-			<a href="/"> <img height="70px"
+			<a href="/"> 
+			<img height="70px"
 				src="${pageContext.request.contextPath}/images/SpicesRUs_logo.png" />
 			</a>
 		</div>
@@ -39,7 +40,7 @@
 	
 	<div class="top_section">
 		<div class="left_section">
-			<img style="border-right:10%;" src="${recipe.image}">
+			<img style="border-right:10%;width:325px;height:325px;object-fit:cover;" src="${recipe.image}">
 			<c:if test="${! favouriteRecipes.equals(null)}">
 				<c:if test="${! isFavourited}">
 					<form:form action="/addFavouriteRecipe/${recipe.name}">
@@ -52,10 +53,13 @@
 					</form:form>
 				</c:if>
 			</c:if>
+		<a class="button" href="${pageContext.request.contextPath}/pdf/${recipe.name}.pdf" download>
+		<p>Download</p>
+		</a>
 		</div>
 		
 		<div class="right_section">
-			<h1 class="recipe_heading">${recipe.name}</h1>
+			<h1 class="h1">${recipe.name}</h1>
 			<p style="padding: 10px 0 10px 0;'">${recipe.description}</p>
 			<p><b>Serving:</b> ${recipe.servings}</p>
 			<p><b>Difficulty:</b> ${recipe.difficulty}</p>

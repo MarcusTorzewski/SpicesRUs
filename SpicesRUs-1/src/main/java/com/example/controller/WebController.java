@@ -66,5 +66,13 @@ public class WebController {
 		model.addAttribute("isFavourited", isFavourited);
 		return "/recipes/recipe";
 	}
+	
+	@RequestMapping("/favourites")
+	public String favourites(Model model, Principal principal) {
+		User currentUser = urepo.findByEmail(principal.getName());
+		model.addAttribute("favouriteRecipes", currentUser.getFavouriteRecipes());
+		model.addAttribute("favouriteSpices", currentUser.getFavouriteSpices());
+		return "account/favourites";
+	}
 		
 }
