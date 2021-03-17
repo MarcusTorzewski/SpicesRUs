@@ -109,7 +109,7 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		newUser.setEmail("alekstest@gmail.com");
 		newUser.setPassword(pe.encode("password"));
 		newUser.setRoles(rrepo.findAll());
-	
+		
 		
 		
 		
@@ -155,13 +155,7 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		
 		newUser = urepo.save(newUser);
 		
-		
-		
-		
-		
-		
-		
-		
+
 		
 	}
 
