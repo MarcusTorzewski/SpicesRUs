@@ -41,7 +41,7 @@
 	
 	<div class="top_section">
 		<div class="left_section">
-			<img style="border-right:10%;width:325px;height:325px;object-fit:cover;" src="${recipe.image}">
+			<img style="border-right:10%;width:315px;height:315px;object-fit:cover;" src="${recipe.image}">
 			<c:if test="${! favouriteRecipes.equals(null)}">
 				<c:if test="${! isFavourited}">
 					<form:form action="/addFavouriteRecipe/${recipe.name}">
