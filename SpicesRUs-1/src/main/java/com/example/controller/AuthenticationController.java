@@ -3,27 +3,19 @@ package com.example.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.model.NewUser;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
-import com.example.service.CustomUserDetailsService;
 
 @Controller
 public class AuthenticationController {
@@ -49,20 +41,8 @@ public class AuthenticationController {
 		
 		return "/account/login";
 	}
-	/**
-	@RequestMapping("/myLogin")
-	public String myLogin(@ModelAttribute("login") User login, Model model) {
-		user = repo.findByEmail(login.getName());
-		if (user == null) {
-			model.addAttribute("errorInfo", "Could not find a user with that email!");
-			return "/account/login";
-		}
-		model.addAttribute("login", true);
-		userAuth = service.loadUserByUsername(login.getEmail());
-		return "/homepage/index";
-		
-	}
-	*/
+
+
 	@GetMapping("/success-login") 
 	public String successLogin(Principal principal) { 
 	   user = repo.findByEmail(principal.getName()); 
@@ -105,16 +85,6 @@ public class AuthenticationController {
 		
 	}
 	
-	/*
-	@RequestMapping("/logout")
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	        new SecurityContextLogoutHandler().logout(request, response, auth);
-	    }
-	    return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
-	}
-	*/
 	
 	@RequestMapping("/createAccount")
 	public String accountCreation(Model model) {
