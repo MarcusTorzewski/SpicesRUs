@@ -14,6 +14,7 @@ public class Spice {
 	private String image;
 	private String region;
 	private List<String> compliment_spices;
+	private float basePricePerKG;
 	private String description;
 
 	public String getId() {
@@ -63,5 +64,16 @@ public class Spice {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public float getBasePricePerKG() {
+		return basePricePerKG;
+	}
+
+	public void setBasePricePerKG(float basePricePerKG) {
+		this.basePricePerKG = basePricePerKG;
+	}
+	
+	
+	
 
 }
