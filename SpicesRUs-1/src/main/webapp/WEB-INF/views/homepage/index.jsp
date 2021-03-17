@@ -21,11 +21,11 @@
       <li><a href="/spices">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="#">Discussion Forum</a></li>
-      <sec:authorize access="hasRole('MEMBER')">
+      <sec:authorize access="hasRole('MEMBER') || hasRole('PREMIUM')">
       	<li><a href="/account">My Account</a>
     	<li><a href="/logout">Sign Out</a>
     	</sec:authorize>
-	  <sec:authorize access="!hasRole('MEMBER')">
+	  <sec:authorize access="!hasRole('MEMBER') && !hasRole('PREMIUM')">
       	<li><a href="/login-form">Sign-in</a></li>
     	</sec:authorize>
       <li><a href="#">Basket</a></li>
