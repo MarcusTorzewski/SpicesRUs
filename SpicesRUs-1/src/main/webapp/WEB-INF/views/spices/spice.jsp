@@ -41,9 +41,9 @@
 			<div class="right_section">
 				<h1 class="spice_heading">${spice.name}</h1>
 				<p>${spice.description}</p>
-				<p style="padding: 10px 0 10px 0;'">${spice.name}originated in
+				<p style="padding: 10px 0 10px 0;'">${spice.name} originated in
 					${spice.region}. ${spice.description}</p>
-				<p>${spice.name}pairs well with:</p>
+				<p>${spice.name} pairs well with:</p>
 				<ul>
 					<c:forEach items="${spice.compliment_spices}" var="compliment">
 						<li class="compliment_list_item"><a
