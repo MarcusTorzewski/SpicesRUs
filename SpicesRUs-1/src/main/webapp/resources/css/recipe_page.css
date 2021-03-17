@@ -24,33 +24,33 @@
 
 .recipe_heading {
 	display: inline; 
-	border-bottom:2px solid; 
-	border-color:#f9c86c; 
+	border-bottom:2px solid;
+	border-color:#f9c86c;
 	padding:10px 0px 10px 0px;
 }
 
 .macros_table_body {
 	display:inline-flex; 
 	flex-wrap:wrap; 
-	align-items:flex-start; 
-	font-size:13px
+	align-items:flex-start;
+	font-size:13px;
 }
 
 .macros_table_row {
 	display:flex; 
 	text-align:center; 
 	flex-direction:column; 
-	word-break:break-all; 
-	border-style:solid; 
-	border-color:black; 
-	border-width:1px; 
-	background-color:white; 
+	word-break:break-all;
+	border-style:solid;
+	border-color:black;
+	border-width:1px;
+	background-color:white;
 	min-width:70px;
 }
 
 .macros_table_nutrient {
-	padding:5px; 
-	border-bottom-style:solid; 
+	padding:5px;
+	border-bottom-style:solid;
 	border-bottom-width:1px;
 }
 
@@ -65,4 +65,20 @@
 	border-bottom:2px solid; 
 	border-color:#f9c86c; 
 	padding:10px 0px 10px 0px;
+}
+
+.button {
+  background-color: #00b36b;
+  border:none;
+  color: white;
+  height: 50px;
+  width: 120px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  float: left;
+  margin-right: 5px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

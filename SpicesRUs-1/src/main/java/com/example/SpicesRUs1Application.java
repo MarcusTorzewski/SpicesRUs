@@ -114,8 +114,7 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		recipe.setSaturates(6);
 		recipe.setSugars(5);
 		
-		
-		
+
 		recipeRepo.save(recipe); 
 		
 		Role guest = rrepo.findByid("GUEST");
@@ -126,8 +125,16 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		testUser.setPassword(pe.encode("password"));
 		testUser.setRoles(new ArrayList<>());
 		testUser.getRoles().add(guest);
-		urepo.save(testUser);*/
-		
+		urepo.save(testUser);
+
+		recipeRepo.save(recipe);
+
+		User user = urepo.findByEmail("js@gmail.com");
+		user.setFavouriteRecipes(new ArrayList<>());
+		user.setFavouriteSpices(srepo.findAll());
+		user.setFavouriteSpices(srepo.findAll());
+		urepo.save(user);
+		 */
 		
 	}
 
