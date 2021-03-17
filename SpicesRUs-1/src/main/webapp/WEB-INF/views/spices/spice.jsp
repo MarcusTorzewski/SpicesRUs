@@ -41,9 +41,9 @@
 			<div class="right_section">
 				<h1 class="spice_heading">${spice.name}</h1>
 				<p>${spice.description}</p>
-				<p style="padding: 10px 0 10px 0;'">${spice.name}originated in
+				<p style="padding: 10px 0 10px 0;'">${spice.name} originated in
 					${spice.region}. ${spice.description}</p>
-				<p>${spice.name}pairs well with:</p>
+				<p>${spice.name} pairs well with:</p>
 				<ul>
 					<c:forEach items="${spice.compliment_spices}" var="compliment">
 						<li class="compliment_list_item"><a
@@ -52,7 +52,7 @@
 				</ul>
 
 				<div class="basket">
-					<form action="">
+					<form action="../basket/add" method="POST">
 						<!-- set action to add to basket in basket controller. -->
 						<label for="quantity">Quantity: </label> <input type="number"
 							id="quantity" name="quantity" value=1> <label for="size">Size:
@@ -65,59 +65,8 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

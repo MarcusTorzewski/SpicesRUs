@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.Basket;
 import com.example.model.BasketItem;
@@ -39,13 +41,18 @@ public class BasketController {
 	
 	
 
-	@RequestMapping(path= "/basket/add/{id}/{size}/{quantity}",method = RequestMethod.POST)
-	public String addItemToBasket(@PathVariable("id") String id,@PathVariable("size") String size,@PathVariable("quantity") String quantity,Principal principal) {
-		
-		
-		return "redirect:/basket";
-	}
+//	@RequestMapping(path="/basket/add/{id}/{size}/{quantity}", method=RequestMethod.POST)
+//	public String addItemToBasket(@PathVariable("id") String id, @PathVariable("size") String size, @PathVariable("quantity") String quantity, Principal principal) {
+//		
+//		
+//		return "redirect:/basket";
+//	}
 	
+	@PostMapping(path="basket/add")
+	public String add() {
+		System.out.println("PINGPONGPINGPONGPINGPONG");
+		return null;
+	}
 	
 	@RequestMapping(path = "/emptybasket",method = RequestMethod.GET)
 	public String emptyBasket(Principal principal) {

@@ -102,17 +102,17 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		
 		
 		
-		
+		/*
 		User newUser = new User();
 		newUser.setFirstName("Aleks");
 		newUser.setLastname("Test");
 		newUser.setEmail("alekstest@gmail.com");
 		newUser.setPassword(pe.encode("password"));
 		newUser.setRoles(rrepo.findAll());
-	
+		*/
 		
 		
-		
+		/*
 		Spice spice1 = new Spice();
 		spice1.setId("13");
 		spice1.setName("testSpice1");
@@ -154,14 +154,8 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		newUser.setCustomerBasket(newBasket);
 		
 		newUser = urepo.save(newUser);
-		
-		
-		
-		
-		
-		
-		
-		
+		*/
+
 		
 	}
 

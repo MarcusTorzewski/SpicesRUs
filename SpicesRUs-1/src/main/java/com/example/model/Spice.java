@@ -13,71 +13,67 @@ public class Spice {
 	private String name;
 	private String image;
 	private String region;
-	
-	private float basePricePerKG;
-
 	private List<String> compliment_spices;
-
+	private float basePricePerKG;
+	private String description;
 
 	public String getId() {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getImage() {
 		return image;
 	}
 
-
 	public void setImage(String image) {
 		this.image = image;
 	}
-
 
 	public String getRegion() {
 		return region;
 	}
 
-
 	public void setRegion(String region) {
 		this.region = region;
 	}
-
-
-	public float getBasePricePerKG() {
-		return basePricePerKG;
-	}
-
-
-	public void setBasePricePerKG(float basePricePerKG) {
-		this.basePricePerKG = basePricePerKG;
-	}
-
-
 
 	public List<String> getCompliment_spices() {
 		return compliment_spices;
 	}
 
-
 	public void setCompliment_spices(List<String> compliment_spices) {
 		this.compliment_spices = compliment_spices;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public float getBasePricePerKG() {
+		return basePricePerKG;
+	}
+
+	public void setBasePricePerKG(float basePricePerKG) {
+		this.basePricePerKG = basePricePerKG;
+	}
+	
+	
 	
 
 }
