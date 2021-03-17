@@ -9,6 +9,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
+<link rel="stylesheet" href="/resources/css/gridLayout.css">
 </head>
 <body>
 	<ul class="nav">
@@ -21,6 +22,7 @@
 		<li><a href="/spices">Spices</a></li>
 		<li><a href="/recipes"
 			style="text-decoration: underline rgb(68, 68, 68);">Recipes</a></li>
+		<li><a href="/favourites">Favourites</a></li>
 		<li><a href="#">Discussion Forum</a></li>
 		<li><a href="#">Sign-in</a></li>
 		<li><a href="#">Basket</a></li>
@@ -30,25 +32,22 @@
 		<img class="banner-image"
 			src="${pageContext.request.contextPath}/images/spices_background.jpg" />
 	</div>
-	<div class="text_main1">
-		<h1>
-			<p>
-				<c:forEach items="${recipes}" var="recipe">
-					<a href="/recipes/${recipe.name}">${recipe.name}</a>
-					<br>
-				</c:forEach>
-			</p>
-		</h1>
+	
+	<!-- Recipes -->
+	
+	<div class="gridSection">
+		<h1 class="h1">Check Out Our Recipes</h1>
+		<div class="grid-container">
+			<c:forEach items="${recipes}" var="recipe">
+				<a href="recipes/${recipe.name}" style="text-decoration: none; color:black;">
+					<div class="grid-item" style="height:270px">
+					<img style="width:206px;height:200px;object-fit:cover;" src="${recipe.image}"/>
+					${recipe.name}
+					</div>
+				</a>
+			</c:forEach>
+		</div>
 	</div>
-	<div class="banner">
-		<img class="banner-image2"
-			src="${pageContext.request.contextPath}/images/food_table.jpg" />
-	</div>
-	<div class="text_main2">
-		<h1>
-			<p>*Potentially remove this divider + above banner*</p>
-
-		</h1>
-	</div>
+	
 </body>
 </html>

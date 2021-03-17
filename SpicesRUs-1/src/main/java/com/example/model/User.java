@@ -1,6 +1,8 @@
  package com.example.model;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -11,7 +13,7 @@ public class User {
 	@Id
 	private String id;
 	private String firstName;
-	private String lastname;
+	private String lastName;
 	private String email;
 	private String password;
 	
@@ -22,8 +24,26 @@ public class User {
 	private String Postcode;
 	
 	@DBRef
-	private Collection<Role> roles;
+	private List<Role> roles;
 	
+	@DBRef
+	private List<Spice> favouriteSpices = new ArrayList<>();
+	
+	@DBRef
+	private List<Recipe> favouriteRecipes = new ArrayList<>();
+	
+	public List<Spice> getFavouriteSpices() {
+		return favouriteSpices;
+	}
+	public void setFavouriteSpices(List<Spice> favouriteSpices) {
+		this.favouriteSpices = favouriteSpices;
+	}
+	public List<Recipe> getFavouriteRecipes() {
+		return favouriteRecipes;
+	}
+	public void setFavouriteRecipes(List<Recipe> favouriteRecipes) {
+		this.favouriteRecipes = favouriteRecipes;
+	}
 	/* I've just got the basic attributes here there could be more, but its not difficult to add them as we go
 	 * The only immutable parts of this code right now are the document, id and the collection -marcus
 	*/
@@ -40,16 +60,20 @@ public class User {
 		this.firstName = firstName;
 	}
 	public String getLastname() {
-		return lastname;
+		return lastName;
 	}
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.lastName = lastname;
 	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	// for principal.getName()
+	public String getName() {
+		return email;
 	}
 	public String getPassword() {
 		return password;
@@ -87,15 +111,15 @@ public class User {
 	public void setPostcode(String postcode) {
 		Postcode = postcode;
 	}
-	public Collection<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
-	public void setRoles(Collection<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastname + ", email=" + email
+		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastName + ", email=" + email
 				+ ", password=" + password + "]";
 	}
 	
