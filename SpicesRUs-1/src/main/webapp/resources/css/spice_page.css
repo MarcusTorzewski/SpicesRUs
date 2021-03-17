@@ -1,0 +1,59 @@
+.basket input[type=number] {
+  padding: 12px 10px;
+  margin: 8px 0;
+  margin-right: 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.basket select {
+  padding: 12px 10px;
+  margin: 8px 0;
+  margin-right: 50px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.basket input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.basket input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.top_section {
+	width:100%; 
+	overflow: hidden; 
+	padding:2% 5% 3% 5%; 
+	background-color: #fdedce;
+}
+
+.left_section {
+	width: 20%; 
+	float:left;
+}
+
+.right_section {
+	margin-left:30%; 
+	width:45%
+}
+
+.spice_heading {
+	display: inline; 
+	border-bottom:2px solid; 
+	border-color:#f9c86c; 
+	padding:10px 0px 10px 0px;
+}
