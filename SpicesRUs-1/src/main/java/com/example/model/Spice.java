@@ -14,6 +14,7 @@ public class Spice {
 	private String image;
 	private String region;
 	private List<String> compliment_spices;
+	private String description;
 
 	public String getId() {
 		return id;
@@ -53,6 +54,14 @@ public class Spice {
 
 	public void setCompliment_spices(List<String> compliment_spices) {
 		this.compliment_spices = compliment_spices;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
