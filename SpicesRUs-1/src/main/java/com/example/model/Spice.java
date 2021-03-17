@@ -15,6 +15,8 @@ public class Spice {
 	private String region;
 	
 	private float basePricePerKG;
+	
+	
 
 	private List<String> compliment_spices;
 
