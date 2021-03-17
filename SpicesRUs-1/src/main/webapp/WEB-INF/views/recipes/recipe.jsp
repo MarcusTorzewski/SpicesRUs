@@ -37,7 +37,8 @@
 
 		<div class="top_section">
 			<div class="left_section">
-				<img style="border-right: 10%;" src="${recipe.image}">
+				<img style="width: 315px; height: 315px; object-fit: cover;"
+					src="${recipe.image}">
 			</div>
 			<div class="right_section">
 				<h1 class="recipe_heading">${recipe.name}</h1>

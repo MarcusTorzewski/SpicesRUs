@@ -35,7 +35,7 @@
 
 		<div class="top_section">
 			<div class="left_section">
-				<img style="width: 350px; height: 350px; object-fit: cover;"
+				<img style="width: 315px; height: 315px; object-fit: cover;"
 					src="${spice.image}">
 			</div>
 			<div class="right_section">
