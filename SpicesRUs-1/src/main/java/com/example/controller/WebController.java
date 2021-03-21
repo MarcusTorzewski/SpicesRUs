@@ -30,6 +30,9 @@ public class WebController {
 	
 	@RequestMapping("/")
 	public String home(Model model) {
+		if (AuthenticationController.getUser() == null) {
+			AuthenticationController.setUser(urepo.findByEmail("guest@guest.com"));
+		}
 		return "/homepage/index";
 	}
 	
@@ -70,10 +73,17 @@ public class WebController {
 	
 	@RequestMapping("/favourites")
 	public String favourites(Model model, Principal principal) {
-		User currentUser = urepo.findByEmail(principal.getName());
+		try {
+			User currentUser = urepo.findByEmail(principal.getName());
+			if (currentUser.getEmail().equals("guest@guest.com")) {
+				return "redirect:/login-form";
+		}
 		model.addAttribute("favouriteRecipes", currentUser.getFavouriteRecipes());
 		model.addAttribute("favouriteSpices", currentUser.getFavouriteSpices());
 		return "account/favourites";
+		} catch(Exception e) {
+			return "redirect:/login-form";
+		}
 	}
 		
 }

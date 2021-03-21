@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.model.NewUser;
+import com.example.model.Role;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
@@ -27,18 +28,25 @@ public class AuthenticationController {
 	@Autowired 
 	private PasswordEncoder pe; 
 	
-	private User user;
+	private static User user;
 	
-	public User getUser() {
+	static public User getUser() {
 		return user;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public static void setUser(User newUser) {
+		user = newUser;
 	}
 	
 	@RequestMapping("/login-form")
-	public String loginForm() {
-		
+	public String loginForm(Model model) {
+		if (user !=null) {
+			if (!user.getEmail().equals("guest@guest.com")) {
+				model.addAttribute("user", user);
+				return "/account/account";
+			}
+		} else {
+			user = repo.findByEmail("guest@guest.com");
+		}
 		return "/account/login";
 	}
 
@@ -65,8 +73,14 @@ public class AuthenticationController {
 	
 	@RequestMapping("/account")
 	public String account(Model model) {
-		if (user.getEmail() == "guest@guest.com") {
-			return "/account/denied";
+		Role guest = rrepo.findByid("GUEST");
+		if (user == null) {
+			System.out.println("0");
+			user = repo.findByEmail("guest@guest.com");
+			return "/account/login";
+		}
+		if (user.getEmail().equals("guest@guest.com")) {
+			return "/account/login";
 		}
 		model.addAttribute("user", user);
 		return "/account/account";
@@ -118,5 +132,11 @@ public class AuthenticationController {
 		user.getRoles().add(rrepo.findByid("MEMBER"));
 		user = repo.save(user);
 		return "/homepage/index";
+	}
+	
+	@RequestMapping("/logout-user")
+	public String logout(){
+		user = repo.findByEmail("guest@guest.com");
+		return "/account/login";
 	}
 }

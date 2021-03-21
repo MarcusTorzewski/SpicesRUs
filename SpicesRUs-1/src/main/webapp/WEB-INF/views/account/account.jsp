@@ -17,18 +17,18 @@
       <div id="logo">
         <a href="/"> <img height="70px" src="${pageContext.request.contextPath}/images/SpicesRUs_logo.png" /> </a>
       </div>
-      <li><a href="/about">About Us</a></li>
-      <li><a href="/spices">Spices</a></li>
-      <li><a href="/recipes">Recipes</a></li>
-      <li><a href="/favourites">Favourites</a></li>
-      <li><a href="#">Discussion Forum</a></li>
-    	<li><a href="/logout">Sign Out</a>
-
-      <li><a href="#">Basket</a></li>
+		<li><a href="/about">About Us</a></li>
+		<li><a href="/spices">Spices</a></li>
+		<li><a href="/recipes">Recipes</a></li>
+		<li><a href="/favourites">Favourites</a></li>
+		<li><a href="#">Discussion Forum</a></li>
+		<li><a href="/account" style="text-decoration: underline rgb(68, 68, 68);">My Account</a>
+		<li><a href="/logout">Sign Out</a></li>
+		<li><a href="#">Basket</a></li>
     </ul>
 
 
-    <div class="text_main1">
+    <div class="text_main1" align = center>
 
         <table>
         	<tr>
@@ -47,23 +47,14 @@
         		</c:forEach>
         		</td>
        		</tr>
+       		<tr>
+       			
+       		</tr>
         </table>
-	<a href="/editAccount" >Edit account details</a>
     </div>
-
-    <div class="text_main2">
-      <h1>
-        <p>
-          
-          <br />
-          <br /><br />
-        </p>
-        <ul>
-          <li>Be mindful of the environment.</li>
-          <li>Ensure sustainability.</li>
-          <li>Look after the local community.</li>
-        </ul>
-      </h1>
+    <div align = center>
+        <br/>
+        <a href="/editAccount" align = center>Edit account details</a>
     </div>
   </body>
 </html>
