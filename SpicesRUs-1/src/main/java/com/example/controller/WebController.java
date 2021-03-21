@@ -74,9 +74,9 @@ public class WebController {
 	@RequestMapping("/favourites")
 	public String favourites(Model model, Principal principal) {
 		try {
-		User currentUser = urepo.findByEmail(principal.getName());
-		if (currentUser.getEmail().equals("guest@guest.com")) {
-			return "redirect:/login-form";
+			User currentUser = urepo.findByEmail(principal.getName());
+			if (currentUser.getEmail().equals("guest@guest.com")) {
+				return "redirect:/login-form";
 		}
 		model.addAttribute("favouriteRecipes", currentUser.getFavouriteRecipes());
 		model.addAttribute("favouriteSpices", currentUser.getFavouriteSpices());

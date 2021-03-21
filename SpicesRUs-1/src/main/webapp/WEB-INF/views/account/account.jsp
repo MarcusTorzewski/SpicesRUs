@@ -28,7 +28,7 @@
     </ul>
 
 
-    <div class="text_main1">
+    <div class="text_main1" align = center>
 
         <table>
         	<tr>
@@ -47,23 +47,14 @@
         		</c:forEach>
         		</td>
        		</tr>
+       		<tr>
+       			
+       		</tr>
         </table>
-	<a href="/editAccount" >Edit account details</a>
     </div>
-
-    <div class="text_main2">
-      <h1>
-        <p>
-          
-          <br />
-          <br /><br />
-        </p>
-        <ul>
-          <li>Be mindful of the environment.</li>
-          <li>Ensure sustainability.</li>
-          <li>Look after the local community.</li>
-        </ul>
-      </h1>
+    <div align = center>
+        <br/>
+        <a href="/editAccount" align = center>Edit account details</a>
     </div>
   </body>
 </html>
