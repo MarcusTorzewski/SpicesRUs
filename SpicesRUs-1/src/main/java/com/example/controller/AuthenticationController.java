@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.model.NewUser;
+import com.example.model.Role;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
@@ -38,7 +39,6 @@ public class AuthenticationController {
 	
 	@RequestMapping("/login-form")
 	public String loginForm() {
-		
 		return "/account/login";
 	}
 
@@ -65,8 +65,14 @@ public class AuthenticationController {
 	
 	@RequestMapping("/account")
 	public String account(Model model) {
-		if (user.getEmail() == "guest@guest.com") {
-			return "/account/denied";
+		Role guest = rrepo.findByid("GUEST");
+		if (user == null) {
+			System.out.println("0");
+			user = repo.findByEmail("guest@guest.com");
+			return "/account/login";
+		}
+		if (user.getEmail().equals("guest@guest.com")) {
+			return "/account/login";
 		}
 		model.addAttribute("user", user);
 		return "/account/account";
