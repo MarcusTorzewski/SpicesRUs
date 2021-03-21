@@ -30,12 +30,15 @@
     </div>
     <div class="text_main1">
       <h1>
-        <p>
-          Who we are
+      	         Who we are
           Our Values
           Interesting facts
+      
+     </h1>
+     <p>
+ 
           
-          
+  
           We are your online source for the most common, exotic and hard to find spices 
           for cooking and baking. Experience yourself 
           with the spices all over the world, starting 
@@ -48,8 +51,8 @@
 		 from the oldest and most valuable sources of spices. We do everything 
 		for our products to taste, smell better, last longer and remain as fresh as possible.
           
-        </p>
-      </h1>
+     </p>
+
     </div>
     <div class="banner">
       <img class="banner-image2" src="${pageContext.request.contextPath}/images/food_table.jpg" />

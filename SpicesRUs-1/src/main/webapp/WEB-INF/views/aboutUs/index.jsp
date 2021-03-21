@@ -29,13 +29,13 @@
       <img class="banner-image" src="${pageContext.request.contextPath}/images/spices_background.jpg" />
     </div>
     <div class="text_main1">
-      <h1>
-        <p>
-          Who we are
-          Our Values
-          Interesting facts
+       <h1>Who we are</h1>
+       <h1>Our Values</h1>
+       <h1>Interesting facts</h1>
+     <p>
+ 
           
-          
+  
           We are your online source for the most common, exotic and hard to find spices 
           for cooking and baking. Experience yourself 
           with the spices all over the world, starting 
@@ -47,8 +47,8 @@
 		We are most passionate about quality. All the products on the site are provided
 		 from the oldest and most valuable sources of spices. We do everything 
 		for our products to taste, smell better, last longer and remain as fresh as possible.
-        </p>
-      </h1>
+          
+     </p>
     </div>
     <div class="banner">
       <img class="banner-image2" src="${pageContext.request.contextPath}/images/food_table.jpg" />
