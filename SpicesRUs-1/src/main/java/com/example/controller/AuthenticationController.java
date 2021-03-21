@@ -38,7 +38,15 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping("/login-form")
-	public String loginForm() {
+	public String loginForm(Model model) {
+		if (user !=null) {
+			if (!user.getEmail().equals("guest@guest.com")) {
+				model.addAttribute("user", user);
+				return "/account/account";
+			}
+		} else {
+			user = repo.findByEmail("guest@guest.com");
+		}
 		return "/account/login";
 	}
 
@@ -124,5 +132,11 @@ public class AuthenticationController {
 		user.getRoles().add(rrepo.findByid("MEMBER"));
 		user = repo.save(user);
 		return "/homepage/index";
+	}
+	
+	@RequestMapping("/logout-user")
+	public String logout(){
+		user = repo.findByEmail("guest@guest.com");
+		return "/account/login";
 	}
 }
