@@ -28,13 +28,13 @@ public class AuthenticationController {
 	@Autowired 
 	private PasswordEncoder pe; 
 	
-	private User user;
+	private static User user;
 	
-	public User getUser() {
+	static public User getUser() {
 		return user;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public static void setUser(User newUser) {
+		user = newUser;
 	}
 	
 	@RequestMapping("/login-form")
