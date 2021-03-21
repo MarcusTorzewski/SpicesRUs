@@ -31,7 +31,23 @@
     <div class="text_main1">
       <h1>
         <p>
-          *Insert back story here*
+          Who we are
+          Our Values
+          Interesting facts
+          
+          
+          We are your online source for the most common, exotic and hard to find spices 
+          for cooking and baking. Experience yourself 
+          with the spices all over the world, starting 
+          from east Asia and ending in north America. It is great opportunity to spend 
+          less time searching for expensive spices at your local grocery store when you can find everything here. 
+          Whether you need just a little or more than a kilo, all of our products ship free worldwide !
+          
+          Our Values 
+		We are most passionate about quality. All the products on the site are provided
+		 from the oldest and most valuable sources of spices. We do everything 
+		for our products to taste, smell better, last longer and remain as fresh as possible.
+          
         </p>
       </h1>
     </div>
@@ -41,7 +57,10 @@
     <div class="text_main2">
       <h1>
         <p>
-*Insert facts about business here*
+	Interesting facts 
+	First product arrived at our warehouse was a cinnamon! 
+	Our first recipe author is mother of an employee!
+	The logo of the shop was inspired by the client.
           <br />
           <br /><br />
         </p>
