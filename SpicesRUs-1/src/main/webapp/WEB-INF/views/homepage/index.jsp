@@ -35,34 +35,4 @@
     <div class="banner">
       <img class="banner-image" src="${pageContext.request.contextPath}/images/spices_background.jpg" />
     </div>
-    <div class="text_main1">
-      <h1>
-        <p>
-          We believe in connecting the world with the power of taste. That is
-          why we offer the finest spices at accessible prices.<br />
-          <br /><br />
-          We also believe in providing high quality recipes, in order for you to
-          gain the most out of our highest quality ingredients.
-        </p>
-      </h1>
-    </div>
-    <div class="banner">
-      <img class="banner-image2" src="${pageContext.request.contextPath}/images/food_table.jpg" />
-    </div>
-    <div class="text_main2">
-      <h1>
-        <p>
-          Our high quality spices are sourced responsibly. We follow 3 simple
-          rules:
-          <br />
-          <br /><br />
-        </p>
-        <ul>
-          <li>Be mindful of the environment.</li>
-          <li>Ensure sustainability.</li>
-          <li>Look after the local community.</li>
-        </ul>
-      </h1>
-    </div>
-  </body>
-</html>
+    

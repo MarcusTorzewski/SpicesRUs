@@ -48,7 +48,7 @@
 	<div class="top_section">
 		<div class="left_section">
 			<img style="border-right:10%;width:315px;height:315px;object-fit:cover;" src="${recipe.image}">
-			<c:if test="${! favouriteRecipes.equals(null)}">
+			<c:if test="${! (favouriteRecipes == null)}">
 				<c:if test="${! isFavourited}">
 					<form:form action="/addFavouriteRecipe/${recipe.name}">
 						<button type="submit" class="button">Favourite</button>
@@ -59,6 +59,11 @@
 						<button type="submit" class="button">Unfavourite</button>
 					</form:form>
 				</c:if>
+			</c:if>
+			<c:if test="${favouriteRecipes == null}">
+				<form:form action="/login-form">
+						<button type="submit" class="button">Favourite</button>
+				</form:form>
 			</c:if>
 		<a class="button" href="${pageContext.request.contextPath}/pdf/${recipe.name}.pdf" download>
 		<p>Download</p>
