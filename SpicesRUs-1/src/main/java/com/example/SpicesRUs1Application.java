@@ -134,6 +134,8 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		user.setFavouriteSpices(srepo.findAll());
 		user.setFavouriteSpices(srepo.findAll());
 		urepo.save(user);
+		
+		^^^ REMEMBER TO ClEAR ALL THIS OUT BEFORE FINISHING THE PROJECT
 		 */
 		
 	}

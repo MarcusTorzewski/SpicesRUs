@@ -32,6 +32,8 @@ public class User {
 	@DBRef
 	private List<Recipe> favouriteRecipes = new ArrayList<>();
 	
+	
+	
 	public List<Spice> getFavouriteSpices() {
 		return favouriteSpices;
 	}
@@ -44,9 +46,6 @@ public class User {
 	public void setFavouriteRecipes(List<Recipe> favouriteRecipes) {
 		this.favouriteRecipes = favouriteRecipes;
 	}
-	/* I've just got the basic attributes here there could be more, but its not difficult to add them as we go
-	 * The only immutable parts of this code right now are the document, id and the collection -marcus
-	*/
 	public String getId() {
 		return id;
 	}

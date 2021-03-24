@@ -73,7 +73,6 @@ public class AuthenticationController {
 	
 	@RequestMapping("/account")
 	public String account(Model model) {
-		Role guest = rrepo.findByid("GUEST");
 		if (user == null) {
 			System.out.println("0");
 			user = repo.findByEmail("guest@guest.com");
@@ -93,10 +92,58 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping("/editData")
-	public String editAccount(@ModelAttribute List<String> data, Model model) {
-		System.out.println(data);
-		return "/account/account";
+	public String editAccount(@ModelAttribute("editUserDetails") NewUser form, Model model) {
+		System.out.println(form);
+		User updatedUser = new User();
 		
+		// checking for updated email
+		if (form.getEmail() != "") {
+			updatedUser.setEmail(form.getEmail());
+		} else {
+			updatedUser.setEmail(user.getEmail());
+		}
+		
+		// checking for updated password
+		if (form.getPassword() != "") {
+			// checking for passwordCheck, if there isn't one, it returns the user to the form
+			if (form.getPasswordCheck() == "") {
+				model.addAttribute("errorInfo", "You haven't re-entered your new password!");
+				return "/account/edit";
+			} else if (!form.getPassword().equals(form.getPasswordCheck())) { 
+				// checking that password and check match, if not, it returns user to form
+				model.addAttribute("errorInfo", "Passwords don't match!");
+				return "/account/edit";
+			} else {
+				updatedUser.setPassword(pe.encode(form.getPassword()));
+			}
+		} else {
+			updatedUser.setPassword(user.getPassword());
+		}
+		
+		// checking for updated first and last name
+		if (form.getFirstName() != "") {
+			updatedUser.setFirstName(form.getFirstName());
+		} else {
+			updatedUser.setFirstName(user.getFirstName());
+		}
+		if (form.getLastName() != "") {
+			updatedUser.setLastname(form.getLastName());
+		} else {
+			updatedUser.setLastname(user.getLastname());
+		}
+		
+		updatedUser.setRoles(new ArrayList<>());
+		updatedUser.getRoles().add(rrepo.findByid("MEMBER"));
+		if (form.isPremium() == true){
+			updatedUser.getRoles().add(rrepo.findByid("PREMIUM"));
+		}
+		
+		System.out.print(updatedUser);
+		repo.deleteByEmail(user.getEmail());
+		
+		user = repo.save(updatedUser);
+		model.addAttribute("user", user);
+		return "/account/account";
 	}
 	
 	
@@ -120,17 +167,20 @@ public class AuthenticationController {
 			model.addAttribute("errorInfo", "Passwords don't match!");
 			return "/account/registerForm";
 		}
-		user = new User();
-		user.setEmail(form.getEmail());
-		user.setPassword(pe.encode(form.getPassword()));
-		user.setFirstName(form.getFirstName());
-		user.setLastname(form.getLastName());
-		user.setRoles(new ArrayList<>());
+		
+		User createUser = new User();
+		createUser.setEmail(form.getEmail());
+		createUser.setPassword(pe.encode(form.getPassword()));
+		createUser.setFirstName(form.getFirstName());
+		createUser.setLastname(form.getLastName());
+		createUser.setRoles(new ArrayList<>());
+		
 		if (form.isPremium()) {
-			user.getRoles().add(rrepo.findByid("PREMIUM"));
+			createUser.getRoles().add(rrepo.findByid("PREMIUM"));
 		}
-		user.getRoles().add(rrepo.findByid("MEMBER"));
-		user = repo.save(user);
+		createUser.getRoles().add(rrepo.findByid("MEMBER"));
+		
+		repo.save(createUser);
 		return "/homepage/index";
 	}
 	

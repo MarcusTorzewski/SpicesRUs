@@ -27,10 +27,11 @@
 		<li><a href="#">Basket</a></li>
     </ul>
 
-
     <div class="text_main1" align = center>
-
         <table>
+        	<tr>
+				<td colspan="2" align="center"><h2>Account Details</h2></td>
+			</tr>
         	<tr>
 		       	<td>Name</td>
 		       	<td>${user.firstName} ${user.lastname }</td>

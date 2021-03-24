@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +22,7 @@
       <li><a href="/spices">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="#">Discussion Forum</a></li>
-      <sec:authorize access="hasRole('MEMBER')">
-      	<li><a href="/account">My Account</a>
-    	<li><a href="/logout">Sign Out</a>
-    	</sec:authorize>
-	  <sec:authorize access="!hasRole('MEMBER')">
-      	<li><a href="/login-form">Sign-in
-      </sec:authorize>
+      <li><a href="/login-form">Sign-in</a></li>
       <li><a href="#">Basket</a></li>
     </ul>
 
