@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <title>Spices R Us</title>
     <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/account.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -26,7 +27,7 @@
       <li><a href="#">Basket</a></li>
     </ul>
 
-    <div class="text_main1">
+    <div class="account" >
     	<p style="color:red">${errorInfo }</p>
 		<form:form action="/accountBuild" method="post" commandName="userRegister"> 
 		<table border="0">
@@ -52,7 +53,7 @@
 				   
 				</tr>
 			</table>
-			Premium (£3.99/month): <input type="checkbox" name="premium"/><label for="premium"></label>
+			Premium (£3.99/month):<input type="checkbox" name="premium"/><label for="premium"></label>
 		   <input type="submit" value="Create Account!" /><br/>
 		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>
@@ -60,6 +61,21 @@
     <br/>
 	<div align="center">
 		<a href="/login-form">Back to Login</a>
+    </div>
+    <div id="loginbenefits">
+    <h2>Become a Member for Free Today!</h2>
+    <p>And gain access to:</p>
+    <ul>
+    	<li><p>The ability to favourite spices & recipes</p></li>
+    	<li><p>Seamless checkout</p></li>
+    </ul>
+    <h2>Join Premium!</h2>
+    <p>And on top of all that, gain access to :</p>
+    <ul>
+    	<li><p>Premium-only sales</p></li>
+    	<li><p>Downloadable Recipe PDFs</p></li>
+    	<li><p>Ability to switch between measurement units</p></li>
+    </ul>
     </div>
   </body>
 </html>

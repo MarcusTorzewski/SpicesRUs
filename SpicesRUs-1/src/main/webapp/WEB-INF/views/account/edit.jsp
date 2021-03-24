@@ -35,6 +35,9 @@
                     <td colspan="2" align="center"><h2>Change Account Details</h2></td>
                 </tr>
                 <tr>
+                    <td colspan="2" align="center"><p>Enter only the details you want to change</p></td>
+                </tr>
+                <tr>
 				   <td>New Email: </td> <td> <input type="email" name="email" /></td>
 				   </tr>
 				<tr>
