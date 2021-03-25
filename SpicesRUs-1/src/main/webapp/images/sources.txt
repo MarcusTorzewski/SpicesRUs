@@ -4,6 +4,12 @@ images from pexels are free to use (more detailing on website)
 spices_background - https://www.pexels.com/photo/assorted-cooking-spices-2802527/
 food_table - https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/
 
+images from unsplash are free to use (more detailing on website)
+home_page_pic1 https://unsplash.com/s/photos/cooking?orientation=landscape
+home_page_pic2 https://unsplash.com/photos/3D43SBDDkAc
+home_page_pic3 https://unsplash.com/photos/KPDbRyFOTnE
+home_page_pic4 https://unsplash.com/photos/yWG-ndhxvqY
+
 Online DB Resources:
 
 black pepper image - https://www.pexels.com/photo/clear-glass-pepper-shaker-452741/
