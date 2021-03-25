@@ -14,6 +14,8 @@
       rel="stylesheet"
     />
   </head>
+  
+  
   <body>
     <ul class="nav">
       <div id="logo">
@@ -32,7 +34,7 @@
 		<form:form action="/accountBuild" method="post" commandName="userRegister"> 
 		<table border="0">
                 <tr>
-                    <td colspan="2" align="center"><h2>Registration</h2></td>
+                    <td colspan="2"><h2>Registration</h2></td>
                 </tr>
                 <tr>
 				   <td>Email: </td> <td> <input type="email" name="email" /></td>
@@ -50,17 +52,16 @@
 				   <td>Last Name: </td><td><input type="text" name="lastName" /></td>
 				</tr>
 				<tr>
-				   
 				</tr>
 			</table>
-			Premium (£3.99/month):<input type="checkbox" name="premium"/><label for="premium"></label>
+			Premium (£3.99/month):<input type="checkbox" name="premium"/><label for="premium"></label><br/>
 		   <input type="submit" value="Create Account!" /><br/>
 		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form:form>
     </div>
     <br/>
 	<div align="center">
-		<a href="/login-form">Back to Login</a>
+		<a href="/login-form" id="backout">Back to Login</a>
     </div>
     <div id="loginbenefits">
     <h2>Become a Member for Free Today!</h2>

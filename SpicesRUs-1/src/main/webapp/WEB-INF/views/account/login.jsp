@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <title>Spices R Us</title>
     <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/account.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -26,7 +27,7 @@
       <li><a href="#">Basket</a></li>
     </ul>
 
-    <div class="text_main1">
+    <div class="account">
     	<p style="color:red">${errorInfo }</p>
 		<form:form action="/perform_login" method="post" commandName="userLogin"> 
 		<table border="0">
@@ -40,7 +41,7 @@
 			</tr>
 		</table> 
 		   <input type="submit" value="Sign In" /><br/> 
-		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" id="login"/>
 		</form:form>
 		<form:form action="/perform_login" method="post" commandName="userLogin"> 
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -57,7 +58,7 @@
 	</div>
 	<br/>
 	<div align="center">
-		<a href="/createAccount">Create an account</a>
+		<a href="/createAccount" id="create">Create an account</a>
     </div>
   </body>
 </html>
