@@ -114,10 +114,29 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		recipe.setSaturates(6);
 		recipe.setSugars(5);
 		
+
+		recipeRepo.save(recipe); 
 		
+		Role guest = rrepo.findByid("GUEST");
+		User testUser = new User();
+		testUser.setFirstName(null);
+		testUser.setLastname(null);
+		testUser.setEmail("guest@guest.com");
+		testUser.setPassword(pe.encode("password"));
+		testUser.setRoles(new ArrayList<>());
+		testUser.getRoles().add(guest);
+		urepo.save(testUser);
+
+		recipeRepo.save(recipe);
+
+		User user = urepo.findByEmail("js@gmail.com");
+		user.setFavouriteRecipes(new ArrayList<>());
+		user.setFavouriteSpices(srepo.findAll());
+		user.setFavouriteSpices(srepo.findAll());
+		urepo.save(user);
 		
-		recipeRepo.save(recipe); */
-		
+		^^^ REMEMBER TO ClEAR ALL THIS OUT BEFORE FINISHING THE PROJECT
+		 */
 		
 	}
 

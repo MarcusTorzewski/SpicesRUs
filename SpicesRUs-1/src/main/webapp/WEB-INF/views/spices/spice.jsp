@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +25,13 @@
 				style="text-decoration: underline rgb(68, 68, 68);">Spices</a></li>
 			<li><a href="/recipes">Recipes</a></li>
 			<li><a href="#">Discussion Forum</a></li>
-			<li><a href="#">Sign-in</a></li>
+			<sec:authorize access="hasRole('MEMBER')">
+      			<li><a href="/account">My Account</a>
+    			<li><a href="/logout">Sign Out</a>
+    		</sec:authorize>
+	  		<sec:authorize access="!hasRole('MEMBER')">
+      			<li><a href="/login-form">Sign-in</a></li>
+    		</sec:authorize>
 			<li><a href="#">Basket</a></li>
 		</ul>
 
@@ -33,147 +40,39 @@
 				src="${pageContext.request.contextPath}/images/spices_background.jpg" />
 		</div>
 
-		<!-- Top info section -->
-
 		<div class="top_section">
 			<div class="left_section">
-				<img style="width: 350px; height: 350px; object-fit: cover;" src="${spice.image}">
+				<img style="width: 315px; height: 315px; object-fit: cover;"
+					src="${spice.image}">
 			</div>
 			<div class="right_section">
 				<h1 class="spice_heading">${spice.name}</h1>
 				<p>${spice.description}</p>
-				<p style="padding: 10px 0 10px 0;'">${spice.name} originated in ${spice.region}. ${spice.description}</p>
-				<p>${spice.name} pairs well with: </p>
+				<p style="padding: 10px 0 10px 0;'">${spice.name} originated in
+					${spice.region}. ${spice.description}</p>
+				<p>${spice.name} pairs well with:</p>
 				<ul>
 					<c:forEach items="${spice.compliment_spices}" var="compliment">
-						<li class="compliment_list_item"><a href="/spices/${compliment}">${compliment}</a></li>
+						<li class="compliment_list_item"><a
+							href="/spices/${compliment}">${compliment}</a></li>
 					</c:forEach>
 				</ul>
 
 				<div class="basket">
-					<form action="">  <!-- set action to add to basket in basket controller. -->
-						<label for="quantity">Quantity:</label>
-						<input type="number" id="quantity" name="quantity" value=1>
-					
-						<label for="size">Size</label>
-						<select id="size" name="size">
-					    	<option selected value="small">small</option>
-					    	<option value="medium">medium</option>
-					    	<option value="large">large</option>
-						</select>
-					  
-						<input type="submit" value="Add To Basket">
+					<form action="">
+						<!-- set action to add to basket in basket controller. -->
+						<label for="quantity">Quantity: </label> <input type="number"
+							id="quantity" name="quantity" value=1> <label for="size">Size:
+						</label> <select id="size" name="size">
+							<option selected value="small">small</option>
+							<option value="medium">medium</option>
+							<option value="large">large</option>
+						</select> <input type="submit" value="Add To Basket">
 					</form>
 				</div>
-				<!-- 				<table style="padding-top: 15px"> -->
-				<!-- 					<tbody class="macros_table_body"> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">cal</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.calories}</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">fat</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.fat}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">saturates</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.saturates}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">sugars</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.sugars}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">salt</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.salt}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">protein</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.protein}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">carbs</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.carbs}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 						<tr class="macros_table_row"> -->
-				<!-- 							<td class="macros_table_nutrient">fibre</td> -->
-				<%-- 							<td style="padding: 5px;">${recipe.fibre}g</td> --%>
-				<!-- 						</tr> -->
-				<!-- 					</tbody> -->
-				<!-- 				</table> -->
 			</div>
 		</div>
-
-
-		<hr class="line_break">
-		<!-- 		<div class="text_main1"> -->
-		<!-- 			<h1> -->
-		<%-- 				<p>${spice.name}Region:${spice.region}</p> --%>
-		<!-- 			</h1> -->
-		<!-- 		</div> -->
-		<!-- 		<div class="banner"> -->
-		<!-- 			<img class="banner-image2" -->
-		<%-- 				src="${pageContext.request.contextPath}/images/food_table.jpg" /> --%>
-		<!-- 		</div> -->
-		<!-- 		<div class="text_main2"> -->
-		<!-- 			<h1> -->
-		<!-- 				<p>*Potentially remove this divider + above banner*</p> -->
-
-		<!-- 			</h1> -->
-		<!-- 		</div> -->
 	</div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -55,7 +55,7 @@ body {
 }
 
 .banner {
-  height: 500px;
+  height: 400px;
   overflow: hidden;
 }
 
@@ -80,9 +80,18 @@ body {
   color: #000000;
 }
 
+.h1 {
+	display: inline; 
+	border-bottom:2px solid;
+	border-color:#f9c86c;
+	padding:10px 0px 10px 0px;
+}
+
 
 table{
 	  max-width: 1000px;
   margin: auto;
 }
+
+
 

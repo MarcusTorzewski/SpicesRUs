@@ -1,0 +1,33 @@
+.main_section {
+	width:100%; 
+	overflow: hidden; 
+	padding:2% 5% 3% 0%; 
+	background-color: #fdedce;
+	text-align:center;
+}
+
+.img_section {
+	background-color:#f9c86c;
+	text-align:center;
+	padding: 1% 0% 2% 0%; 
+}
+
+p {
+	width:50%;
+	margin-right:25%;
+	margin-left:25%;
+	padding-top:2%;
+}
+
+.pic {
+	width:20%;
+	height:10%;
+	border-style:solid;
+	border-width:2px;
+}
+
+.pic_container {
+  position: relative;
+  display:inline;
+  margin:1%;
+}

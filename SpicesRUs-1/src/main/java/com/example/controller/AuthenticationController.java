@@ -1,18 +1,21 @@
 package com.example.controller;
 
 import java.security.Principal;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.model.NewUser;
+import com.example.model.Role;
 import com.example.model.User;
+import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
 
 @Controller
@@ -20,15 +23,35 @@ public class AuthenticationController {
 	
 	@Autowired
 	public UserRepository repo;
+	@Autowired
+	public RoleRepository rrepo;
+	@Autowired 
+	private PasswordEncoder pe; 
 	
-	private User user;
+	private static User user;
 	
-	@RequestMapping("/login-form")
-	public String loginForm() {
-		return "/account/login";
+	static public User getUser() {
+		return user;
+	}
+	public static void setUser(User newUser) {
+		user = newUser;
 	}
 	
-	@RequestMapping(value = "/success-login", method = RequestMethod.GET) 
+	@RequestMapping("/login-form")
+	public String loginForm(Model model) {
+		if (user !=null) {
+			if (!user.getEmail().equals("guest@guest.com")) {
+				model.addAttribute("user", user);
+				return "/account/account";
+			}
+		} else {
+			user = repo.findByEmail("guest@guest.com");
+		}
+		return "/account/login";
+	}
+
+
+	@GetMapping("/success-login") 
 	public String successLogin(Principal principal) { 
 	   user = repo.findByEmail(principal.getName()); 
 	   if (user.getRoles().isEmpty()) { 
@@ -50,18 +73,120 @@ public class AuthenticationController {
 	
 	@RequestMapping("/account")
 	public String account(Model model) {
+		if (user == null) {
+			System.out.println("0");
+			user = repo.findByEmail("guest@guest.com");
+			return "/account/login";
+		}
+		if (user.getEmail().equals("guest@guest.com")) {
+			return "/account/login";
+		}
 		model.addAttribute("user", user);
 		return "/account/account";
 	}
 	
-	/*
-	@RequestMapping("/logout")
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	        new SecurityContextLogoutHandler().logout(request, response, auth);
-	    }
-	    return "redirect:/login?logout";//You can redirect wherever you want, but generally it's a good practice to show login screen again.
+	@RequestMapping("/editAccount")
+	public String editAccountPage(Model model) {
+		model.addAttribute("user", user);
+		return "/account/edit";
 	}
-	*/
+	
+	@RequestMapping("/editData")
+	public String editAccount(@ModelAttribute("editUserDetails") NewUser form, Model model) {
+		System.out.println(form);
+		User updatedUser = new User();
+		
+		// checking for updated email
+		if (form.getEmail() != "") {
+			updatedUser.setEmail(form.getEmail());
+		} else {
+			updatedUser.setEmail(user.getEmail());
+		}
+		
+		// checking for updated password
+		if (form.getPassword() != "") {
+			// checking for passwordCheck, if there isn't one, it returns the user to the form
+			if (form.getPasswordCheck() == "") {
+				model.addAttribute("errorInfo", "You haven't re-entered your new password!");
+				return "/account/edit";
+			} else if (!form.getPassword().equals(form.getPasswordCheck())) { 
+				// checking that password and check match, if not, it returns user to form
+				model.addAttribute("errorInfo", "Passwords don't match!");
+				return "/account/edit";
+			} else {
+				updatedUser.setPassword(pe.encode(form.getPassword()));
+			}
+		} else {
+			updatedUser.setPassword(user.getPassword());
+		}
+		
+		// checking for updated first and last name
+		if (form.getFirstName() != "") {
+			updatedUser.setFirstName(form.getFirstName());
+		} else {
+			updatedUser.setFirstName(user.getFirstName());
+		}
+		if (form.getLastName() != "") {
+			updatedUser.setLastname(form.getLastName());
+		} else {
+			updatedUser.setLastname(user.getLastname());
+		}
+		
+		updatedUser.setRoles(new ArrayList<>());
+		updatedUser.getRoles().add(rrepo.findByid("MEMBER"));
+		if (form.isPremium() == true){
+			updatedUser.getRoles().add(rrepo.findByid("PREMIUM"));
+		}
+		
+		System.out.print(updatedUser);
+		repo.deleteByEmail(user.getEmail());
+		
+		user = repo.save(updatedUser);
+		model.addAttribute("user", user);
+		return "/account/account";
+	}
+	
+	
+	@RequestMapping("/createAccount")
+	public String accountCreation(Model model) {
+		return "/account/registerForm";
+	}
+	
+	@RequestMapping("/accountBuild")
+	public String accountBuilder(@ModelAttribute("userRegister") NewUser form, Model model) {
+		System.out.println(form);
+		if (form.getEmail() == "" || form.getPassword() == "" || form.getPasswordCheck() == "" || form.getFirstName() == "" || form.getLastName() == "") {
+			model.addAttribute("errorInfo", "Some data was not entered!");
+			return "/account/registerForm";
+		}
+		if (repo.findByEmail(form.getEmail()) != null){
+			model.addAttribute("errorInfo", "Email already in use!");
+			return "/account/registerForm";
+		}
+		if (!form.getPassword().equals(form.getPasswordCheck())) {
+			model.addAttribute("errorInfo", "Passwords don't match!");
+			return "/account/registerForm";
+		}
+		
+		User createUser = new User();
+		createUser.setEmail(form.getEmail());
+		createUser.setPassword(pe.encode(form.getPassword()));
+		createUser.setFirstName(form.getFirstName());
+		createUser.setLastname(form.getLastName());
+		createUser.setRoles(new ArrayList<>());
+		
+		if (form.isPremium()) {
+			createUser.getRoles().add(rrepo.findByid("PREMIUM"));
+		}
+		createUser.getRoles().add(rrepo.findByid("MEMBER"));
+		
+		repo.save(createUser);
+		return "/homepage/index";
+	}
+	
+	@RequestMapping("/logout-user")
+	public String logout(){
+		user = repo.findByEmail("guest@guest.com");
+		return "/account/login";
+	}
 }

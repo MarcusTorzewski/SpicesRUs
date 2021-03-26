@@ -1,19 +1,43 @@
+.basket input[type=number] {
+  padding: 12px 10px;
+  margin: 8px 0;
+  margin-right: 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.basket select {
+  padding: 12px 10px;
+  margin: 8px 0;
+  margin-right: 50px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.basket input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .basket input[type=submit]:hover {
   background-color: #45a049;
 }
-
 
 .top_section {
 	width:100%; 
 	overflow: hidden; 
 	padding:2% 5% 3% 5%; 
-	background-color: #fdedce;
-}
-
-.bottom_section {
-	width: 100%; 
-	overflow: hidden; 
-	padding: 0 5% 0 5%; 
 	background-color: #fdedce;
 }
 
@@ -29,44 +53,6 @@
 
 .spice_heading {
 	display: inline; 
-	border-bottom:2px solid; 
-	border-color:#f9c86c; 
-	padding:10px 0px 10px 0px;
-}
-
-.macros_table_body {
-	display:inline-flex; 
-	flex-wrap:wrap; 
-	align-items:flex-start; 
-	font-size:13px
-}
-
-.macros_table_row {
-	display:flex; 
-	text-align:center; 
-	flex-direction:column; 
-	word-break:break-all; 
-	border-style:solid; 
-	border-color:black; 
-	border-width:1px; 
-	background-color:white; 
-	min-width:70px;
-}
-
-.macros_table_nutrient {
-	padding:5px; 
-	border-bottom-style:solid; 
-	border-bottom-width:1px;
-}
-
-.line_break {
-	color: #f6ac23; 
-	height:5px; 
-	background-color: #f6ac23; 
-	border-width:0;
-}
-
-.compliment_list_item {
 	border-bottom:2px solid; 
 	border-color:#f9c86c; 
 	padding:10px 0px 10px 0px;
