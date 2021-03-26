@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.io.Console;
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -7,12 +8,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.Basket;
 import com.example.model.BasketItem;
@@ -38,21 +37,45 @@ public class BasketController {
 	SpiceRepository spiceRepo;
 	
 	
-	
-	
 
-//	@RequestMapping(path="/basket/add/{id}/{size}/{quantity}", method=RequestMethod.POST)
-//	public String addItemToBasket(@PathVariable("id") String id, @PathVariable("size") String size, @PathVariable("quantity") String quantity, Principal principal) {
-//		
-//		
-//		return "redirect:/basket";
-//	}
+	@RequestMapping(path= "/basket/add/{id}/{size}/{quantity}",method = RequestMethod.GET)
+	public String addItemToBasket(@PathVariable("id") String id,@PathVariable("size") String size,@PathVariable("quantity") String quantity,Principal principal) {
+		
+		User currentUser = userRepo.findByEmail(principal.getName());
+		
+		Spice spiceToBeAddedSpice = spiceRepo.findById(id).orElse(null);
+		
+		System.out.println("SIZEEEE = ");
+		
+		PacketSize packSize =PacketSize.SMALL;
+		
+		if(size == "S") {
+			packSize = PacketSize.SMALL;
+		}
+		else if (size == "M") {
+			packSize = PacketSize.MEDIUM;
+		}
+		else if (size == "L") {
+			packSize = PacketSize.LARGE;
+			
+		}
+		
+		BasketItem newItem = new BasketItem(spiceToBeAddedSpice,packSize,Integer.parseInt(quantity));
+		
+		
+		currentUser.getCustomerBasket().getItems().add(newItem);
+		
+		currentUser.getCustomerBasket().WorkOutBasketTotal();
+		
+		userRepo.save(currentUser);
+		
+		basketRepo.save(currentUser.getCustomerBasket());
+		
+		
 	
-	@PostMapping(path="basket/add")
-	public String add() {
-		System.out.println("PINGPONGPINGPONGPINGPONG");
-		return null;
+		return "redirect:/basket";
 	}
+	
 	
 	@RequestMapping(path = "/emptybasket",method = RequestMethod.GET)
 	public String emptyBasket(Principal principal) {
@@ -68,9 +91,10 @@ public class BasketController {
 		newUserBasket = basketRepo.save(newUserBasket);
 				
 		currentUser.setCustomerBasket(newUserBasket);		
+		currentUser.getCustomerBasket().WorkOutBasketTotal();
 		userRepo.save(currentUser);	
 		return "redirect:/basket";	
-		
+	
 	}
 	
 	@RequestMapping(path = "/basket/removeItem/{pos}",method = RequestMethod.GET)
@@ -78,18 +102,17 @@ public class BasketController {
 	{
 		User currentUser = userRepo.findByEmail(principal.getName());
 		
-		currentUser.getCustomerBasket().getItems().remove(Integer.parseInt(pos));
+		
+		
+		currentUser.getCustomerBasket().RemoveItemFromBasket(Integer.parseInt(pos));
 		
 		basketRepo.save(currentUser.getCustomerBasket());
 		userRepo.save(currentUser);
 		
 		
 		return "redirect:/basket";
-		
-		
+				
 	}
-	
-	
 
 	@RequestMapping("/basket")
 	public String basket(Model model,Principal principal) {

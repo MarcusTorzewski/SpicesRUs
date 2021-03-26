@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+
+
 @Document(collection="basket")
 public class Basket {
 	
@@ -27,6 +29,7 @@ public class Basket {
 
 
 	public String getBasketId() {
+		
 		return basketId;
 	}
 
@@ -61,6 +64,30 @@ public class Basket {
 	public void setItems(List<BasketItem> items) {
 		this.items = items;
 	}
+	
+	public void WorkOutBasketTotal() {
+		
+		float tempTotal =0f;
+		
+		for(BasketItem item : items) {
+			
+			tempTotal +=item.getPrice();
+		
+		}
+		
+		setBasketTotalValue(tempTotal);
+		
+	}
+	
+	public void RemoveItemFromBasket(int pos) {
+		
+		items.remove(pos);
+		
+		WorkOutBasketTotal();
+	}
+
+	
+	
 
 
 	public void WorkOutTotalWithDiscountPerecent(float discountPercent) {

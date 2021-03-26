@@ -12,15 +12,18 @@ public class BasketItem {
 	
 	private PacketSize size;
 	
+	
 	private int quantity;
 	
 	private float price;
+	
 
 	
 	
 
 	public BasketItem(Spice spice,PacketSize size ,  int quantity) {
 		super();
+		
 		this.spice = spice;
 		this.size = size;
 		this.quantity = quantity;

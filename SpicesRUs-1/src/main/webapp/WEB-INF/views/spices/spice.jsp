@@ -11,7 +11,26 @@
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
 </head>
+
+
+
 <body>
+
+<script>
+
+	function setMyHref(){
+		
+		var selectedSize = document.getElementById("size").value;
+		var selectedQuantity = document.getElementById("quantity").value;
+		
+		document.getElementById("addHref").href += selectedSize + "/" + selectedQuantity;
+		
+
+	}
+
+
+</script>
+
 	<div>
 		<ul class="nav">
 			<div id="logo">
@@ -50,17 +69,23 @@
 							href="/spices/${compliment}">${compliment}</a></li>
 					</c:forEach>
 				</ul>
+				
+		
 
-				<div class="basket">
-					<form action="../basket/add" method="POST">
-						<!-- set action to add to basket in basket controller. -->
+				<div class="basket" id="bask">
+					<form action="/basket/add" modelAttribute = "basketItem" method="POST">
 						<label for="quantity">Quantity: </label> <input type="number"
 							id="quantity" name="quantity" value=1> <label for="size">Size:
 						</label> <select id="size" name="size">
-							<option selected value="small">small</option>
-							<option value="medium">medium</option>
-							<option value="large">large</option>
-						</select> <input type="submit" value="Add To Basket">
+							<option selected value="Small">Small</option>
+							<option value="Medium">Medium</option>
+							<option value="Large">Large</option>
+						</select> 
+						<a  id ="addHref" onclick="setMyHref()" href="/basket/add/${spice.id}/"> <h1> Add To Basket</h1> </a>
+						
+						
+					
+					
 					</form>
 				</div>
 			</div>
