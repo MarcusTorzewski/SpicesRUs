@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,26 +12,7 @@
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
 </head>
-
-
-
 <body>
-
-<script>
-
-	function setMyHref(){
-		
-		var selectedSize = document.getElementById("size").value;
-		var selectedQuantity = document.getElementById("quantity").value;
-		
-		document.getElementById("addHref").href += selectedSize + "/" + selectedQuantity;
-		
-
-	}
-
-
-</script>
-
 	<div>
 		<ul class="nav">
 			<div id="logo">
@@ -43,7 +25,13 @@
 				style="text-decoration: underline rgb(68, 68, 68);">Spices</a></li>
 			<li><a href="/recipes">Recipes</a></li>
 			<li><a href="#">Discussion Forum</a></li>
-			<li><a href="#">Sign-in</a></li>
+			<sec:authorize access="hasRole('MEMBER')">
+      			<li><a href="/account">My Account</a>
+    			<li><a href="/logout">Sign Out</a>
+    		</sec:authorize>
+	  		<sec:authorize access="!hasRole('MEMBER')">
+      			<li><a href="/login-form">Sign-in</a></li>
+    		</sec:authorize>
 			<li><a href="#">Basket</a></li>
 		</ul>
 
@@ -54,7 +42,7 @@
 
 		<div class="top_section">
 			<div class="left_section">
-				<img style="width: 350px; height: 350px; object-fit: cover;"
+				<img style="width: 315px; height: 315px; object-fit: cover;"
 					src="${spice.image}">
 			</div>
 			<div class="right_section">
@@ -69,28 +57,21 @@
 							href="/spices/${compliment}">${compliment}</a></li>
 					</c:forEach>
 				</ul>
-				
-		
 
-				<div class="basket" id="bask">
-					<form action="/basket/add" modelAttribute = "basketItem" method="POST">
+				<div class="basket">
+					<form action="">
+						<!-- set action to add to basket in basket controller. -->
 						<label for="quantity">Quantity: </label> <input type="number"
 							id="quantity" name="quantity" value=1> <label for="size">Size:
 						</label> <select id="size" name="size">
-							<option selected value="Small">Small</option>
-							<option value="Medium">Medium</option>
-							<option value="Large">Large</option>
-						</select> 
-						<a  id ="addHref" onclick="setMyHref()" href="/basket/add/${spice.id}/"> <h1> Add To Basket</h1> </a>
-						
-						
-					
-					
+							<option selected value="small">small</option>
+							<option value="medium">medium</option>
+							<option value="large">large</option>
+						</select> <input type="submit" value="Add To Basket">
 					</form>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 </body>
