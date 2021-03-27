@@ -2,9 +2,6 @@ package com.example.model;
 
 
 
-
-
-
 public class BasketItem {
 	
 	
@@ -15,7 +12,7 @@ public class BasketItem {
 	
 	private int quantity;
 	
-	private float price;
+	private double price;
 	
 
 	
@@ -28,8 +25,28 @@ public class BasketItem {
 		this.size = size;
 		this.quantity = quantity;
 		
-		this.price = spice.getBasePricePerKG() * quantity *size.getSizeRatio() * size.getPriceRatio();
+		double tempPrice = spice.getBaseWeight() * spice.getBasePricePerKG() * quantity *size.getSizeRatio() * size.getPriceRatio();
+		
+		System.out.println("item priceee 1 = " +tempPrice);
+		
+		tempPrice= Math.round(tempPrice*100);
+		
+		tempPrice = tempPrice/100;
+		
+		System.out.println("item priceee 2 = " +tempPrice);
+		
+		this.price = tempPrice;
 
+	}
+	
+	public void UpdatePrice() {
+		
+		double tempPrice = spice.getBaseWeight() * spice.getBasePricePerKG() * quantity *size.getSizeRatio() * size.getPriceRatio();
+		
+		tempPrice= Math.round(tempPrice*100);
+		tempPrice = tempPrice/100;
+		
+		this.price = tempPrice;
 	}
 
 
@@ -43,43 +60,29 @@ public class BasketItem {
 
 
 
-
 	public PacketSize getSize() {
 		return size;
 	}
-
-
-
 
 	public void setSize(PacketSize size) {
 		this.size = size;
 	}
 
-
-
-
 	public int getQuantity() {
 		return quantity;
 	}
-
-
-
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-
-
-
-	public float getPrice() {
+	public double getPrice() {
+			
 		return price;
 	}
 
 
-
-
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

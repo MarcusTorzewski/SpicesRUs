@@ -13,6 +13,21 @@
 	rel="stylesheet" />
 </head>
 <body>
+
+<script>
+
+	function setMyHref(){
+
+		var selectedSize = document.getElementById("size").value;
+		var selectedQuantity = document.getElementById("quantity").value;
+		document.getElementById("addHref").href += selectedSize + "/" +selectedQuantity;	
+
+	}
+
+
+</script>
+
+
 	<div>
 		<ul class="nav">
 			<div id="logo">
@@ -32,7 +47,7 @@
 	  		<sec:authorize access="!hasRole('MEMBER')">
       			<li><a href="/login-form">Sign-in</a></li>
     		</sec:authorize>
-			<li><a href="#">Basket</a></li>
+			<li><a href="/basket">Basket</a></li>
 		</ul>
 
 		<div class="banner">
@@ -59,18 +74,22 @@
 				</ul>
 
 				<div class="basket">
-					<form action="">
+					
 						<!-- set action to add to basket in basket controller. -->
-						<label for="quantity">Quantity: </label> <input type="number"
-							id="quantity" name="quantity" value=1> <label for="size">Size:
-						</label> <select id="size" name="size">
-							<option selected value="small">small</option>
-							<option value="medium">medium</option>
-							<option value="large">large</option>
-						</select> <input type="submit" value="Add To Basket">
-					</form>
+					<label for="quantity">Quantity: </label> <input type="number"
+						id="quantity" name="quantity" value=1> <label for="size">Size:
+					</label> <select id="size" name="size">
+						<option selected value="small">small</option>
+						<option value="medium">medium</option>
+						<option value="large">large</option>
+					</select>
+					
+					<a id="addHref" href="/basket/add/${spice.id}/" onclick="setMyHref()">Add To Basket</a>
 				</div>
+				
+				
 			</div>
+			
 		</div>
 	</div>
 

@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import java.security.Principal;
-import java.util.Collection;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -9,12 +11,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.model.Recipe;
+import com.example.model.Basket;
 import com.example.model.Role;
 import com.example.model.User;
+import com.example.repository.BasketRepository;
 import com.example.repository.RecipeRepository;
 import com.example.repository.SpiceRepository;
 import com.example.repository.UserRepository;
@@ -31,6 +36,9 @@ public class WebController {
 	@Autowired
 	private UserRepository urepo;
 	
+	@Autowired
+	private BasketRepository basketRepo;
+	
 	@RequestMapping("/")
 	public String home(Model model) {
 		if (AuthenticationController.getUser() == null) {
@@ -45,8 +53,24 @@ public class WebController {
 	}
 	
 	@RequestMapping("/spices")
-	public String spices(Model model) {
+	public String spices(@CookieValue(value = "basketIdSpicesRUs",defaultValue = "empty") String cookieBasketId,HttpServletResponse response,Model model) {
 		model.addAttribute("spices", spice_repo.findAll());
+		
+		if(cookieBasketId.contains("empty")) {
+			
+			Basket newGuestBasket = new Basket();
+			
+			newGuestBasket = basketRepo.save(newGuestBasket);
+			
+			Cookie newBasketCookie = new Cookie("basketIdSpicesRUs", newGuestBasket.getBasketId());
+			newBasketCookie.setMaxAge(7 * 24 * 60 * 60); 
+		    newBasketCookie.setPath("/");
+			
+			response.addCookie(newBasketCookie);
+					
+		}
+		
+		
 		return "/spices/index";
 	}
 	
@@ -97,5 +121,7 @@ public class WebController {
 			return "redirect:/login-form";
 		}
 	}
+	
+
 		
 }

@@ -1,14 +1,19 @@
 package com.example.controller;
 
-import java.io.Console;
-import java.security.Principal;
-import java.util.ArrayList;
 
+import java.security.Principal;
+
+
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,99 +41,182 @@ public class BasketController {
 	@Autowired
 	SpiceRepository spiceRepo;
 	
-	
 
-	@RequestMapping(path= "/basket/add/{id}/{size}/{quantity}",method = RequestMethod.GET)
-	public String addItemToBasket(@PathVariable("id") String id,@PathVariable("size") String size,@PathVariable("quantity") String quantity,Principal principal) {
+
+	@RequestMapping(path= "basket/add/{id}/{size}/{quantity}",method = RequestMethod.GET)
+	public String addItemToBasket(@CookieValue(value ="basketIdSpicesRUs",defaultValue = "empty") String cookieBasketId,HttpServletResponse response,@PathVariable("id") String id,@PathVariable("size") String size,@PathVariable("quantity") String quantity,Principal principal) {
 		
-		User currentUser = userRepo.findByEmail(principal.getName());
 		
-		Spice spiceToBeAddedSpice = spiceRepo.findById(id).orElse(null);
+		Spice spiceToBeAddedSpice = spiceRepo.findById(id).orElse(null);	
+		BasketItem newItem = null;
 		
-		System.out.println("SIZEEEE = ");
 		
-		PacketSize packSize =PacketSize.SMALL;
-		
-		if(size == "S") {
-			packSize = PacketSize.SMALL;
-		}
-		else if (size == "M") {
-			packSize = PacketSize.MEDIUM;
-		}
-		else if (size == "L") {
-			packSize = PacketSize.LARGE;
+		if(size.contains("small")) {
+			System.out.println("SMALL ITEM ADDED");
+			PacketSize packSizeS =PacketSize.SMALL;
+			newItem = new BasketItem(spiceToBeAddedSpice,packSizeS,Integer.parseInt(quantity));
 			
 		}
+		else if (size.contains("medium")) {
+			System.out.println("MEDIUM ITEM ADDED");
+			PacketSize packSizeM =PacketSize.MEDIUM;
+			newItem = new BasketItem(spiceToBeAddedSpice,packSizeM,Integer.parseInt(quantity));
 		
-		BasketItem newItem = new BasketItem(spiceToBeAddedSpice,packSize,Integer.parseInt(quantity));
+		}
+		else if (size.contains("large")) {
+			System.out.println("LARGE ITEM ADDED");
+			PacketSize packSizeL =PacketSize.LARGE;
+			newItem = new BasketItem(spiceToBeAddedSpice,packSizeL,Integer.parseInt(quantity));
+					
+		}
 		
 		
-		currentUser.getCustomerBasket().getItems().add(newItem);
 		
-		currentUser.getCustomerBasket().WorkOutBasketTotal();
+		if(principal != null) {
+			
+			User currentUser= userRepo.findById(principal.getName()).orElse(null);
+			
+			currentUser.getCustomerBasket().addItemToBasket(newItem);
+			
+			
+			userRepo.save(currentUser);
+			
+			basketRepo.save(currentUser.getCustomerBasket());
+		}
+		else {
+			
 		
-		userRepo.save(currentUser);
-		
-		basketRepo.save(currentUser.getCustomerBasket());
-		
-		
-	
+				
+			Basket currentSessionBasket = basketRepo.findById(cookieBasketId).orElse(null);
+				
+			currentSessionBasket.addItemToBasket(newItem);
+				
+			basketRepo.save(currentSessionBasket);				
+					
+		}
+
 		return "redirect:/basket";
 	}
 	
 	
+	
 	@RequestMapping(path = "/emptybasket",method = RequestMethod.GET)
-	public String emptyBasket(Principal principal) {
+	public String emptyBasket(@CookieValue(value="basketIdSpicesRUs",defaultValue ="empty") String cookieBasketId,HttpServletResponse response,Principal principal) {
 		
-		User currentUser = userRepo.findByEmail(principal.getName());
-		
-		
-		Basket newUserBasket = new Basket();
-		newUserBasket.setBasketItemCount(0);
-		newUserBasket.setBasketTotalValue(0f);
-		newUserBasket.setBasketId("123");
-		newUserBasket.setItems(new ArrayList<BasketItem>());
-		newUserBasket = basketRepo.save(newUserBasket);
+		if(principal!= null) {
+			User currentUser = userRepo.findByEmail(principal.getName());
+			
+			Basket userBasket = currentUser.getCustomerBasket();		
+			userBasket.EmptyBasket();
+			
+			userRepo.save(currentUser);
+			basketRepo.save(userBasket);
+			
+		}
+		else {
+			
+			Basket cookieBasket = basketRepo.findById(cookieBasketId).orElse(null);
+			cookieBasket.EmptyBasket();
+			
+			basketRepo.save(cookieBasket);			
 				
-		currentUser.setCustomerBasket(newUserBasket);		
-		currentUser.getCustomerBasket().WorkOutBasketTotal();
-		userRepo.save(currentUser);	
+		}
+	
 		return "redirect:/basket";	
 	
 	}
 	
 	@RequestMapping(path = "/basket/removeItem/{pos}",method = RequestMethod.GET)
-	public String removeItemFromBasket(@PathVariable("pos") String pos,Principal principal)
-	{
-		User currentUser = userRepo.findByEmail(principal.getName());
+	public String removeItemFromBasket(@CookieValue(value ="basketIdSpicesRUs", defaultValue="empty") String cookieBasketId,HttpServletResponse response,@PathVariable("pos") String pos,Principal principal){
 		
+		if(principal != null) {
+			User currentUser = userRepo.findByEmail(principal.getName());	
+			currentUser.getCustomerBasket().RemoveItemFromBasket(Integer.parseInt(pos));
+			
+			basketRepo.save(currentUser.getCustomerBasket());
+			
+			userRepo.save(currentUser);
+		}
+		else {
+			
+			Basket cookieBasket = basketRepo.findById(cookieBasketId).orElse(null);
+			
+			cookieBasket.RemoveItemFromBasket(Integer.parseInt(pos));;
+			
+			basketRepo.save(cookieBasket);
+			
 		
+		}
 		
-		currentUser.getCustomerBasket().RemoveItemFromBasket(Integer.parseInt(pos));
-		
-		basketRepo.save(currentUser.getCustomerBasket());
-		userRepo.save(currentUser);
-		
-		
+	
 		return "redirect:/basket";
 				
 	}
 
 	@RequestMapping("/basket")
-	public String basket(Model model,Principal principal) {
+	public String basket(@CookieValue(value ="basketIdSpicesRUs", defaultValue="empty") String cookieBasketId,HttpServletResponse response,Model model,Principal principal) {
 
-		User loggedInUser = userRepo.findByEmail(principal.getName());
 		
-		Basket basket = basketRepo.findById(loggedInUser.getCustomerBasket().getBasketId()).orElse(null);
+		Basket basket = null;
 		
-		if(basket == null) {
-			System.out.println("basket cannot be found");
+		if(principal!= null) {
+			User loggedInUser = userRepo.findById(principal.getName()).orElse(null);
+			basket = basketRepo.findById(loggedInUser.getCustomerBasket().getBasketId()).orElse(null);
+			if(basket == null) {
+				System.out.println("basket cannot be found");
+			}
+			
+			model.addAttribute("basket",basket);
+			
+			return "basket/basket";	
+		}
+		else {
+			
+			
+			if(cookieBasketId.contains("empty")) {
+				
+				basket = new Basket();
+				basket = basketRepo.save(basket);
+				
+				System.out.println("Basket id =  " +basket.getBasketId());
+				
+				setCookie(response,basket.getBasketId());
+				
+				model.addAttribute("basket",basket);
+				
+				return "basket/basket";
+				
+			}
+			else {
+	
+				basket = basketRepo.findById(cookieBasketId).orElse(null);			
+				model.addAttribute("basket", basket);
+				return "basket/basket";
+				
+			}
+				
 		}
 		
-		model.addAttribute("basket",basket);
+	
 		
-		return "basket/basket";	
 	}
+	
+	@GetMapping("/makeNewCookie")
+	public String setCookie(HttpServletResponse response,String basketId) {
+	    // create a cookie
+	    Cookie cookie = new Cookie("basketIdSpicesRUs",basketId);
+	    cookie.setMaxAge(7 * 24 * 60 * 60); 
+	    cookie.setPath("/"); 
+	
+	    response.addCookie(cookie);
+
+	    return "redirect:/spices";
+	}
+	
+	
+	
+	
+	
 	
 	
 }

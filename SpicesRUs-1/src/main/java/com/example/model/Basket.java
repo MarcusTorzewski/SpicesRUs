@@ -20,11 +20,62 @@ public class Basket {
 	
 	private int basketItemCount;
 	
-	private float basketTotalValue;
+	private double basketTotalValue;
 	
 	// Product, Quantity
 	
 	private List<BasketItem> items = new ArrayList<BasketItem>();
+	
+	public Basket() {
+		items = new ArrayList<BasketItem>();
+		this.basketTotalValue =0;
+		this.basketItemCount=0;
+		
+		
+	}
+	
+	public void addItemToBasket(BasketItem pendingAddItem) {
+		
+		System.out.println("ITEM TO BE ADDED = " +pendingAddItem.getSpice().getName());
+		
+		boolean addedRepeat = addRepeatingItem(pendingAddItem);
+		
+		if(addedRepeat == false) {
+			System.out.println("ADD METHOD PERSONAL INSIDE if");
+			items.add(pendingAddItem);
+			
+			WorkOutBasketTotal();
+			
+		}
+		
+	}
+	
+	public boolean addRepeatingItem(BasketItem itemToBeAdded) {
+		
+		for(BasketItem item : items) {
+		
+			if(item.getSize() == itemToBeAdded.getSize() && item.getSpice().getId().contains(itemToBeAdded.getSpice().getId())) {
+				
+				int tempQuant = item.getQuantity();
+				
+				tempQuant+= itemToBeAdded.getQuantity();
+
+				item.setQuantity(tempQuant);
+				
+				item.UpdatePrice();
+
+				WorkOutBasketTotal();
+				
+				return true;
+			}
+		}
+		
+		return false;
+		
+		
+		
+	}
+	
 	
 
 
@@ -45,11 +96,11 @@ public class Basket {
 		this.basketItemCount = basketItemCount;
 	}
 
-	public float getBasketTotalValue() {
+	public double getBasketTotalValue() {
 		return basketTotalValue;
 	}
 
-	public void setBasketTotalValue(float basketTotalValue) {
+	public void setBasketTotalValue(double basketTotalValue) {
 		this.basketTotalValue = basketTotalValue;
 	}
 	
@@ -67,14 +118,17 @@ public class Basket {
 	
 	public void WorkOutBasketTotal() {
 		
-		float tempTotal =0f;
-		
+		double tempTotal =0.00;
+
 		for(BasketItem item : items) {
 			
 			tempTotal +=item.getPrice();
-		
 		}
 		
+		tempTotal = Math.round(tempTotal*100);
+		
+		tempTotal = tempTotal/100;
+	
 		setBasketTotalValue(tempTotal);
 		
 	}
@@ -87,26 +141,29 @@ public class Basket {
 	}
 
 	
+	public void EmptyBasket() {
+		
+		this.items = new ArrayList<BasketItem>();
+		this.basketTotalValue =0;
+		this.basketItemCount =0;
+
+	}
 	
-
-
 	public void WorkOutTotalWithDiscountPerecent(float discountPercent) {
 
-		float tempTotalPercentDiscounted = basketTotalValue;
-
+		double tempTotalPercentDiscounted = basketTotalValue;
 		tempTotalPercentDiscounted = tempTotalPercentDiscounted * ((100 - discountPercent) / 100);
-
 		basketTotalValue = tempTotalPercentDiscounted;
 
 	}
 
 	public void WorkOutTotalWithValueDiscount(float valueDiscount) {
 
-		float tempTotalValueDiscounted = basketTotalValue;
+		double tempTotalValueDiscounted = basketTotalValue;
 
 		tempTotalValueDiscounted = tempTotalValueDiscounted - valueDiscount;
-
-		basketTotalValue = tempTotalValueDiscounted;
+		
+		
 	}
 	
 	

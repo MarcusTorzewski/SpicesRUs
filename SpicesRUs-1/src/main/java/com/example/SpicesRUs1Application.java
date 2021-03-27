@@ -9,12 +9,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.example.model.Product;
+import com.example.model.Basket;
 import com.example.model.Recipe;
 import com.example.model.Role;
 import com.example.model.Spice;
 import com.example.model.User;
-import com.example.repository.ProductRepository;
+import com.example.repository.BasketRepository;
 import com.example.repository.RecipeRepository;
 import com.example.repository.RoleRepository;
 import com.example.repository.SpiceRepository;
@@ -30,13 +30,15 @@ public class SpicesRUs1Application implements CommandLineRunner {
 	private RoleRepository rrepo;
 	@Autowired 
 	private PasswordEncoder pe; 
-	@Autowired
-	private ProductRepository prepo;
+
 	@Autowired
 	private SpiceRepository srepo;
 	@Autowired
 	private RecipeRepository recipeRepo;
 
+	
+	@Autowired
+	private BasketRepository basketRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpicesRUs1Application.class, args);
@@ -137,7 +139,7 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		
 		^^^ REMEMBER TO ClEAR ALL THIS OUT BEFORE FINISHING THE PROJECT
 		 */
-		
+
 	}
 
 }
