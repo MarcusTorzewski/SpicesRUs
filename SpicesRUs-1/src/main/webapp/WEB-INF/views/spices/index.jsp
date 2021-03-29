@@ -36,8 +36,12 @@
 	</ul>
 
 	<div class="banner">
-		<img class="banner-image"
-			src="${pageContext.request.contextPath}/images/spices_background.jpg" />
+		<img class="banner-image" 
+			src="${pageContext.request.contextPath}/images/chilli_picture.jpg" 
+			style="width: 112%;
+    height: auto;"
+
+/>
 	</div>
 	
 	<!-- Recipes -->

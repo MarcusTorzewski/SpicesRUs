@@ -37,7 +37,10 @@
 
 	<div class="banner">
 		<img class="banner-image"
-			src="${pageContext.request.contextPath}/images/spices_background.jpg" />
+			src="${pageContext.request.contextPath}/images/recipe_image.jpg" 
+			style="
+    top:-100%;"
+			/>
 	</div>
 	
 	<!-- Recipes -->

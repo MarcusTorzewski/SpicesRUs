@@ -3,6 +3,9 @@ Static Resources:
 images from pexels are free to use (more detailing on website)
 spices_background - https://www.pexels.com/photo/assorted-cooking-spices-2802527/
 food_table - https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/
+chilli_picture - https://www.pexels.com/photo/red-chili-on-white-surface-112780/
+glass_spice - https://www.pexels.com/photo/clear-glass-jar-lot-458796/
+recipe_image - https://www.pexels.com/photo/unrecognizable-woman-standing-at-table-with-various-vegetables-while-making-pasta-dough-in-kitchen-6287572/
 
 images from unsplash are free to use (more detailing on website)
 home_page_pic1 https://unsplash.com/s/photos/cooking?orientation=landscape
