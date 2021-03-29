@@ -23,7 +23,7 @@
       <li><a href="/favourites">Favourites</a></li>
       <li><a href="#">Discussion Forum</a></li>
       <li><a href="#">Sign-out</a></li>
-      <li><a href="#">Basket</a></li>
+      <li><a href="/basket">Basket</a></li>
     </ul>
 
     <div class="banner">

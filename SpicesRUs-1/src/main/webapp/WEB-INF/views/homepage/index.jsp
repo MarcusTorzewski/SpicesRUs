@@ -30,7 +30,7 @@
 	  <sec:authorize access="!isAuthenticated()">
       <li><a href="#">Sign-in</a></li>
       </sec:authorize>
-      <li><a href="#">Basket</a></li>
+      <li><a href="/basket">Basket</a></li>
     </ul>
 
     <div class="banner">

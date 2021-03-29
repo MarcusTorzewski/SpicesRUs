@@ -35,7 +35,7 @@
 	  	<sec:authorize access="!hasRole('MEMBER')">
       		<li><a href="/login-form">Sign-in</a></li>
     	</sec:authorize>
-		<li><a href="#">Basket</a></li>
+		<li><a href="/basket">Basket</a></li>
 	</ul>
 
 	<div class="banner">
