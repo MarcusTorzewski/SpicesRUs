@@ -66,6 +66,68 @@
 
 }
 
+.show-modal {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.75rem 3.5rem;
+  margin: 5rem 2rem;
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  z-index: 5;
+}
+
 
 </style>
 <body>
@@ -106,7 +168,8 @@
 		
 				<div  class="pageButton" >
 					<p style="display:inline-block text-align: center;"><h1> BasketTotal = £${basket.basketTotalValue} </h1> </p>
-					<a style="right:150px" href="/checkout"> <h1> Checkout</h1> </a>
+					<!-- <a style="right:150px" href="/checkout"> <h1> Checkout</h1> </a> -->
+					<button class="show-modal">Checkout</button>
 				</div>
 				
 				
@@ -134,9 +197,30 @@
 			</div>
 			
 			
+			<!-- Hidden Checkout -->
 			
-			
-		
+			<div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1>Checkout Confirmation</h1>
+      <p>
+        Please enter payment details <br />
+      </p>
+      <form:form action="/createCheckout"
+      modelAttribute="checkout">
+      
+      <form:label path="name">Full Name: </form:label><br>
+      <form:input path="name"/><br><br>
+      
+      <form:label path="ccNumber">Full Credit Card Number: </form:label><br>
+  		<form:input path="ccNumber"/><br><br>
+  		
+  		<form:label path="postCode">Postcode: </form:label><br>
+  		<form:input path="postCode"/><br><br>
+  		<form:hidden path="totalValue" value="${basket.basketTotalValue}" />
+  		<input type="submit" value="Submit"/>
+  		</form:form>
+    </div>
+    <div class="overlay hidden"></div>
 			
 			<div class="right_section">
 				<h1 class="basket">Basket</h1>
@@ -187,7 +271,41 @@
 			
 	
 		</div>
+<script> 
 
+'use strict';
+
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnsOpenModal = document.querySelectorAll('.show-modal');
+
+const openModal = function () {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+for (let i = 0; i < btnsOpenModal.length; i++)
+  btnsOpenModal[i].addEventListener('click', openModal);
+
+btnCloseModal.addEventListener('click', closeModal);
+
+
+document.addEventListener('keydown', function (e) {
+
+
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
+
+
+</script>
 </body>
 </html>
 

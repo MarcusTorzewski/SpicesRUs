@@ -12,18 +12,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.Basket;
 import com.example.model.BasketItem;
+import com.example.model.Checkout;
 import com.example.model.PacketSize;
 import com.example.model.Spice;
 import com.example.model.User;
 import com.example.repository.BasketRepository;
+import com.example.repository.CheckoutRepository;
 import com.example.repository.SpiceRepository;
 import com.example.repository.UserRepository;
 
@@ -40,6 +46,9 @@ public class BasketController {
 	
 	@Autowired
 	SpiceRepository spiceRepo;
+	
+	@Autowired
+	CheckoutRepository cRepo;
 	
 
 
@@ -154,7 +163,7 @@ public class BasketController {
 	}
 
 	@RequestMapping("/basket")
-	public String basket(@CookieValue(value ="basketIdSpicesRUs", defaultValue="empty") String cookieBasketId,HttpServletResponse response,Model model,Principal principal) {
+	public String basket(@CookieValue(value ="basketIdSpicesRUs", defaultValue="empty") String cookieBasketId,HttpServletResponse response,Model model,Principal principal, Checkout checkout) {
 
 		
 		Basket basket = null;
@@ -214,7 +223,15 @@ public class BasketController {
 	}
 	
 	
-	
+	@PostMapping("/createCheckout")
+	public String showCheckout(@ModelAttribute Checkout checkout, Model model) {
+		
+		
+		cRepo.save(checkout);
+		model.addAttribute("orderNumber",checkout.getId());
+		return "basket/orderconfirmed";
+		
+	}
 	
 	
 	

@@ -7,9 +7,9 @@ public class Checkout {
 	@Id
 	private String id;
 	private String name;
-	private int total;
+	public long ccNumber;
+	public String postCode;
 	private float totalValue;
-	
 	
 	public String getId() {
 		return id;
@@ -23,11 +23,17 @@ public class Checkout {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getTotal() {
-		return total;
+	public long getCcNumber() {
+		return ccNumber;
 	}
-	public void setTotal(int total) {
-		this.total = total;
+	public void setCcNumber(long ccNumber) {
+		this.ccNumber = ccNumber;
+	}
+	public String getPostCode() {
+		return postCode;
+	}
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
 	}
 	public float getTotalValue() {
 		return totalValue;
@@ -35,6 +41,9 @@ public class Checkout {
 	public void setTotalValue(float totalValue) {
 		this.totalValue = totalValue;
 	}
+	
+	
+	
 	
 	
 }
