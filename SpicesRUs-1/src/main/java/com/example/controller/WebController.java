@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.model.Basket;
+import com.example.model.Checkout;
 import com.example.model.Role;
 import com.example.model.User;
 import com.example.repository.BasketRepository;
+import com.example.repository.CheckoutRepository;
 import com.example.repository.RecipeRepository;
 import com.example.repository.SpiceRepository;
 import com.example.repository.UserRepository;
@@ -38,6 +41,8 @@ public class WebController {
 	
 	@Autowired
 	private BasketRepository basketRepo;
+	
+	@Autowired CheckoutRepository checkoutRepo;
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -120,6 +125,37 @@ public class WebController {
 		} catch(Exception e) {
 			return "redirect:/login-form";
 		}
+	}
+	
+	@RequestMapping("/admin/sales")
+	public String viewSales(Model model) {
+		
+		float allOrdersTotal =0;
+		
+		int numOfOrders = 0;
+		
+		
+		List<Checkout> allSalesCheckouts = checkoutRepo.findAll();
+		
+		model.addAttribute("sales", allSalesCheckouts);
+		
+		for(Checkout c:allSalesCheckouts) {
+			
+			allOrdersTotal += c.getTotalValue();
+		}
+		
+		allOrdersTotal= Math.round(allOrdersTotal*100);
+		
+		allOrdersTotal = allOrdersTotal/100;
+		
+		numOfOrders = allSalesCheckouts.size();
+	
+		model.addAttribute("totalSales", allOrdersTotal);
+		
+		model.addAttribute("orderCount",numOfOrders);
+		
+		return "/admin/sales";
+	
 	}
 	
 
