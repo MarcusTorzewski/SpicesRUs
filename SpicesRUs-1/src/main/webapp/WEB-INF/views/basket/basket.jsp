@@ -139,8 +139,7 @@ p {
 				</a>
 			</div>
 			<li><a href="/about">About Us</a></li>
-			<li><a href="/spices"
-				style="text-decoration: underline rgb(68, 68, 68);">Spices</a></li>
+			<li><a href="/spices">Spices</a></li>
 			<li><a href="/recipes">Recipes</a></li>
 			<li><a href="#">Discussion Forum</a></li>
 			<sec:authorize access="hasRole('MEMBER')">
@@ -150,13 +149,10 @@ p {
 	  		<sec:authorize access="!hasRole('MEMBER')">
       			<li><a href="/login-form">Sign-in</a></li>
     		</sec:authorize>
-			<li><a href="/basket">Basket</a></li>
+			<li><a href="/basket" style="text-decoration: underline rgb(68, 68, 68);">Basket</a></li>
 		</ul>
 
-		<div class="banner">
-			<img class="banner-image"
-				src="${pageContext.request.contextPath}/images/spices_background.jpg" />
-		</div>
+		
 
 		<!-- Top info section -->
 

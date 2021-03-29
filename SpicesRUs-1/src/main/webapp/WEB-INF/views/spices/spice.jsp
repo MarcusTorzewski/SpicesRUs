@@ -52,7 +52,10 @@
 
 		<div class="banner">
 			<img class="banner-image"
-				src="${pageContext.request.contextPath}/images/spices_background.jpg" />
+				src="${pageContext.request.contextPath}/images/glass_spice.jpg" 
+				style="height: auto;"
+				
+				/>
 		</div>
 
 		<div class="top_section">
