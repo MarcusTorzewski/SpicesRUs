@@ -66,7 +66,7 @@ public class AuthenticationController {
 	
 	@RequestMapping("/access-denied")
 	public String accessDenied() {
-		return "/account/denied";
+		return "/admin/access-denied";
 	}
 	
 	@RequestMapping("/account")
