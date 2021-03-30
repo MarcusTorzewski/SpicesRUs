@@ -21,15 +21,20 @@
 }
 
 #backout{
-  background-color: #F6573B;
-  color: black;
+  background-color: gray;
+  color: white;
   padding: 7px 10px;
+  margin-top: 8px;
   display: inline-block;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  text-decoration: none;
+  text-decoration:none;
+}
+
+#backout:hover {
+  background-color: #423937;
 }
   
 #loginbenefits{
