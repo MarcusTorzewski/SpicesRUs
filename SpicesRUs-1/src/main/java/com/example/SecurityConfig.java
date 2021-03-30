@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.logoutSuccessUrl("/logout-user")
 		.permitAll()
 	.and().authorizeRequests()
+		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/**").permitAll()
 		.antMatchers("/css/**").permitAll()
 	.and().exceptionHandling().accessDeniedPage("/access-denied");
