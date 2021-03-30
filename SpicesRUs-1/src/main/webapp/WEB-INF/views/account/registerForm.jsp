@@ -73,7 +73,7 @@
     <h2>Join Premium!</h2>
     <p>And on top of all that, gain access to :</p>
     <ul>
-    	<li><p>Premium-only sales</p></li>
+    	<li><p>Premium-only deals</p></li>
     	<li><p>Downloadable Recipe PDFs</p></li>
     	<li><p>Ability to switch between measurement units</p></li>
     </ul>

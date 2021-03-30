@@ -22,7 +22,13 @@
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="/favourites">Favourites</a></li>
       <li><a href="#">Discussion Forum</a></li>
-      <li><a href="#">Sign-in</a></li>
+      <sec:authorize access="isAuthenticated()">
+      	<li><a href="/account">My Account</a>
+    	<li><a href="/logout">Sign Out</a>
+    	</sec:authorize>
+	  <sec:authorize access="!isAuthenticated()">
+      <li><a href="/login-form">Sign-in</a></li>
+      </sec:authorize>
       <li><a href="/basket">Basket</a></li>
     </ul>
 

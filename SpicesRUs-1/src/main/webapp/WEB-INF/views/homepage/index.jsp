@@ -28,7 +28,7 @@
     	<li><a href="/logout">Sign Out</a>
     	</sec:authorize>
 	  <sec:authorize access="!isAuthenticated()">
-      <li><a href="#">Sign-in</a></li>
+      <li><a href="/login-form">Sign-in</a></li>
       </sec:authorize>
       <li><a href="/basket">Basket</a></li>
     </ul>

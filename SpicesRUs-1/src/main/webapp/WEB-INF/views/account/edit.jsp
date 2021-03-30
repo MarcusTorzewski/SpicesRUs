@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <title>Spices R Us</title>
     <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/account.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -27,7 +28,7 @@
 	    <li><a href="/basket">Basket</a></li>
     </ul>
 
-    <div class="text_main1">
+    <div class="account">
     	<p style="color:red">${errorInfo }</p>
 		<form:form action="/editData" method="post" commandName="editUserDetails"> 
 		<table border="0">
@@ -57,6 +58,7 @@
 				</tr>
 			</table>
 			Premium (£3.99/month): <input type="checkbox" name="premium"/><label for="premium"></label>
+			<br/>
 		   <input type="submit" value="Change Details" /><br/> 
 		</form:form>
     </div>

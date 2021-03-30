@@ -71,3 +71,16 @@
 #create:hover {
   background-color: #45a049;
 }
+
+#guest {
+	background-color: gray;
+}
+#guest:hover {
+	background-color: #423937;
+}
+
+#accountData td{
+	border: 1px solid black;
+	padding: 6px;
+}
+	

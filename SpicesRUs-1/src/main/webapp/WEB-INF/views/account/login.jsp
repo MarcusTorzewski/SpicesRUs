@@ -45,7 +45,7 @@
 		</form:form>
 		<form:form action="/perform_login" method="post" commandName="userLogin"> 
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit" value="Continue as Guest" /><br/> 
+			<input type="submit" value="Continue as Guest" id="guest"/><br/> 
 			<table border="0">
 	            <tr>
 					 <td><input type="hidden" name="email" value="guest@guest.com"/></td>
@@ -58,7 +58,22 @@
 	</div>
 	<br/>
 	<div align="center">
-		<a href="/createAccount" id="create">Create an account</a>
+		<a href="/createAccount" id="create">Become a Member for Free!</a>
+    </div>
+    <div id="loginbenefits">
+    <h2>Become a Member for Free Today!</h2>
+    <p>And gain access to:</p>
+    <ul>
+    	<li><p>The ability to favourite spices & recipes</p></li>
+    	<li><p>Seamless checkout</p></li>
+    </ul>
+    <h2>Join Premium!</h2>
+    <p>And on top of all that, gain access to :</p>
+    <ul>
+    	<li><p>Premium-only deals</p></li>
+    	<li><p>Downloadable Recipe PDFs</p></li>
+    	<li><p>Ability to switch between measurement units</p></li>
+    </ul>
     </div>
   </body>
 </html>
