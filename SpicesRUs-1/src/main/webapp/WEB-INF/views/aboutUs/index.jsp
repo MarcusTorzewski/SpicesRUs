@@ -35,15 +35,17 @@
     <div class="banner">
       <img class="banner-image" src="${pageContext.request.contextPath}/images/spices_background.jpg" />
     </div>
+    <div class="main_section724">
     <div class="text_main1">
        <h1> <a href="#section1" > Who we are </a> </h1>
        <h1> <a href="#section2" > Our Values </a> </h1>
        <h1> <a href="#section3" > Interesting facts </a> </h1>
-  
+ 	 </div>
     </div>
     <div class="banner">
       <img class="banner-image2" src="${pageContext.request.contextPath}/images/food_table.jpg" />
     </div>
+     <div class="main_section724">
     <div class="text_main2">
     	<h2 id="section1">Who we are </h2>
     	<p>
@@ -63,7 +65,7 @@
 		<p> First product arrived at our warehouse was a cinnamon! </p>
 		<p> Our first recipe author is mother of an employee! </p>
 		<p> The logo of the shop was inspired by the client. </p>
-	
+	</div>
     </div>
   </body>
 </html>
