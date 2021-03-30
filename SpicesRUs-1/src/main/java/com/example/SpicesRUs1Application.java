@@ -137,9 +137,18 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		user.setFavouriteSpices(srepo.findAll());
 		urepo.save(user);
 		
+		Adding Basket:
+		
+		User user = urepo.findByEmail(x);
+		Basket b = new Basket();
+		user.setCustomerBasket(b);
+		
+		basketRepo.save(b);
+		urepo.save(user);
+		
 		^^^ REMEMBER TO ClEAR ALL THIS OUT BEFORE FINISHING THE PROJECT
 		 */
-
+		
 	}
 
 }

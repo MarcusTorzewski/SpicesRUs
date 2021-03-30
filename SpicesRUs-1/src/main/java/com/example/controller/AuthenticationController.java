@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.model.Basket;
 import com.example.model.NewUser;
 import com.example.model.User;
+import com.example.repository.BasketRepository;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
 
@@ -24,7 +26,9 @@ public class AuthenticationController {
 	@Autowired
 	public RoleRepository rrepo;
 	@Autowired 
-	private PasswordEncoder pe; 
+	private PasswordEncoder pe;
+	@Autowired
+	public BasketRepository brepo;
 	
 	private static User user;
 	
@@ -178,6 +182,10 @@ public class AuthenticationController {
 		}
 		createUser.getRoles().add(rrepo.findByid("MEMBER"));
 		
+		Basket b = new Basket();
+		user.setCustomerBasket(b);
+		
+		brepo.save(b);
 		repo.save(createUser);
 		return "/homepage/index";
 	}
