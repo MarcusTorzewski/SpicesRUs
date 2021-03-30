@@ -65,6 +65,7 @@
 			</div>
 			<div class="right_section">
 				<h1 class="spice_heading">${spice.name}</h1>
+				
 				<p>${spice.description}</p>
 				<p style="padding: 10px 0 10px 0;'">${spice.name} originated in
 					${spice.region}. ${spice.description}</p>
@@ -74,7 +75,21 @@
 						<li class="compliment_list_item"><a
 							href="/spices/${compliment}">${compliment}</a></li>
 					</c:forEach>
+		
 				</ul>
+				<p>Packet Sizes</p>
+				<ul>
+				
+					<li> <p>Small: ${smallSize}</p> </li>
+					<li> <p>Medium: ${mediumSize} </p> </li>
+					<li> <p>Large: ${largeSize} </p> </li>
+			
+				</ul>
+				
+					
+				<h1>Price Per KG: £${spice.basePricePerKG} </h1>
+				
+				
 
 				<div class="basket">
 					
@@ -89,6 +104,13 @@
 					
 					<a id="addHref" href="/basket/add/${spice.id}/" onclick="setMyHref()">Add To Basket</a>
 				</div>
+				
+				
+				
+				
+				
+				
+				
 				
 				
 			</div>

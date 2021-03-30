@@ -49,10 +49,11 @@ tr:nth-child(even) {
       	<li><a href="/account">My Account</a>
     	<li><a href="/logout">Sign Out</a>
     	</sec:authorize>
-	  <sec:authorize access="!hasRole('MEMBER')">
+	  	<sec:authorize access="!hasRole('MEMBER')">
       	<li><a href="/login-form">Sign-in</a></li>
     	</sec:authorize>
 		<li><a href="/basket">Basket</a></li>
+		
 	</ul>
 
 	<div class="banner">
@@ -73,6 +74,7 @@ tr:nth-child(even) {
     		<th>CCNum</th>
     		<th>Order Total</th>		
   		</tr>
+  		
   		
 	
 		<c:forEach items="${sales}" var="sale">

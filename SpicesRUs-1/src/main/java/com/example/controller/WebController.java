@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.awt.PrintGraphics;
 import java.security.Principal;
 import java.util.List;
 
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.model.Basket;
 import com.example.model.Checkout;
+import com.example.model.PacketSize;
 import com.example.model.Role;
+import com.example.model.Spice;
 import com.example.model.User;
 import com.example.repository.BasketRepository;
 import com.example.repository.CheckoutRepository;
@@ -87,9 +90,52 @@ public class WebController {
 	
 	@RequestMapping("/spices/{spice}")
 	public String spice(@PathVariable String spice, Model model) {
-		model.addAttribute("spice", spice_repo.findByName(spice));
+		
+		Spice spiceToAdd = spice_repo.findByName(spice);
+		
+		PacketSize smallPacketSize = PacketSize.SMALL;
+		PacketSize medPacketSize = PacketSize.MEDIUM;
+		PacketSize largePacketSize = PacketSize.LARGE;
+	
+		float smallSize = spiceToAdd.getBaseWeight() * smallPacketSize.getSizeRatio() *1000;
+		smallSize = Math.round(smallSize);
+		
+		float mediumSize = spiceToAdd.getBaseWeight() * medPacketSize.getSizeRatio() *1000;
+		mediumSize = Math.round(mediumSize);
+		
+		float largeSize = spiceToAdd.getBaseWeight() *largePacketSize.getSizeRatio() *1000;
+		largeSize = Math.round(largeSize);
+		
+		int smallSizeFormatted = (int) smallSize;
+		int mediumSizeFormattd = (int) mediumSize;
+		int largeSizeFormatted = (int) largeSize;
+		
+		
+		String smallSizeString = smallSizeFormatted + " Grams";
+		String mediumSizeString = mediumSizeFormattd + " Grams";
+		String largeSizeString =  largeSizeFormatted + " Grams";
+		
+		if(smallSizeFormatted >=1000) {
+			smallSizeString = (smallSizeFormatted /1000) + "Kg";
+			
+		}
+		if(mediumSizeFormattd>= 1000) {
+			mediumSizeString = (mediumSizeFormattd /1000) + "Kg";
+			
+		}
+		if(largeSizeFormatted >=1000) {
+			largeSizeString = (largeSizeFormatted/1000) + "Kg";
+			
+
+		}
+		
+		model.addAttribute("spice", spiceToAdd);
+		model.addAttribute("smallSize", smallSizeString);
+		model.addAttribute("mediumSize", mediumSizeString);
+		model.addAttribute("largeSize", largeSizeString);
+		
 		return "/spices/spice";
-	}
+	} 
 	
 	@RequestMapping("/recipes/{recipe}")
 	public String recipes(@PathVariable String recipe, Model model, Principal principal) {
