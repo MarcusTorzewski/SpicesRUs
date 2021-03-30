@@ -24,7 +24,7 @@
 		<li><a href="#">Discussion Forum</a></li>
 		<li><a href="/account" style="text-decoration: underline rgb(68, 68, 68);">My Account</a>
 		<li><a href="/logout">Sign Out</a></li>
-		<li><a href="#">Basket</a></li>
+		<li><a href="/basket">Basket</a></li>
     </ul>
 
     <div class="text_main1" align = center>

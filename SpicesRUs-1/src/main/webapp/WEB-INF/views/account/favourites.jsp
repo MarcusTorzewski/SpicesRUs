@@ -29,7 +29,7 @@
 			<li><a href="#">Discussion Forum</a></li>
 			<li><a href="/account">My Account</a>
     		<li><a href="/logout">Sign Out</a>
-			<li><a href="#">Basket</a></li>
+			<li><a href="/basket">Basket</a></li>
 		</ul>
 	
 		<div class="banner">

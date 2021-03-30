@@ -3,6 +3,15 @@ Static Resources:
 images from pexels are free to use (more detailing on website)
 spices_background - https://www.pexels.com/photo/assorted-cooking-spices-2802527/
 food_table - https://www.pexels.com/photo/person-holding-sliced-vegetable-2284166/
+chilli_picture - https://www.pexels.com/photo/red-chili-on-white-surface-112780/
+glass_spice - https://www.pexels.com/photo/clear-glass-jar-lot-458796/
+recipe_image - https://www.pexels.com/photo/unrecognizable-woman-standing-at-table-with-various-vegetables-while-making-pasta-dough-in-kitchen-6287572/
+
+images from unsplash are free to use (more detailing on website)
+home_page_pic1 https://unsplash.com/s/photos/cooking?orientation=landscape
+home_page_pic2 https://unsplash.com/photos/3D43SBDDkAc
+home_page_pic3 https://unsplash.com/photos/KPDbRyFOTnE
+home_page_pic4 https://unsplash.com/photos/yWG-ndhxvqY
 
 Online DB Resources:
 
@@ -13,3 +22,5 @@ ginger image - https://www.pexels.com/photo/ginger-on-gray-surface-1337585/
 nutmeg image - https://www.pexels.com/photo/food-wood-people-art-5740374/
 paprika image - https://www.pexels.com/photo/spoon-of-paprika-in-metal-bowl-4199062/
 turmeric image - https://www.pexels.com/photo/curcuma-powder-on-tablespoon-and-spilled-on-black-surface-4198714/
+
+user png = https://www.flaticon.com/free-icon/user_1077114?term=profile&page=1&position=1&page=1&position=1&related_id=1077114&origin=tag

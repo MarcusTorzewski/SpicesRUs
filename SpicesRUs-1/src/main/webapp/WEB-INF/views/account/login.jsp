@@ -24,7 +24,7 @@
       <li><a href="/recipes">Recipes</a></li>
       <li><a href="#">Discussion Forum</a></li>
       <li><a href="/login-form" style="text-decoration: underline rgb(68, 68, 68);">Sign-in</a></li>
-      <li><a href="#">Basket</a></li>
+      <li><a href="/basket">Basket</a></li>
     </ul>
 
     <div class="account">

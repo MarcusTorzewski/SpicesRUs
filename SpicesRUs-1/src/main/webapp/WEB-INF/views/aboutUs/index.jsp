@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@
       <li><a href="/favourites">Favourites</a></li>
       <li><a href="#">Discussion Forum</a></li>
       <li><a href="#">Sign-in</a></li>
-      <li><a href="#">Basket</a></li>
+      <li><a href="/basket">Basket</a></li>
     </ul>
 
     <div class="banner">
