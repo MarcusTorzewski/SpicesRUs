@@ -97,42 +97,51 @@ public class WebController {
 		PacketSize medPacketSize = PacketSize.MEDIUM;
 		PacketSize largePacketSize = PacketSize.LARGE;
 	
-		float smallSize = spiceToAdd.getBaseWeight() * smallPacketSize.getSizeRatio() *1000;
-		smallSize = Math.round(smallSize);
-		
-		float mediumSize = spiceToAdd.getBaseWeight() * medPacketSize.getSizeRatio() *1000;
-		mediumSize = Math.round(mediumSize);
-		
-		float largeSize = spiceToAdd.getBaseWeight() *largePacketSize.getSizeRatio() *1000;
-		largeSize = Math.round(largeSize);
-		
-		int smallSizeFormatted = (int) smallSize;
-		int mediumSizeFormattd = (int) mediumSize;
-		int largeSizeFormatted = (int) largeSize;
+		//baseweight multiplied by ration of the packet size and by 1000 to change to grams as baseWeight ids in kg
+		int smallSize = Math.round(spiceToAdd.getBaseWeight() * smallPacketSize.getSizeRatio() * 1000);
+		int mediumSize = Math.round(spiceToAdd.getBaseWeight() * medPacketSize.getSizeRatio() *  1000);		
+		int largeSize = Math.round(spiceToAdd.getBaseWeight() *largePacketSize.getSizeRatio() *  1000);
+	
+		String smallSizeString = smallSize + " Grams";
+		String mediumSizeString = mediumSize + " Grams";
+		String largeSizeString =  largeSize + " Grams";
 		
 		
-		String smallSizeString = smallSizeFormatted + " Grams";
-		String mediumSizeString = mediumSizeFormattd + " Grams";
-		String largeSizeString =  largeSizeFormatted + " Grams";
-		
-		if(smallSizeFormatted >=1000) {
-			smallSizeString = (smallSizeFormatted /1000) + "Kg";
-			
-		}
-		if(mediumSizeFormattd>= 1000) {
-			mediumSizeString = (mediumSizeFormattd /1000) + "Kg";
-			
-		}
-		if(largeSizeFormatted >=1000) {
-			largeSizeString = (largeSizeFormatted/1000) + "Kg";
-			
-
+	
+		if(smallSize >=1000) {
+			smallSizeString = (smallSize /1000) + "Kg";		
 		}
 		
+		if(mediumSize>= 1000) {
+			mediumSizeString = (mediumSize /1000) + "Kg";	
+		}
+		if(largeSize >=1000) {
+			largeSizeString = (largeSize/1000) + "Kg";
+		}
+		//Strings used to display the packet sizes in grams
 		model.addAttribute("spice", spiceToAdd);
 		model.addAttribute("smallSize", smallSizeString);
 		model.addAttribute("mediumSize", mediumSizeString);
 		model.addAttribute("largeSize", largeSizeString);
+		
+		
+		
+		//Used to workout out real time price of selected choices ratio included seperately here
+		//Used in spice jsp and devided by a 1000 to remove grams
+		model.addAttribute("smallPrice",( smallSize * smallPacketSize.getPriceRatio()));
+		model.addAttribute("mediumPrice",( mediumSize * medPacketSize.getPriceRatio()));
+		model.addAttribute("largePrice", (largeSize * largePacketSize.getPriceRatio()));
+		
+		//passing price rations to calculate base price per kg of different sizes
+		model.addAttribute("smallRatio", (smallPacketSize.getPriceRatio()));
+		model.addAttribute("mediumRatio", medPacketSize.getPriceRatio());
+		model.addAttribute("largeRatio", largePacketSize.getPriceRatio());
+		
+		
+	
+		
+		//Used for calculation of the price in javascript in jsp
+	
 		
 		return "/spices/spice";
 	} 

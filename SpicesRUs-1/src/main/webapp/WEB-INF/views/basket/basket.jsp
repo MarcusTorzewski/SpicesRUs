@@ -245,7 +245,7 @@ p {
 									<a href="/spices/${bask.spice.name}"> <h2> ${bask.spice.name} </h2> </a>
 									<h4>Size: ${bask.size}</h4>
 									<h4>Amount: ${bask.quantity}</h4>
-									<h4> Price: ${bask.price}</h4>
+									<h4> Price: £${bask.price}</h4>
 									<a href="/basket/removeItem/${loop.index}"> <h3> Remove </h3> </a>			
 					
 								</div>

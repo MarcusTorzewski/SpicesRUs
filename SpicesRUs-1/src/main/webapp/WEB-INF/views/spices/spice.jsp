@@ -4,17 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Spices R Us</title>
-<link rel="stylesheet" href="/resources/css/style.css">
-<link rel="stylesheet" href="/resources/css/spice_page.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
-	rel="stylesheet" />
-</head>
-<body>
 
 <script>
+
 
 	function setMyHref(){
 
@@ -24,8 +16,51 @@
 
 	}
 
+	function calculateOptionPrice(){
+
+		var selectedSize = document.getElementById("size").value;
+		var selectedQuantity = document.getElementById("quantity").value;
+
+		var spicePrice= 0;
+
+		var basePrice = 0;
+		
+		if(selectedSize == "small"){
+			spicePrice =  ${spice.basePricePerKG} * selectedQuantity * (${smallPrice}/1000) ;
+			basePrice = ${spice.basePricePerKG} * ${smallRatio}
+		}
+		else if(selectedSize == "medium"){
+			spicePrice =  ${spice.basePricePerKG} * selectedQuantity * (${mediumPrice}/1000);
+			basePrice = ${spice.basePricePerKG} * ${mediumRatio}
+		}
+		else if(selectedSize == "large"){
+			
+			spicePrice = ${spice.basePricePerKG} * selectedQuantity * (${largePrice}/1000) ;
+			basePrice = ${spice.basePricePerKG} * ${largeRatio}
+		}
+
+		spicePrice = spicePrice.toFixed(2);
+		basePrice = basePrice.toFixed(2);
+		
+		document.getElementById("totalPrice").innerHTML = spicePrice;
+		document.getElementById("basePrice").innerHTML = basePrice;
+
+	}
+
+	
 
 </script>
+<meta charset="utf-8" />
+<title>Spices R Us</title>
+<link rel="stylesheet" href="/resources/css/style.css">
+<link rel="stylesheet" href="/resources/css/spice_page.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
+	rel="stylesheet" />
+</head>
+<body onload="calculateOptionPrice()" onchange="calculateOptionPrice()">
+
+
 
 
 	<div>
@@ -77,7 +112,7 @@
 					</c:forEach>
 		
 				</ul>
-				<p>Packet Sizes</p>
+				<p>Packet Sizes:</p>
 				<ul>
 				
 					<li> <p>Small: ${smallSize}</p> </li>
@@ -87,7 +122,7 @@
 				</ul>
 				
 					
-				<h1>Price Per KG: £${spice.basePricePerKG} </h1>
+				<h2>Price Per KG: £<span id="basePrice"></span></h2>
 				
 				
 
@@ -105,13 +140,9 @@
 					<a id="addHref" href="/basket/add/${spice.id}/" onclick="setMyHref()">Add To Basket</a>
 				</div>
 				
+				<h1>Total Price: £<span id="totalPrice"></span></h1>
 				
-				
-				
-				
-				
-				
-				
+		
 				
 			</div>
 			
