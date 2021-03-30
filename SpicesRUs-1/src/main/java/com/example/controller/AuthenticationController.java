@@ -183,7 +183,7 @@ public class AuthenticationController {
 		createUser.getRoles().add(rrepo.findByid("MEMBER"));
 		
 		Basket b = new Basket();
-		user.setCustomerBasket(b);
+		createUser.setCustomerBasket(b);
 		
 		brepo.save(b);
 		repo.save(createUser);
