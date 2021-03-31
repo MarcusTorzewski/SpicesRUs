@@ -52,8 +52,7 @@
 		<h1 class="h1">Check Out Our Spices</h1>
 
 		<div class="filtering" id="filtering">
-			<input type="text" placeholder="Search for spices..." id="searchbar"
-				onkeyup="searchFunction()">
+			<input type="text" placeholder="Search for spices..." id="searchbar">
 
 
 			<button class="show_all">Clear</button>
@@ -102,10 +101,6 @@
 				});
 			});
 
-			$('.search').click(function() {
-				$('.grid-item').show();
-			});
-
 			$('.show_all').click(function() {
 				$('.grid-item').show();
 			});
@@ -126,10 +121,10 @@
 
 			$('.sort_z-a').click(function() {
 				var $divs = $("div.grid-item");
-				var sortByAZ = $divs.sort(function(a, b) {
+				var sortByZA = $divs.sort(function(a, b) {
 					return $(a).find("a").text() < $(b).find("a").text();
 				});
-				$(".grid-container").html(sortByAZ);
+				$(".grid-container").html(sortByZA);
 			});
 		});
 	</script>
