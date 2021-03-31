@@ -41,6 +41,13 @@
 	background-color: #fdedce;
 }
 
+.bottom_section {
+	width: 100%; 
+	overflow: hidden; 
+	padding: 0 5% 0 5%; 
+	background-color: #fdedce;
+}
+
 .left_section {
 	width: 20%; 
 	float:left;

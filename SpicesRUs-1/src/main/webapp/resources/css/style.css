@@ -4,103 +4,96 @@ html {
   box-sizing: border-box;
 }
 */
-
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-  background-color: #f6ac23;
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+	background-color: #f6ac23;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Public Sans', sans-serif;
-  font-size:18px;
+	margin: 0;
+	padding: 0;
+	font-family: 'Public Sans', sans-serif;
+	font-size: 18px;
 }
 
 .nav {
-  background-color: #f6ac23;
-  color: #000000;
-  list-style: none;
-  text-align: right;
-  padding: 20px 0 20px 0;
+	background-color: #f6ac23;
+	color: #000000;
+	list-style: none;
+	text-align: right;
+	padding: 20px 0 20px 0;
 }
 
-.nav > li {
-  display: inline-block;
-  padding: 0 25px 0 25px;
-  font-size: 18px;
+.nav>li {
+	display: inline-block;
+	padding: 0 25px 0 25px;
+	font-size: 18px;
 }
 
-.nav > li > a {
-  text-decoration: none;
-  color: #000000;
+.nav>li>a {
+	text-decoration: none;
+	color: #000000;
 }
 
-.nav > li > a:hover {
-  color: #c32f27;
+.nav>li>a:hover {
+	color: #c32f27;
 }
 
 #logo {
-  float: left;
-  top: 12px;
-  padding-left: 25px;
-  font-size: 18px;
-  position: absolute;
+	float: left;
+	top: 12px;
+	padding-left: 25px;
+	font-size: 18px;
+	position: absolute;
 }
 
-#logo > a {
-  text-decoration: none;
+#logo>a {
+	text-decoration: none;
 }
 
 .banner {
-  height: 400px;
-  overflow: hidden;
+	height: 400px;
+	overflow: hidden;
 }
 
 .banner-image {
-  position: relative;
-  top: -1350px;
+	position: relative;
+	top: -1350px;
 }
 
 .banner-image2 {
-  position: relative;
+	position: relative;
 }
 
 .text_main1 * {
-  padding: 0 25px 0 25px;
-  text-align: center;
-  color: #000000;
+	padding: 0 25px 0 25px;
+	text-align: center;
+	color: #000000;
 }
 
 .text_main2 * {
-  padding: 0 25px 0 25px;
-  text-align: left;
-  color: #000000;
+	padding: 0 25px 0 25px;
+	text-align: left;
+	color: #000000;
 }
 
 .h1 {
-	display: inline; 
-	border-bottom:2px solid;
-	border-color:#f9c86c;
-	padding:10px 0px 10px 0px;
+	display: inline;
+	border-bottom: 2px solid;
+	border-color: #f9c86c;
+	padding: 10px 0px 10px 0px;
 }
 
-
-table{
-  max-width: 1000px;
-  margin: auto;
+table {
+	max-width: 1000px;
+	margin: auto;
 }
 
 .main_section724 {
-	width:100%; 
-	overflow: hidden; 
-	padding:2% 5% 3% 0%; 
+	width: 100%;
+	overflow: hidden;
+	padding: 2% 5% 3% 0%;
 	background-color: #fdedce;
-	text-align:left;
+	text-align: left;
 }
-
-
-
-
