@@ -149,23 +149,26 @@ public class Basket {
 
 	}
 	
-	public void WorkOutTotalWithDiscountPerecent(float discountPercent) {
+	public void WorkOutTotalWithDiscountPerecent(int discountPercent) {
 
 		double tempTotalPercentDiscounted = basketTotalValue;
-		tempTotalPercentDiscounted = tempTotalPercentDiscounted * ((100 - discountPercent) / 100);
-		basketTotalValue = tempTotalPercentDiscounted;
-
-	}
-
-	public void WorkOutTotalWithValueDiscount(float valueDiscount) {
-
-		double tempTotalValueDiscounted = basketTotalValue;
-
-		tempTotalValueDiscounted = tempTotalValueDiscounted - valueDiscount;
 		
 		
+		tempTotalPercentDiscounted = tempTotalPercentDiscounted *(100-discountPercent);
+		
+		tempTotalPercentDiscounted = tempTotalPercentDiscounted /100;
+		
+		tempTotalPercentDiscounted = Math.round(tempTotalPercentDiscounted*100);
+		
+		tempTotalPercentDiscounted = tempTotalPercentDiscounted/100;
+
+		
+		setBasketTotalValue(tempTotalPercentDiscounted);
+
 	}
 	
+	
+
 	
 	
 	

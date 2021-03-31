@@ -160,22 +160,18 @@ p {
 
 					<form>
 						<label style="font-size: 35px;" for="username"> Promo
-							Code: </label><br> <input type="text" id="username" name="username"
+							Code: </label><br> <input type="text" id="promoInput" name="username"
 							style="display: block; width: 160px; height: 30px; float: left;"><br>
 
 						<div class="spacing"></div>
 
-						<a class="pageButton" href="/checkPromo">
-							<h1>Submit</h1>
+						<a class="pageButton" id="promoHref"  href="/submitPromo/" onclick="addCodeToHref()" >
+							<h1>Enter Code</h1>
 						</a>
 
 					</form>
 
-
-
 				</div>
-
-
 
 			</div>
 
@@ -272,6 +268,18 @@ p {
 
 		</div>
 		<script>
+
+			function addCodeToHref(){
+				
+
+				var promoInputCode = document.getElementById("promoInput").value;
+
+				document.getElementById("promoHref").href += promoInputCode;
+
+			}
+
+
+		
 			'use strict';
 
 			const modal = document.querySelector('.modal');

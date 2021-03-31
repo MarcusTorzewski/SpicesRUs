@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.auditing.config.IsNewAwareAuditingHandlerBeanDefinitionParser;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.model.Basket;
+import com.example.model.Promo;
 import com.example.model.Recipe;
 import com.example.model.Role;
 import com.example.model.Spice;
 import com.example.model.User;
 import com.example.repository.BasketRepository;
+import com.example.repository.PromoRepository;
 import com.example.repository.RecipeRepository;
 import com.example.repository.RoleRepository;
 import com.example.repository.SpiceRepository;
@@ -39,6 +42,9 @@ public class SpicesRUs1Application implements CommandLineRunner {
 	
 	@Autowired
 	private BasketRepository basketRepo;
+	
+	@Autowired
+	private PromoRepository promoRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpicesRUs1Application.class, args);
@@ -148,6 +154,10 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		
 		^^^ REMEMBER TO ClEAR ALL THIS OUT BEFORE FINISHING THE PROJECT
 		 */
+		
+		
+		
+		
 		
 	}
 

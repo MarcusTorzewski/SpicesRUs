@@ -26,10 +26,12 @@ import com.example.model.Basket;
 import com.example.model.BasketItem;
 import com.example.model.Checkout;
 import com.example.model.PacketSize;
+import com.example.model.Promo;
 import com.example.model.Spice;
 import com.example.model.User;
 import com.example.repository.BasketRepository;
 import com.example.repository.CheckoutRepository;
+import com.example.repository.PromoRepository;
 import com.example.repository.SpiceRepository;
 import com.example.repository.UserRepository;
 
@@ -49,6 +51,9 @@ public class BasketController {
 	
 	@Autowired
 	CheckoutRepository cRepo;
+	
+	@Autowired
+	PromoRepository promoRepo;
 	
 
 
@@ -230,6 +235,42 @@ public class BasketController {
 		cRepo.save(checkout);
 		model.addAttribute("orderNumber",checkout.getId());
 		return "basket/orderconfirmed";
+		
+	}
+	
+	@RequestMapping("/submitPromo/{promoCode}")
+	public String submitPromo(@CookieValue(value ="basketIdSpicesRUs", defaultValue="empty") String cookieBasketId,@PathVariable("promoCode") String promoCode,Principal principal) {
+		
+		Basket pageBasket = null;
+		Promo enteredPromoCode = promoRepo.findById(promoCode).orElse(null);
+		
+		
+		if(enteredPromoCode != null) {
+			
+			if(principal!= null) {
+				User currentUser = userRepo.findById(principal.getName()).orElse(null);
+				
+				
+				pageBasket = currentUser.getCustomerBasket();
+				pageBasket.WorkOutTotalWithDiscountPerecent(enteredPromoCode.getPromoValuePercent());
+				basketRepo.save(pageBasket);
+				
+			}
+			else {
+				
+					pageBasket = basketRepo.findById(cookieBasketId).orElse(null);
+					
+					pageBasket.WorkOutTotalWithDiscountPerecent(enteredPromoCode.getPromoValuePercent());
+					basketRepo.save(pageBasket);
+		
+			}
+				
+		}
+		
+			
+		
+
+		return "redirect:/basket";
 		
 	}
 	
