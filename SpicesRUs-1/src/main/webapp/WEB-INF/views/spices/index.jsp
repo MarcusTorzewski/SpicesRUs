@@ -12,6 +12,7 @@
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
 <link rel="stylesheet" href="/resources/css/gridLayout.css">
+<link rel="stylesheet" href="/resources/css/filtering.css">
 </head>
 <body>
 
@@ -50,28 +51,33 @@
 
 	<div class="gridSection">
 		<h1 class="h1">Check Out Our Spices</h1>
-
-		<div class="filtering" id="filtering">
-			<input type="text" placeholder="Search for spices..." id="searchbar">
+		<div class="filtering_buttons" id="filtering_buttons">
+			
+		<input type="text" placeholder="Search for spices..." id="searchbar">
 
 
 			<button class="show_all">Clear</button>
-
-			<c:forEach items="${spices}" var="spice">
-				<script>
-					if (!document.getElementById("${spice.region}")) {
-						var button = document.createElement('BUTTON');
-						button.innerHTML = "${spice.region}";
-						button.className = "region_filter";
-						button.id = "${spice.region}";
-						document.getElementById("filtering")
-								.appendChild(button);
-					}
-				</script>
-			</c:forEach>
-
-			<button class="sort_a-z">A-Z</button>
-			<button class="sort_z-a">Z-A</button>
+			
+			<div class="other_buttons">
+				<button class="sort_a-z">A-Z</button>
+				<button class="sort_z-a">Z-A</button>
+			</div>
+				
+			<div class="region_buttons" id="region_buttons">			
+				Regions:
+				<c:forEach items="${spices}" var="spice">
+					<script>
+						if (!document.getElementById("${spice.region}")) {
+							var button = document.createElement('button');
+							button.innerHTML = "${spice.region}";
+							button.className = "region_filter";
+							button.id = "${spice.region}";
+							document.getElementById("region_buttons")
+									.appendChild(button);
+						}
+					</script>
+				</c:forEach>
+			</div>
 		</div>
 
 		<div class="grid-container">

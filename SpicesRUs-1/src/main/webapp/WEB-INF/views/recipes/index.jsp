@@ -12,6 +12,7 @@
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
 	rel="stylesheet" />
 <link rel="stylesheet" href="/resources/css/gridLayout.css">
+<link rel="stylesheet" href="/resources/css/filtering.css">
 </head>
 <body>
 
@@ -50,22 +51,28 @@
 
 	<div class="gridSection">
 		<h1 class="h1">Check Out Our Recipes</h1>
-
-		<div class="filtering" id="filtering">
+	
+		<div class="filtering_buttons" id="filtering_buttons">
 			<input type="text" placeholder="Search for recipes..." id="searchbar"
 				onkeyup="searchFunction()">
-
+			
 			<button class="show_all">Clear</button>
-			<button class="sort_a-z">A-Z</button>
-			<button class="sort_z-a">Z-A</button>
-			<button class="sort_calories">Calories (L-H)</button>
-			<button class="sort_time">Cooking Time (L-H)</button>
-			<button class="filter_difficulty" id="1">Difficulty 1</button>
-			<button class="filter_difficulty" id="2">Difficulty 2</button>
-			<button class="filter_difficulty" id="3">Difficulty 3</button>
-			<button class="filter_difficulty" id="4">Difficulty 4</button>
-			<button class="filter_difficulty" id="5">Difficulty 5</button>
-
+			
+			<div class="other_buttons">
+				<button class="sort_a-z">A-Z</button>
+				<button class="sort_z-a">Z-A</button>
+				<button class="sort_calories">Calories (L-H)</button>
+				<button class="sort_time">Cooking Time (L-H)</button>
+			</div>
+			
+			<div class="difficulty_buttons">
+				Difficulty: 
+				<button class="filter_difficulty" id="1">1</button>
+				<button class="filter_difficulty" id="2">2</button>
+				<button class="filter_difficulty" id="3">3</button>
+				<button class="filter_difficulty" id="4">4</button>
+				<button class="filter_difficulty" id="5">5</button>
+			</div>
 		</div>
 		
 		<div class="grid-container">
