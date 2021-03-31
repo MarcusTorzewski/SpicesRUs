@@ -22,7 +22,6 @@
       <li><a href="/about">About Us</a></li>
       <li><a href="/spices">Spices</a></li>
       <li><a href="/recipes">Recipes</a></li>
-      <li><a href="#">Discussion Forum</a></li>
       <li><a href="/login-form" style="text-decoration: underline rgb(68, 68, 68);">Sign-in</a></li>
       <li><a href="/basket">Basket</a></li>
     </ul>

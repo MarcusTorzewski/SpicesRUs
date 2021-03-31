@@ -12,7 +12,7 @@
 	grid-template-columns: 210px 210px 210px 210px 210px 210px;
 	background-color: #fdedce;
 	padding-right: 10%;
-	grid-gap: 15% 5%;
+	grid-gap: 5%;
 }
 
 .grid-item {
