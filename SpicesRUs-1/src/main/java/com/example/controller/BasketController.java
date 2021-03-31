@@ -252,17 +252,27 @@ public class BasketController {
 				
 				
 				pageBasket = currentUser.getCustomerBasket();
-				pageBasket.WorkOutTotalWithDiscountPerecent(enteredPromoCode.getPromoValuePercent());
-				basketRepo.save(pageBasket);
+				if(!pageBasket.isPromoAdded() ){
+					pageBasket.WorkOutTotalWithDiscountPerecent(enteredPromoCode.getPromoValuePercent());
+					pageBasket.setPromoAdded(true);
+					basketRepo.save(pageBasket);
+				}
+				
 				
 			}
 			else {
 				
 					pageBasket = basketRepo.findById(cookieBasketId).orElse(null);
 					
-					pageBasket.WorkOutTotalWithDiscountPerecent(enteredPromoCode.getPromoValuePercent());
-					basketRepo.save(pageBasket);
-		
+					if(!pageBasket.isPromoAdded() ) {
+						pageBasket.WorkOutTotalWithDiscountPerecent(enteredPromoCode.getPromoValuePercent());
+						basketRepo.save(pageBasket);
+			
+						pageBasket.setPromoAdded(true);
+						
+					}
+					
+					
 			}
 				
 		}

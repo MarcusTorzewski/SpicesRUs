@@ -22,14 +22,18 @@ public class Basket {
 	
 	private double basketTotalValue;
 	
+	private boolean promoAdded;
+	
 	// Product, Quantity
 	
 	private List<BasketItem> items = new ArrayList<BasketItem>();
 	
 	public Basket() {
+		
 		items = new ArrayList<BasketItem>();
 		this.basketTotalValue =0;
 		this.basketItemCount=0;
+		promoAdded= false;
 		
 		
 	}
@@ -116,6 +120,16 @@ public class Basket {
 		this.items = items;
 	}
 	
+	
+	
+	public boolean isPromoAdded() {
+		return promoAdded;
+	}
+
+	public void setPromoAdded(boolean promoAdded) {
+		this.promoAdded = promoAdded;
+	}
+
 	public void WorkOutBasketTotal() {
 		
 		double tempTotal =0.00;
@@ -166,6 +180,8 @@ public class Basket {
 		setBasketTotalValue(tempTotalPercentDiscounted);
 
 	}
+	
+	
 	
 	
 
