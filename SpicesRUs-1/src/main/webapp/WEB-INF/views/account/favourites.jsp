@@ -26,7 +26,6 @@
 			<li><a href="/recipes">Recipes</a></li>
 			<li><a href="/favourites" 
 				style="text-decoration: underline rgb(68, 68, 68);">Favourites</a></li>
-			<li><a href="#">Discussion Forum</a></li>
 			<li><a href="/account">My Account</a>
     		<li><a href="/logout">Sign Out</a>
 			<li><a href="/basket">Basket</a></li>

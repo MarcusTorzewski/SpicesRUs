@@ -44,28 +44,21 @@ tr:nth-child(even) {
 			style="text-decoration: underline rgb(68, 68, 68);">Spices</a></li>
 		<li><a href="/recipes">Recipes</a></li>
 		<li><a href="/favourites">Favourites</a></li>
-		<li><a href="#">Discussion Forum</a></li>
-		<sec:authorize access="hasRole('MEMBER')">
       	<li><a href="/account">My Account</a>
     	<li><a href="/logout">Sign Out</a>
-    	</sec:authorize>
-	  	<sec:authorize access="!hasRole('MEMBER')">
-      	<li><a href="/login-form">Sign-in</a></li>
-    	</sec:authorize>
 		<li><a href="/basket">Basket</a></li>
-		
 	</ul>
 
 	<div class="banner">
 		<img class="banner-image" style="margin-bottom: 200px;"
 			src="${pageContext.request.contextPath}/images/spices_background.jpg" />
 	</div>
-	
+	<div class="text_main1">
 	<h1>Total Sales: ${totalSales} </h1>
 	
 	<h1> Total Orders: ${orderCount} </h1>
 	
-	
+	</div>
 	<table>
 	
 		<tr>
