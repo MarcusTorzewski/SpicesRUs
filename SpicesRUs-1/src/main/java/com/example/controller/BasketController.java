@@ -88,7 +88,7 @@ public class BasketController {
 		
 		if(principal != null) {
 			
-			User currentUser= userRepo.findById(principal.getName()).orElse(null);
+			User currentUser= userRepo.findByEmail(principal.getName());
 			
 			currentUser.getCustomerBasket().addItemToBasket(newItem);
 			
@@ -174,7 +174,7 @@ public class BasketController {
 		Basket basket = null;
 		
 		if(principal!= null) {
-			User loggedInUser = userRepo.findById(principal.getName()).orElse(null);
+			User loggedInUser = userRepo.findByEmail(principal.getName());
 			basket = basketRepo.findById(loggedInUser.getCustomerBasket().getBasketId()).orElse(null);
 			if(basket == null) {
 				System.out.println("basket cannot be found");
@@ -248,7 +248,7 @@ public class BasketController {
 		if(enteredPromoCode != null) {
 			
 			if(principal!= null) {
-				User currentUser = userRepo.findById(principal.getName()).orElse(null);
+				User currentUser = userRepo.findByEmail(principal.getName());
 				
 				
 				pageBasket = currentUser.getCustomerBasket();
