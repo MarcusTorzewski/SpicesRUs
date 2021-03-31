@@ -13,11 +13,17 @@
 
 ## How to open and run the project
 Clone the repo with the tag 'cw6' to a workspace of SpringToolsSuite
+
 In SpringTools, click import > Gradle > Existing Gradle Project and select SpicesRUs-1
+
 (If you downloaded the SpicesRUs file from gitlab and it is a zip, instead import it via General > Archive File)
+
 Allow the project to build which can take a few minutes
+
 You should also refresh the project to ensure it will compile properly. 
+
 Then right click on the project and go Run As > Spring Boots App
+
 
 Once the terminal finishes printing navigate to localhost:8443, then you will be able to access the site.
 
