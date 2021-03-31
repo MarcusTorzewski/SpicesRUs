@@ -22,7 +22,6 @@
 		<li><a href="/spices">Spices</a></li>
 		<li><a href="/recipes">Recipes</a></li>
 		<li><a href="/favourites">Favourites</a></li>
-		<li><a href="#">Discussion Forum</a></li>
 		<li><a href="/account" style="text-decoration: underline rgb(68, 68, 68);">My Account</a>
 		<li><a href="/logout">Sign Out</a></li>
 		<li><a href="/basket">Basket</a></li>
@@ -57,5 +56,10 @@
         <br/>
         <a href="/editAccount" id="create">Edit account details</a>
     </div>
+    <sec:authorize access="hasRole('ADMIN')">
+    	<div class="account">
+	   		<a href="/admin/sales" id="create">View sales</a>
+	   	</div>
+	</sec:authorize>
   </body>
 </html>

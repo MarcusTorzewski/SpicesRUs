@@ -123,7 +123,6 @@ p {
 			<li><a href="/spices"
 				style="text-decoration: underline rgb(68, 68, 68);">Spices</a></li>
 			<li><a href="/recipes">Recipes</a></li>
-			<li><a href="#">Discussion Forum</a></li>
 			<sec:authorize access="hasRole('MEMBER')">
 				<li><a href="/account">My Account</a>
 				<li><a href="/logout">Sign Out</a>
