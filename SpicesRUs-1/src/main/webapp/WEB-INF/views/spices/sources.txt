@@ -1,1 +1,2 @@
 - Tutorial inspiring navbar - https://www.youtube.com/watch?v=X_skOPBsYZE
+- Example inspiring search bar - https://stackoverflow.com/questions/45238589/how-to-implement-search-function-in-jquery
