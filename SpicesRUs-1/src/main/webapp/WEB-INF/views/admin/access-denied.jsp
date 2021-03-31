@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <title>Spices R Us</title>
     <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/account.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400&display=swap"
       rel="stylesheet"
@@ -34,10 +35,11 @@
     	<li><a href="/basket">Basket</a></li>
     </ul>
 
-    <div class="text_main1">
+    <div class="account">
     	<h1>You don't have access to this page!</h1>
     	<p>You do not have the proper privileges to access this page.</p>
     	<p>Ensure you are logged into the right account and try again.</p>
+    	<a href="/" id="create">Back to Safety</a>
     </div>
   </body>
 </html>
