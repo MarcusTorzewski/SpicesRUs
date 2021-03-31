@@ -10,6 +10,7 @@
 
 ## Software Versions
 - The project was written in Java 14
+- The site should work in any modern browser
 
 ## How to open and run the project
 Clone the repo with the tag 'cw6' to a workspace of SpringToolsSuite
