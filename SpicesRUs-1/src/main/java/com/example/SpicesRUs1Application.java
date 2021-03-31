@@ -156,28 +156,6 @@ public class SpicesRUs1Application implements CommandLineRunner {
 		^^^ REMEMBER TO ClEAR ALL THIS OUT BEFORE FINISHING THE PROJECT
 		 */
 		
-		Basket b= new Basket();
-		
-		
-		b = basketRepo.save(b);
-
-		Role guest1 = rrepo.findByid("MEMBER");
-		Role guest2 = rrepo.findByid("PREMIUM");
-		Role guest3 = rrepo.findByid("ADMIN");
-		
-		List<Role> roles = new ArrayList<>();
-		roles.add(guest1);
-		roles.add(guest2);
-		roles.add(guest3);
-		
-		User testUser = new User();
-		testUser.setFirstName("John");
-		testUser.setLastname("Smith");
-		testUser.setEmail("js@gmail.com");
-		testUser.setPassword(pe.encode("password"));
-		testUser.setRoles(roles);
-		testUser.setCustomerBasket(b);
-		urepo.save(testUser);
 		
 		
 		
