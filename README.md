@@ -2,6 +2,10 @@
 
 **CO2201** Semester 2 Group 17 Repository
 
+## About this project
+
+University second year group project (6 people) while I was at leicester. It was a full stack e-retailer website with normal HTML/CSS/JS front end and Java Grade w/ MongoDB backend. The backend no longer functions as the database is no longer active.
+
 ## What files do you need?
 - The SpicesRUs-1 file contains all of the code and resources for the project
 
@@ -40,7 +44,3 @@ Please note changing the account details will permanently change them and you sh
 
 ## Accessing the database
 If you would like to access the online Mongo db, please contact one of us and we will set it up.
-
-## Miscellaneous
-
-- The Git username "Sabelossa" belongs to Zafar
